@@ -1,32 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Video Viral 🔥</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="monetag" content="f1d277a255d48bb0aa11ca57acd89f70">
-
-<!-- POPUNDER -->
-<script>(function(s){s.dataset.zone='10879872',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
-<!-- VIGNETTE -->
-<script>(function(s){s.dataset.zone='10879873',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
-</head>
-
-<body style="margin:0;background:black;color:white;text-align:center;font-family:Arial;">
-
-<h2>🔥 Video Viral Terbaru</h2>
-
-<button onclick="goNext()" style="padding:15px 25px;font-size:18px;margin-top:40px;">
+<button onclick="startPlay()" style="padding:15px 25px;font-size:18px;">
 ▶️ Play Video
 </button>
 
+<p id="loading" style="display:none;margin-top:20px;">Memuat video...</p>
+
 <script>
-function goNext(){
-    window.location.href='play.html';
+function startPlay(){
+    // tampilkan loading
+    document.getElementById("loading").style.display = "block";
+
+    // delay biar natural
+    setTimeout(function(){
+        window.location.href = "play.html";
+    }, 2500);
 }
 </script>
-
-</body>
-</html>
