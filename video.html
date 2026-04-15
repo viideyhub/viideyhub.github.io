@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Video Player</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="monetag" content="f1d277a255d48bb0aa11ca57acd89f70">
-
-<!-- POPUNDER -->
-<script>(function(s){s.dataset.zone='10879872',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
-</head>
-
-<body style="margin:0;background:black;color:white;text-align:center;">
-
-<h2>🎬 Video Viral</h2>
-
-<video width="90%" controls autoplay>
-<source src="https://cdn.videy.co/Fmm16v9f1.mp4" type="video/mp4">
+<video id="vid" width="90%" autoplay muted playsinline>
+<source src="LINK_VIDEO_KAMU.mp4" type="video/mp4">
 </video>
 
-</body>
-</html>
+<p onclick="unmuteVideo()" style="margin-top:15px;">
+🔊 Tap untuk aktifkan suara
+</p>
+
+<script>
+function unmuteVideo(){
+    let v = document.getElementById("vid");
+    v.muted = false;
+    v.play();
+}
+</script>
