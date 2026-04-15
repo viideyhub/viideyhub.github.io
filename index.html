@@ -1,17 +1,93 @@
-<button onclick="startPlay()" style="padding:15px 25px;font-size:18px;">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Video Viral 🔥</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="monetag" content="f1d277a255d48bb0aa11ca57acd89f70">
+
+<!-- POPUNDER -->
+<script>(function(s){s.dataset.zone='10879872',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+<!-- VIGNETTE -->
+<script>(function(s){s.dataset.zone='10879873',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+<style>
+body{
+margin:0;
+background:black;
+color:white;
+text-align:center;
+font-family:Arial;
+}
+
+#loader{
+display:none;
+margin-top:30px;
+}
+
+.bar{
+width:80%;
+height:10px;
+background:#333;
+margin:20px auto;
+border-radius:10px;
+overflow:hidden;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:lime;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>🔥 Video Viral Terbaru</h2>
+
+<button onclick="startPlay()" style="padding:15px 25px;font-size:18px;margin-top:30px;">
 ▶️ Play Video
 </button>
 
-<p id="loading" style="display:none;margin-top:20px;">Memuat video...</p>
+<div id="loader">
+<p>⏳ Memuat video, harap tunggu...</p>
+
+<div class="bar">
+<div class="progress" id="progress"></div>
+</div>
+
+<p id="percent">0%</p>
+</div>
 
 <script>
 function startPlay(){
-    // tampilkan loading
-    document.getElementById("loading").style.display = "block";
 
-    // delay biar natural
-    setTimeout(function(){
-        window.location.href = "play.html";
-    }, 2500);
+// tampilkan loader
+document.getElementById("loader").style.display = "block";
+
+let p = 0;
+let interval = setInterval(function(){
+    p += Math.random()*15;
+
+    if(p >= 100){
+        p = 100;
+        clearInterval(interval);
+
+        setTimeout(function(){
+            window.location.href = "play.html";
+        }, 500);
+    }
+
+    document.getElementById("progress").style.width = p + "%";
+    document.getElementById("percent").innerText = Math.floor(p) + "%";
+
+}, 400);
+
 }
 </script>
+
+</body>
+</html>
