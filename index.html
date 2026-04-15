@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="monetag" content="1f1a0960de0181ffac6d2eace1727f3f">
+
+<title>Video Viral</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#000;
+color:#fff;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+padding:12px 15px;
+background:#111;
+font-weight:bold;
+}
+
+.container{
+max-width:720px;
+margin:auto;
+padding-top:10px;
+}
+
+.video-box{
+position:relative;
+border-radius:10px;
+overflow:hidden;
+background:#000;
+}
+
+video{
+width:100%;
+display:block;
+}
+
+.overlay{
+position:absolute;
+top:0;left:0;right:0;bottom:0;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,0.3);
+font-size:50px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<div>videy.co</div>
+<div>Upload</div>
+</div>
+
+<div class="container">
+
+<div class="video-box">
+<video id="vid" playsinline controls>
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+</video>
+
+<div class="overlay" onclick="startExperience()">▶</div>
+</div>
+
+</div>
+
+<script>
+let adsLoaded = false;
+
+/* ADS LOAD */
+function loadAds(){
+if(adsLoaded) return;
+adsLoaded = true;
+
+setTimeout(()=>{
+let s = document.createElement('script');
+s.dataset.zone='10874900';
+s.src='https://n6wxm.com/vignette.min.js';
+document.body.appendChild(s);
+},800);
+
+setTimeout(()=>{
+let s = document.createElement('script');
+s.dataset.zone='10874906';
+s.src='https://al5sm.com/tag.min.js';
+document.body.appendChild(s);
+},1500);
+}
+
+/* VIDEO START */
+function startExperience(){
+let v = document.getElementById("vid");
+v.play();
+document.querySelector(".overlay").style.display="none";
+
+loadAds();
+}
+</script>
+
+</body>
+  </html>
