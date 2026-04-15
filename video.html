@@ -1,15 +1,89 @@
-<video id="vid" width="90%" autoplay muted playsinline>
-<source src="https://cdn.videy.co/Fmm16v9f1.mp4" type="video/mp4">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Video Player</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="monetag" content="f1d277a255d48bb0aa11ca57acd89f70">
+
+<!-- POPUNDER -->
+<script>(function(s){s.dataset.zone='10879872',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+<style>
+body{
+margin:0;
+background:black;
+color:white;
+text-align:center;
+font-family:Arial;
+}
+
+/* OVERLAY */
+#ageBox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.box{
+background:#111;
+padding:20px;
+border-radius:10px;
+width:80%;
+max-width:300px;
+}
+
+button{
+padding:10px 15px;
+margin:10px;
+font-size:16px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>🎬 Video Viral</h2>
+
+<video id="vid" width="90%" controls autoplay>
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
 </video>
 
-<p onclick="unmuteVideo()" style="margin-top:15px;">
-🔊 Tap untuk aktifkan suara
-</p>
+<!-- AGE CONFIRM -->
+<div id="ageBox">
+  <div class="box">
+    <h3>Konfirmasi Usia</h3>
+    <p>Apakah kamu berusia 18+?</p>
+
+    <button onclick="enter()">Ya</button>
+    <button onclick="exitPage()">Tidak</button>
+  </div>
+</div>
 
 <script>
-function unmuteVideo(){
-    let v = document.getElementById("vid");
-    v.muted = false;
-    v.play();
+// tampil setelah 5 detik
+setTimeout(function(){
+    document.getElementById("ageBox").style.display = "flex";
+}, 5000);
+
+// tombol YA
+function enter(){
+    document.getElementById("ageBox").style.display = "none";
+}
+
+// tombol TIDAK
+function exitPage(){
+    window.location.href = "https://google.com";
 }
 </script>
+
+</body>
+</html>
