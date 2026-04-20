@@ -6,12 +6,10 @@
 
 <title>Live Sekarang 🔴</title>
 
-<!-- META -->
-<meta name="description" content="Live sedang berlangsung, banyak yang lagi nonton sekarang.">
 <meta property="og:title" content="Live Sekarang 🔴">
-<meta property="og:description" content="Lagi ramai banget, masuk sekarang!">
-<meta property="og:image" content="https://via.placeholder.com/500x300.jpg">
-<meta property="og:url" content="https://viideyhub.my.id/video1.html">
+<meta property="og:description" content="Sedang live sekarang, banyak yang nonton 🔥">
+<meta property="og:image" content="https://via.placeholder.com/500x300">
+<meta property="og:url" content="https://viideyhub.my.id">
 
 <style>
 body {
@@ -19,12 +17,14 @@ body {
     background:#000;
     font-family:Arial;
     color:#fff;
+    overflow:hidden;
 }
 
-/* VIDEO FULL */
+/* VIDEO */
 .video-container {
     position:relative;
     height:100vh;
+    background:#000;
 }
 video {
     width:100%;
@@ -32,35 +32,36 @@ video {
     object-fit:cover;
 }
 
-/* TOP BAR */
-.top-bar {
+/* LIVE TOP */
+.top {
     position:absolute;
     top:10px;
     left:10px;
     display:flex;
-    align-items:center;
     gap:10px;
+    align-items:center;
 }
 
-.live-badge {
+.live {
     background:red;
-    padding:3px 8px;
+    padding:4px 10px;
     border-radius:5px;
     font-size:12px;
+    font-weight:bold;
 }
 
 .viewer {
     background:rgba(0,0,0,0.6);
-    padding:3px 8px;
-    border-radius:10px;
+    padding:4px 10px;
+    border-radius:20px;
     font-size:12px;
 }
 
-/* RIGHT ICON */
+/* RIGHT ACTION */
 .right {
     position:absolute;
     right:10px;
-    bottom:100px;
+    bottom:120px;
     display:flex;
     flex-direction:column;
     gap:15px;
@@ -69,6 +70,7 @@ video {
 
 .icon {
     font-size:22px;
+    cursor:pointer;
 }
 
 /* CTA */
@@ -78,29 +80,37 @@ video {
     left:10px;
     right:10px;
     background:#ff2e63;
-    padding:12px;
-    border-radius:25px;
+    padding:14px;
+    border-radius:30px;
     text-align:center;
     font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 10px rgba(255,46,99,0.6);
 }
 
 /* COMMENTS */
 .comments {
     position:absolute;
-    bottom:130px;
+    bottom:140px;
     left:10px;
     width:70%;
     font-size:13px;
 }
 
 .comment {
-    margin-bottom:5px;
+    margin-bottom:6px;
     background:rgba(0,0,0,0.5);
-    padding:5px 10px;
+    padding:6px 10px;
     border-radius:10px;
+    animation:fade 0.3s;
 }
 
-/* INPUT */
+@keyframes fade {
+    from {opacity:0; transform:translateY(10px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+/* INPUT FAKE */
 .input {
     position:absolute;
     bottom:20px;
@@ -109,7 +119,8 @@ video {
     background:#111;
     padding:10px;
     border-radius:20px;
-    color:#aaa;
+    color:#777;
+    font-size:13px;
 }
 </style>
 </head>
@@ -118,13 +129,14 @@ video {
 
 <div class="video-container">
 
+<!-- VIDEO -->
 <video autoplay muted loop playsinline>
-    <source src="https://cdn.videy.co/nLwWp4f51.mp4" type="video/mp4">
+    <source src="VIDEO_URL" type="video/mp4">
 </video>
 
 <!-- TOP -->
-<div class="top-bar">
-    <div class="live-badge">LIVE</div>
+<div class="top">
+    <div class="live">🔴 LIVE</div>
     <div class="viewer">🔥 <span id="viewer">12.3K</span></div>
 </div>
 
@@ -132,12 +144,12 @@ video {
 <div class="right">
     <div class="icon">❤️</div>
     <div class="icon">💬</div>
-    <div class="icon" onclick="goLink()">🔗</div>
+    <div class="icon" onclick="go()">🔗</div>
 </div>
 
 <!-- CTA -->
-<div class="cta" onclick="goLink()">
-👉 Gabung Sekarang
+<div class="cta" onclick="go()">
+👉 Klik Untuk Akses Sekarang
 </div>
 
 <!-- COMMENTS -->
@@ -149,37 +161,39 @@ video {
 </div>
 
 <script>
-function goLink(){
-    window.open("LINK_DIRECT_KAMU", "_blank");
+function go(){
+    window.open("LINK_CTA", "_blank");
 }
 
-/* VIEWER */
-let v=12300;
+/* VIEWER ANIMATION (SMOOTH) */
+let v = 12300;
 setInterval(()=>{
-    v+=Math.floor(Math.random()*20)-10;
-    document.getElementById("viewer").innerText=(v/1000).toFixed(1)+"K";
+    v += Math.floor(Math.random()*30);
+    document.getElementById("viewer").innerText = (v/1000).toFixed(1)+"K";
 },2000);
 
-/* COMMENTS */
-const chat=[
-"ini beneran live?",
+/* COMMENTS REALISTIC */
+const chat = [
+"baru join 🔥",
+"ini live asli?",
 "rame banget 😳",
-"baru join",
-"serius ini?",
-"gas gas 🔥"
+"gila sih ini",
+"kok bisa rame gini",
+"gas lanjut 🔥",
+"wihh menarik"
 ];
 
 function addComment(){
-    let c=document.createElement("div");
-    c.className="comment";
-    c.innerText=chat[Math.floor(Math.random()*chat.length)];
+    let c = document.createElement("div");
+    c.className = "comment";
+    c.innerText = chat[Math.floor(Math.random()*chat.length)];
     document.getElementById("comments").appendChild(c);
 
-    setTimeout(()=>c.remove(),4000);
+    setTimeout(()=>c.remove(),5000);
 }
 
-setInterval(addComment,1500);
+setInterval(addComment,1200);
 </script>
 
 </body>
-  </html>
+</html>
