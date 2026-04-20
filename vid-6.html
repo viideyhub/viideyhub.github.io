@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Player</title>
+
+<style>
+body{
+margin:0;
+background:#0f0f0f;
+font-family:Arial, sans-serif;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+width:100%;
+max-width:500px;
+text-align:center;
+}
+
+/* VIDEO */
+video{
+width:100%;
+border-radius:12px;
+background:black;
+}
+
+/* TITLE */
+.title{
+margin-top:12px;
+font-size:16px;
+font-weight:bold;
+}
+
+/* BUTTON */
+.btn{
+margin-top:12px;
+display:inline-block;
+padding:10px 15px;
+background:#ff2d55;
+color:white;
+border:none;
+border-radius:8px;
+font-size:14px;
+cursor:pointer;
+text-decoration:none;
+}
+
+/* SMALL DESC */
+.desc{
+margin-top:8px;
+font-size:12px;
+color:#aaa;
+}
+
+/* CLICK LAYER */
+.click-layer{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- VIDEO -->
+<div style="position:relative;">
+<video autoplay muted loop playsinline onclick="openLink()">
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<!-- overlay click full video -->
+<div class="click-layer" onclick="openLink()"></div>
+</div>
+
+<!-- TITLE -->
+<div class="title">🔥 Video Viral Terbaru</div>
+
+<!-- DESC -->
+<div class="desc">Klik untuk lanjut menonton konten berikutnya</div>
+
+<!-- BUTTON -->
+<a class="btn" onclick="openLink()">▶ Lanjutkan</a>
+
+</div>
+
+<script>
+// 🔥 GANTI DIRECT LINK MONETAG KAMU DI SINI
+function openLink(){
+window.open("https://LINK-DIRECT-KAMU", "_blank");
+}
+</script>
+
+<!-- 🔥 MONETAG POPUNDER (tempel script di sini kalau pakai) -->
+
+</body>
+</html>
