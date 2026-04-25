@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVtube - Video 1</title>
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  font-family:Arial;
+  color:#fff;
+}
+
+header{
+  text-align:center;
+  padding:10px;
+  font-weight:bold;
+}
+
+video{
+  width:100%;
+  height:70vh;
+  background:#000;
+  object-fit:cover;
+}
+
+.info{
+  text-align:center;
+  font-size:13px;
+  opacity:0.8;
+  padding:8px;
+}
+
+/* recommendation bawah video */
+.reco{
+  padding:10px;
+  font-size:13px;
+  opacity:0.8;
+  text-align:center;
+}
+
+.card{
+  background:#111;
+  margin:8px;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  text-align:center;
+  transition:0.2s;
+}
+
+.card:hover{
+  transform:scale(1.02);
+}
+</style>
+</head>
+
+<body>
+
+<header>AVtube</header>
+
+<video id="player" controls></video>
+
+<div class="info">Now Playing: Video 1</div>
+
+<div class="reco">🔥 Recommended Next Video</div>
+
+<div class="card" onclick="goNext('https://cdn.videy.co/lIWiiz8i1.mp4')">
+  Video 2
+</div>
+
+<script>
+// =====================
+// VIDEO 1
+// =====================
+player.src = "https://cdn.videy.co/nJCvaRmL1.mp4";
+
+// =====================
+// 🔥 RECOMMENDATION CLICK + MONETIZATION
+// =====================
+
+function goNext(url){
+
+  // soft revenue trigger (halus, tidak ganggu UX)
+  window.open("https://omg10.com/4/10908814", "_blank");
+
+  // pindah video (atau halaman baru kalau mau 1 video per page)
+  player.src = url;
+  player.play();
+}
+</script>
+
+</body>
+</html>
