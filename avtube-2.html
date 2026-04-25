@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ViideyHub</title>
+<title>AVtube - Video 1</title>
 
 <style>
 body{
@@ -33,165 +33,68 @@ video{
   padding:8px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
+/* recommendation bawah video */
+.reco{
   padding:10px;
+  font-size:13px;
+  opacity:0.8;
+  text-align:center;
 }
 
 .card{
   background:#111;
+  margin:8px;
+  padding:10px;
   border-radius:8px;
-  overflow:hidden;
   cursor:pointer;
+  text-align:center;
   transition:0.2s;
 }
 
 .card:hover{
   transform:scale(1.02);
 }
-
-.card video{
-  width:100%;
-  height:110px;
-  object-fit:cover;
-}
-
-.card-title{
-  font-size:11px;
-  padding:6px;
-  text-align:center;
-  opacity:0.8;
-}
-
-.btn{
-  background:#fff;
-  color:#000;
-  padding:12px;
-  margin:10px;
-  text-align:center;
-  font-weight:bold;
-  border-radius:6px;
-  cursor:pointer;
-}
 </style>
 </head>
 
 <body>
 
-<header>ViideyHub</header>
+<header>AVtube</header>
 
 <video id="player" controls></video>
 
-<div class="info" id="info">Loading...</div>
+<div class="info">Now Playing: Video 1</div>
 
-<div class="btn" onclick="next()">NEXT VIDEO</div>
+<div class="reco">🔥 Recommended Next Video</div>
 
-<div class="info">🔥 Recommended for you</div>
-<div class="grid" id="grid"></div>
+<div class="card" onclick="goNext('https://cdn.videy.co/cIbSpy091.mp4')">
+  Video 2
+</div>
+
+<div class="card" onclick="goNext('https://cdn.videy.co/kA7kmjzY1.mp4')">
+  Video 3
+</div>
 
 <script>
-// =========================
-// DATABASE VIDEO
-// =========================
-const videos = {
-  "a1": { url:"https://cdn.videy.co/Is6iuGSX1.mp4", series:"A", title:"Video A1" },
-  "a2": { url:"https://cdn.videy.co/cIbSpy091.mp4", series:"A", title:"Video A2" },
-  "b1": { url:"https://cdn.videy.co/kA7kmjzY1.mp4", series:"B", title:"Video B1" },
-  "b2": { url:"https://cdn.videy.co/NwMmqnqf1.mp4", series:"B", title:"Video B2" }
-};
+// =====================
+// VIDEO 1
+// =====================
+player.src = "https://cdn.videy.co/Is6iuGSX1.mp4";
 
-// =========================
-// CURRENT VIDEO
-// =========================
-const params = new URLSearchParams(window.location.search);
-let currentId = params.get("v") || "a1";
+// =====================
+// 🔥 RECOMMENDATION CLICK + MONETIZATION
+// =====================
 
-let current = videos[currentId];
+function goNext(url){
 
-player.src = current.url;
-info.innerText = current.title;
+  // soft revenue trigger (halus, tidak ganggu UX)
+  window.open("https://omg10.com/4/10908814", "_blank");
 
-// =========================
-// 🧠 PRO MAX RECOMMENDATION ENGINE
-// =========================
-
-function getRecommendations(id){
-  let currentSeries = videos[id].series;
-
-  let list = Object.keys(videos).map(k=>{
-    return {
-      id:k,
-      score: videos[k].series === currentSeries ? 100 : 50
-    };
-  });
-
-  // urutkan by score
-  list.sort((a,b)=> b.score - a.score);
-
-  return list;
+  // pindah video (atau halaman baru kalau mau 1 video per page)
+  player.src = url;
+  player.play();
 }
-
-function render(){
-  let rec = getRecommendations(currentId);
-
-  let html = "";
-
-  rec.forEach(v=>{
-    if(v.id !== currentId){
-      html += `
-        <div class="card" onclick="go('${v.id}')">
-          <video src="${videos[v.id].url}" muted></video>
-          <div class="card-title">${videos[v.id].title}</div>
-        </div>
-      `;
-    }
-  });
-
-  grid.innerHTML = html;
-}
-
-function go(id){
-  // simpan session memory
-  localStorage.setItem("lastVideo", id);
-  window.location.href = "?v=" + id;
-}
-
-// =========================
-// NEXT SMART FLOW
-// =========================
-function next(){
-  let rec = getRecommendations(currentId);
-  let nextVideo = rec.find(v => v.id !== currentId);
-
-  if(nextVideo){
-    window.location.href = "?v=" + nextVideo.id;
-  }
-}
-
-// auto recall last session (boost retention)
-let last = localStorage.getItem("lastVideo");
-if(last && last !== currentId){
-  // optional soft hint (tidak memaksa)
-}
-
-render();
-
-// =========================
-// OPTIONAL ADS SAFE HOOK
-// =========================
-let adShown = false;
-
-document.addEventListener("click", ()=>{
-  if(adShown) return;
-  adShown = true;
-
-  setTimeout(()=>{
-    window.open("https://omg10.com/4/10908814", "_blank");
-  }, 2000);
-});
 </script>
 
 </body>
-  </html>
+</html>
