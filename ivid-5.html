@@ -1,128 +1,151 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>vldul</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>vjdeyhub</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #fff;
-    }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px;
-      border-bottom: 1px solid #eee;
-    }
+body{
+    font-family:Arial,sans-serif;
+    background:#fff;
+    color:#111;
+}
 
-    .logo {
-      font-weight: bold;
-      font-size: 20px;
-    }
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    background:#fff;
+    z-index:100;
+}
 
-    .upload {
-      background: #0d1b2a;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
 
-    .container {
-      padding: 10px;
-    }
+.upload{
+    background:#0d1b2a;
+    color:#fff;
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:14px;
+}
 
-    .main {
-      position: relative;
-    }
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:10px;
+}
 
-    video {
-      width: 100%;
-      border-radius: 15px;
-      background: #000;
-      display: block;
-    }
+.card{
+    margin-bottom:22px;
+}
 
-    .overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 60px;
-      color: #fff;
-      background: rgba(0, 0, 0, 0.5);
-      width: 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      cursor: pointer;
-    }
+video{
+    width:100%;
+    display:block;
+    border-radius:14px;
+    background:#000;
+}
 
-    .title {
-      font-weight: bold;
-      margin: 10px 0;
-    }
+.title{
+    font-weight:bold;
+    margin-top:8px;
+    font-size:16px;
+}
 
-    .meta {
-      font-size: 13px;
-      color: #666;
-    }
-  </style>
+.meta{
+    color:#666;
+    font-size:13px;
+    margin-top:4px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- POPUNDER -->
-  <script>
-    (function (s) {
-      s.dataset.zone = '10911170';
-      s.src = 'https://llvpn.com/tag.min.js';
-    })(
-      [document.documentElement, document.body]
-        .filter(Boolean)
-        .pop()
-        .appendChild(document.createElement('script'))
-    );
-  </script>
+<!-- POPUNDER -->
+<script>(function(s){s.dataset.zone='10911170',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  
+<div class="header">
+<div class="logo">viideyhub</div>
+<div class="upload">Upload</div>
+</div>
 
-  <div class="header">
-    <div class="logo">vldul</div>
-    <div class="upload">Upload</div>
-  </div>
+<div class="container">
 
-  <div class="container">
-    <div class="main" onclick="playVideo()">
-      <video id="v1" src="https://cdn.videy.co/nJCvaRmL1.mp4"></video>
-      <div class="overlay" id="o1">▶</div>
-    </div>
+<div class="card">
+<video controls playsinline preload="metadata"
+src="VIDEO"></video>
+<div class="title">🔥 Video Viral #1</div>
+<div class="meta">Trending sekarang</div>
+</div>
 
-    <div class="title">Video Viral</div>
-    <div class="meta">🔥 Trending sekarang</div>
-  </div>
+<div class="card">
+<video controls playsinline preload="metadata"
+src="VIDEO"></video>
+<div class="title">🔥 Video Viral #2</div>
+<div class="meta">Trending sekarang</div>
+</div>
 
-  <script>
-    let clicked = false;
+<div class="card">
+<video controls playsinline preload="metadata"
+src="VIDEO"></video>
+<div class="title">🔥 Video Viral #3</div>
+<div class="meta">Trending sekarang</div>
+</div>
 
-    function playVideo() {
-      let v = document.getElementById("v1");
-      v.play();
-      document.getElementById("o1").style.display = "none";
+<div class="card">
+<video controls playsinline preload="metadata"
+src="VIDEO"></video>
+<div class="title">🔥 Video Viral #4</div>
+<div class="meta">Trending sekarang</div>
+</div>
 
-      if (!clicked) {
-        clicked = true;
+<div class="card">
+<video controls playsinline preload="metadata"
+src="VIDEO"></video>
+<div class="title">🔥 Video Viral #5</div>
+<div class="meta">Trending sekarang</div>
+</div>
 
-        setTimeout(() => {
-          window.open("https://crn77.com/4/10911172", "_blank");
-        }, 1000);
-      }
-    }
-  </script>
+</div>
+
+<script>
+let smartlinkOpened = false;
+
+document.querySelectorAll('video').forEach(video => {
+
+video.addEventListener('play', () => {
+
+if(!smartlinkOpened){
+smartlinkOpened = true;
+
+setTimeout(() => {
+window.open(
+'https://crn77.com/4/10911172',
+'_blank'
+);
+},1000);
+
+}
+
+});
+
+});
+</script>
 
 </body>
 </html>
