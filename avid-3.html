@@ -84,8 +84,7 @@ body{
     color:#fff;
     font-size:31px;
     padding-left:4px;
-    box-shadow:
-        0 8px 30px rgba(229,9,20,.45);
+    box-shadow:0 8px 30px rgba(229,9,20,.45);
     cursor:pointer;
     transition:.2s;
 }
@@ -195,8 +194,7 @@ body{
     font-size:17px;
     font-weight:800;
     cursor:pointer;
-    box-shadow:
-        0 6px 22px rgba(229,9,20,.32);
+    box-shadow:0 6px 22px rgba(229,9,20,.32);
 }
 
 .watch-button:active{
@@ -235,7 +233,6 @@ body{
     color:#e50914;
     font-size:16px;
 }
-
 
 /* PLAYER */
 
@@ -416,7 +413,6 @@ body{
     line-height:1.5;
 }
 
-
 /* VIDEO LIST */
 
 .video-list{
@@ -531,7 +527,6 @@ body{
     padding:12px;
 }
 
-
 /* AGE MODAL */
 
 .age-modal{
@@ -628,7 +623,6 @@ body{
     margin-top:10px;
 }
 
-
 /* MOBILE */
 
 @media(max-width:380px){
@@ -651,7 +645,9 @@ body{
 
 <body>
 
-<!-- LANDING -->
+<!-- =========================================================
+     LANDING
+     ========================================================= -->
 
 <div id="page-landing">
 
@@ -681,7 +677,6 @@ body{
 
     </div>
 
-
     <div class="landing-content">
 
         <h1 class="title">
@@ -691,7 +686,6 @@ body{
         <p class="subtitle">
             Pilih lanjut untuk membuka halaman video.
         </p>
-
 
         <div class="info-row">
 
@@ -712,22 +706,17 @@ body{
 
         </div>
 
-
         <button class="watch-button" id="btnContinue">
 
             <i class="fas fa-play"></i>
-
             TONTON SEKARANG
-
             <i class="fas fa-arrow-right"></i>
 
         </button>
 
-
         <div class="tap-note">
             Ketuk sekali untuk melanjutkan
         </div>
-
 
         <div class="feature-row">
 
@@ -755,7 +744,9 @@ body{
 </div>
 
 
-<!-- PLAYER -->
+<!-- =========================================================
+     PLAYER
+     ========================================================= -->
 
 <div id="page-player">
 
@@ -777,7 +768,6 @@ body{
 
     </div>
 
-
     <div class="video-container">
 
         <video id="mainVideo"
@@ -789,7 +779,6 @@ body{
             Browser tidak mendukung video.
 
         </video>
-
 
         <div class="video-overlay" id="videoOverlay">
 
@@ -803,13 +792,11 @@ body{
 
     </div>
 
-
     <div class="controls">
 
         <button id="playPauseBtn">
             <i class="fas fa-play"></i>
         </button>
-
 
         <div class="progress-wrap">
 
@@ -827,7 +814,6 @@ body{
 
         </div>
 
-
         <div class="volume">
 
             <button id="muteBtn">
@@ -844,7 +830,6 @@ body{
 
         </div>
 
-
         <button class="next-btn" id="btnNext">
 
             <i class="fas fa-forward"></i>
@@ -853,7 +838,6 @@ body{
         </button>
 
     </div>
-
 
     <div class="status-box" id="verificationBox">
 
@@ -866,7 +850,6 @@ body{
         </div>
 
     </div>
-
 
     <div class="after-video" id="afterVideo">
 
@@ -887,7 +870,6 @@ body{
 
     </div>
 
-
     <div class="video-list">
 
         <div class="list-title">
@@ -898,11 +880,9 @@ body{
 
     </div>
 
-
     <div class="footer">
         Video player
     </div>
-
 
     <button class="back" id="btnBack">
         ← Kembali ke halaman awal
@@ -913,7 +893,9 @@ body{
 </div>
 
 
-<!-- AGE MODAL -->
+<!-- =========================================================
+     AGE MODAL
+     ========================================================= -->
 
 <div class="age-modal" id="ageModal">
 
@@ -933,33 +915,27 @@ body{
         Pastikan Anda memenuhi batas usia tersebut.
     </p>
 
-
     <div class="age-actions">
 
         <button class="age-confirm" id="ageConfirm">
 
             <i class="fas fa-check"></i>
-
             Saya 18+ — Lanjut
 
         </button>
 
-
         <button class="age-smartlink" id="ageSmartlink">
 
             <i class="fas fa-external-link-alt"></i>
-
             Buka Tautan Eksternal
 
         </button>
-
 
         <button class="age-cancel" id="ageCancel">
             Batal
         </button>
 
     </div>
-
 
     <div class="age-note">
         Tautan eksternal dapat membuka halaman baru.
@@ -971,12 +947,23 @@ body{
 
 
 <!-- =========================================================
-     POPUNDER BARU
+     POPUNDER
      ========================================================= -->
 
 <script src="https://lectureheard.com/72/97/06/729706d0128fda9672bcbdc9b6f6880f.js"></script>
 
-	
+
+<!-- =========================================================
+     SOCIAL BAR
+     ========================================================= -->
+
+<script src="https://lectureheard.com/69/75/4a/69754aebfa329834728406f071e4ce1d.js"></script>
+
+
+<!-- =========================================================
+     MAIN JAVASCRIPT
+     ========================================================= -->
+
 <script>
 
 (function(){
@@ -984,12 +971,11 @@ body{
 "use strict";
 
 
-/* =========================================================
-   SMARTLINK BARU
-   ========================================================= */
+/* SMARTLINK */
 
 const ADSTERRA_SMARTLINK =
-"https://lectureheard.com/m1bmaftz2?key=882dcc168cd45758578c5d23f4e65a1b"
+"https://lectureheard.com/m1bmaftz2?key=882dcc168cd45758578c5d23f4e65a1b";
+
 
 /* 6 VIDEO */
 
@@ -1228,7 +1214,6 @@ function renderVideoList(){
 
             `;
 
-
             div.addEventListener(
                 "click",
                 function(){
@@ -1237,7 +1222,6 @@ function renderVideoList(){
 
                 }
             );
-
 
             videoListContainer.appendChild(div);
 
@@ -1591,6 +1575,8 @@ function formatTime(seconds){
 }
 
 
+/* PROGRESS CLICK */
+
 progressBar.addEventListener(
     "click",
     function(e){
@@ -1692,4 +1678,4 @@ player.style.display =
 </script>
 
 </body>
-</html>
+	</html>
