@@ -1,219 +1,1970 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0b0b">
-  <meta name="description" content="VIRALFLIX — Kumpulan Video Viral Terbaru">
-  <title>VIRALFLIX — Kumpulan Video Viral</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      background:#090909;color:#fff;min-height:100vh
+<title>VIRAL TERKINI</title>
+
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:#050505;
+    color:#fff;
+}
+
+/* =========================================================
+   LANDING
+   ========================================================= */
+
+#page-landing{
+    width:100%;
+    max-width:480px;
+    margin:auto;
+    padding:16px 13px 40px;
+}
+
+.landing-card{
+    overflow:hidden;
+    background:#0a0a0a;
+    border:1px solid #30090b;
+    border-radius:24px;
+    box-shadow:0 18px 50px rgba(0,0,0,.65);
+}
+
+.preview{
+    position:relative;
+    height:270px;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #65090f 0,
+            #270407 35%,
+            #0b0203 68%,
+            #020202 100%
+        );
+}
+
+.preview::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.12),
+            rgba(0,0,0,.76)
+        );
+}
+
+.preview-quality,
+.preview-count{
+    position:absolute;
+    top:13px;
+    z-index:3;
+    padding:6px 10px;
+    border-radius:20px;
+    background:rgba(15,2,3,.88);
+    border:1px solid #641014;
+    color:#fff;
+    font-size:10px;
+    font-weight:800;
+    backdrop-filter:blur(8px);
+}
+
+.preview-quality{
+    left:13px;
+}
+
+.preview-count{
+    right:13px;
+}
+
+.preview-quality i{
+    color:#ff1722;
+    margin-right:3px;
+}
+
+.preview-content{
+    position:absolute;
+    inset:0;
+    z-index:4;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.preview-play{
+    width:82px;
+    height:82px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding-left:4px;
+    background:#e50914;
+    color:#fff;
+    font-size:31px;
+    box-shadow:
+        0 0 0 8px rgba(229,9,20,.10),
+        0 12px 40px rgba(229,9,20,.45);
+    cursor:pointer;
+    transition:transform .18s ease;
+}
+
+.preview-play:hover{
+    transform:scale(1.04);
+}
+
+.preview-play:active{
+    transform:scale(.94);
+}
+
+.preview-label{
+    margin-top:15px;
+    padding:7px 13px;
+    border-radius:20px;
+    color:#f5f5f5;
+    background:rgba(0,0,0,.60);
+    border:1px solid rgba(255,255,255,.08);
+    font-size:11px;
+    font-weight:700;
+}
+
+/* LANDING CONTENT */
+
+.landing-content{
+    padding:23px 18px 20px;
+}
+
+.title{
+    text-align:center;
+    color:#fff;
+    font-size:29px;
+    line-height:1.15;
+    font-weight:900;
+    letter-spacing:-.6px;
+    margin-bottom:9px;
+}
+
+.title span{
+    color:#e50914;
+}
+
+.subtitle{
+    max-width:360px;
+    margin:0 auto 18px;
+    text-align:center;
+    color:#999;
+    font-size:13px;
+    line-height:1.55;
+}
+
+.info-row{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-bottom:18px;
+}
+
+.info-pill{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    padding:7px 10px;
+    background:#141414;
+    border:1px solid #292929;
+    border-radius:20px;
+    color:#d4d4d4;
+    font-size:10px;
+    font-weight:700;
+}
+
+.info-pill i{
+    color:#e50914;
+}
+
+.watch-button{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    padding:16px 18px;
+    background:linear-gradient(135deg,#f0141f,#b80610);
+    color:#fff;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 8px 28px rgba(229,9,20,.28);
+    transition:transform .15s ease,filter .15s ease;
+}
+
+.watch-button:hover{
+    filter:brightness(1.08);
+}
+
+.watch-button:active{
+    transform:scale(.985);
+}
+
+.watch-button i{
+    margin:0 4px;
+}
+
+.tap-note{
+    margin-top:9px;
+    text-align:center;
+    color:#666;
+    font-size:10px;
+}
+
+.feature-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+    margin-top:20px;
+    padding-top:17px;
+    border-top:1px solid #222;
+}
+
+.feature{
+    text-align:center;
+    color:#7e7e7e;
+    font-size:9px;
+    font-weight:600;
+}
+
+.feature i{
+    display:block;
+    margin-bottom:6px;
+    color:#e50914;
+    font-size:15px;
+}
+
+/* =========================================================
+   PLAYER
+   ========================================================= */
+
+#page-player{
+    display:none;
+    width:100%;
+    min-height:100vh;
+    background:#080b10;
+}
+
+.player-card{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    background:#080b10;
+    padding-bottom:30px;
+}
+
+.player-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:7px;
+    padding:11px 12px;
+    background:rgba(8,11,16,.96);
+    border-bottom:1px solid #1e293b;
+    backdrop-filter:blur(10px);
+}
+
+.brand{
+    color:#e2e8f0;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.badge-hd{
+    padding:5px 9px;
+    border-radius:20px;
+    background:#2563eb;
+    color:#fff;
+    font-size:9px;
+    font-weight:900;
+}
+
+.video-counter{
+    padding:5px 9px;
+    border-radius:20px;
+    background:#1e293b;
+    color:#cbd5e1;
+    font-size:9px;
+}
+
+/* VIDEO */
+
+.video-container{
+    position:relative;
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    padding-bottom:177.78%;
+    height:0;
+    overflow:hidden;
+    background:#020305;
+}
+
+.video-container video{
+    position:absolute;
+    inset:0;
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain;
+    background:#020305;
+}
+
+.video-overlay{
+    position:absolute;
+    inset:0;
+    z-index:10;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    background:rgba(0,0,0,.40);
+    transition:opacity .2s ease;
+}
+
+.video-overlay.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+.video-overlay i{
+    color:#fff;
+    font-size:62px;
+    filter:drop-shadow(0 8px 20px rgba(0,0,0,.5));
+}
+
+.play-text{
+    position:absolute;
+    bottom:12%;
+    color:#fff;
+    font-size:11px;
+    font-weight:600;
+}
+
+/* CONTROLS */
+
+.controls{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    flex-wrap:wrap;
+    padding:10px 12px;
+    background:#080b10;
+    border-top:1px solid #1e293b;
+    border-bottom:1px solid #1e293b;
+}
+
+.controls button{
+    border:0;
+    background:none;
+    color:#e2e8f0;
+    padding:6px;
+    cursor:pointer;
+}
+
+.progress-wrap{
+    flex:1;
+    min-width:100px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.progress{
+    flex:1;
+    height:5px;
+    background:#1e293b;
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.progress-fill{
+    width:0;
+    height:100%;
+    background:#2563eb;
+}
+
+.time{
+    min-width:74px;
+    color:#94a3b8;
+    font-size:9px;
+    text-align:center;
+}
+
+.volume{
+    display:flex;
+    align-items:center;
+}
+
+.volume input{
+    width:40px;
+}
+
+.next-btn{
+    padding:7px 12px!important;
+    border-radius:20px!important;
+    background:#2563eb!important;
+    color:#fff!important;
+    font-weight:800;
+}
+
+/* STATUS */
+
+.status-box{
+    margin:12px;
+    padding:14px;
+    border-radius:14px;
+    background:#111827;
+    border:1px solid #1e293b;
+}
+
+.status-title{
+    margin-bottom:5px;
+    color:#64748b;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:.5px;
+}
+
+.status-message{
+    color:#cbd5e1;
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* NEXT */
+
+.after-video{
+    display:none;
+    margin:12px;
+    padding:16px;
+    text-align:center;
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:14px;
+}
+
+.after-video.show{
+    display:block;
+}
+
+.after-video h3{
+    margin-bottom:6px;
+    color:#fff;
+    font-size:16px;
+}
+
+.after-video p{
+    margin-bottom:11px;
+    color:#94a3b8;
+    font-size:11px;
+}
+
+.after-video button{
+    width:100%;
+    border:0;
+    border-radius:25px;
+    padding:12px;
+    background:#2563eb;
+    color:#fff;
+    font-weight:800;
+}
+
+/* VIDEO LIST */
+
+.video-list{
+    padding:0 12px;
+}
+
+.list-title{
+    margin-bottom:9px;
+    color:#94a3b8;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.4px;
+}
+
+.video-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    margin-bottom:7px;
+    border-radius:13px;
+    background:#111827;
+    border:1px solid #1e293b;
+    cursor:pointer;
+    transition:border-color .15s ease,transform .15s ease;
+}
+
+.video-item:active{
+    transform:scale(.99);
+}
+
+.video-item.active{
+    border-color:#2563eb;
+}
+
+.video-icon{
+    width:38px;
+    height:38px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    background:#1e293b;
+    color:#fff;
+}
+
+.video-info{
+    flex:1;
+    min-width:0;
+}
+
+.video-info strong{
+    display:block;
+    overflow:hidden;
+    color:#e2e8f0;
+    font-size:11px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.video-info span{
+    color:#64748b;
+    font-size:9px;
+}
+
+.video-arrow{
+    color:#64748b;
+}
+
+/* FOOTER */
+
+.footer{
+    margin:16px 12px 0;
+    padding-top:13px;
+    border-top:1px solid #1e293b;
+    color:#475569;
+    text-align:center;
+    font-size:9px;
+}
+
+.back{
+    display:block;
+    margin:auto;
+    padding:12px;
+    border:0;
+    background:none;
+    color:#64748b;
+    font-size:11px;
+    cursor:pointer;
+}
+
+/* =========================================================
+   AGE MODAL
+   ========================================================= */
+
+.age-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(4px);
+}
+
+.age-modal.show{
+    display:flex;
+}
+
+.age-box{
+    width:100%;
+    max-width:390px;
+    padding:24px 19px 18px;
+    border-radius:22px;
+    background:#fff;
+    text-align:center;
+    box-shadow:0 25px 70px rgba(0,0,0,.5);
+}
+
+.age-icon{
+    width:58px;
+    height:58px;
+    margin:0 auto 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#fef2f2;
+    color:#dc2626;
+    font-size:24px;
+}
+
+.age-box h2{
+    margin-bottom:8px;
+    color:#111827;
+    font-size:21px;
+}
+
+.age-box p{
+    margin-bottom:16px;
+    color:#64748b;
+    font-size:12px;
+    line-height:1.55;
+}
+
+.age-actions{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.age-confirm,
+.age-smartlink{
+    width:100%;
+    border-radius:13px;
+    padding:13px;
+    font-size:13px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.age-confirm{
+    border:0;
+    background:#111827;
+    color:#fff;
+}
+
+.age-smartlink{
+    border:1px solid #bfdbfe;
+    background:#eff6ff;
+    color:#1d4ed8;
+}
+
+.age-cancel{
+    border:0;
+    background:none;
+    color:#64748b;
+    padding:9px;
+    cursor:pointer;
+}
+
+.age-note{
+    margin-top:10px;
+    color:#9ca3af;
+    font-size:8px;
+    line-height:1.4;
+}
+
+/* ERROR */
+
+.video-error{
+    display:none;
+    position:absolute;
+    inset:0;
+    z-index:12;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:8px;
+    padding:25px;
+    text-align:center;
+    background:#05070b;
+}
+
+.video-error.show{
+    display:flex;
+}
+
+.video-error i{
+    color:#ef4444;
+    font-size:30px;
+}
+
+.video-error strong{
+    color:#e2e8f0;
+    font-size:13px;
+}
+
+.video-error span{
+    color:#64748b;
+    font-size:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:380px){
+
+    #page-landing{
+        padding:12px 10px 30px;
     }
-    a{text-decoration:none;color:inherit}
-    .header{
-      position:sticky;top:0;z-index:20;
-      background:rgba(9,9,9,.96);border-bottom:1px solid #252525;
-      padding:14px 18px;display:flex;align-items:center;gap:14px
+
+    .preview{
+        height:235px;
     }
-    .logo{font-size:23px;font-weight:900;letter-spacing:-.5px}
-    .logo span{color:#e50914}
-    .search{
-      margin-left:auto;width:min(360px,55vw);
-      background:#171717;border:1px solid #303030;color:#fff;
-      border-radius:9px;padding:10px 13px;outline:none
-    }
-    .hero{padding:28px 18px 10px;max-width:1200px;margin:auto}
-    .hero h1{font-size:28px;margin-bottom:8px}
-    .hero p{color:#aaa;font-size:14px}
-    .wrap{max-width:1200px;margin:auto;padding:18px}
-    .grid{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:16px
-    }
-    .card{
-      background:#151515;border:1px solid #242424;border-radius:10px;
-      overflow:hidden;cursor:pointer;transition:.2s
-    }
-    .card:hover{transform:translateY(-3px);border-color:#444}
-    .thumb{
-      position:relative;aspect-ratio:16/9;background:#111;overflow:hidden
-    }
-    .thumb video{width:100%;height:100%;object-fit:cover;display:block}
-    .play{
-      position:absolute;inset:0;display:grid;place-items:center;
-      background:linear-gradient(transparent,rgba(0,0,0,.35))
-    }
-    .play i{
-      width:48px;height:48px;border-radius:50%;background:#e50914;
-      display:grid;place-items:center;font-style:normal;font-size:20px;
-      padding-left:3px;box-shadow:0 5px 20px #000
-    }
-    .info{padding:11px 12px}
+
     .title{
-      font-size:15px;font-weight:700;line-height:1.35;
-      white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+        font-size:25px;
     }
-    .meta{color:#888;font-size:12px;margin-top:7px}
-    .empty{
-      display:none;text-align:center;color:#888;padding:50px 10px
+
+    .landing-content{
+        padding:20px 15px 18px;
     }
-    .modal{
-      display:none;position:fixed;inset:0;z-index:50;
-      background:rgba(0,0,0,.92);padding:20px;
-      align-items:center;justify-content:center
+
+    .controls{
+        gap:5px;
     }
-    .modal.show{display:flex}
-    .player{
-      width:min(1000px,100%);background:#111;border-radius:10px;
-      overflow:hidden;border:1px solid #292929
+
+    .time{
+        min-width:68px;
     }
-    .player video{display:block;width:100%;max-height:75vh;background:#000}
-    .close{
-      position:absolute;right:18px;top:14px;border:0;
-      background:#fff;color:#111;border-radius:50%;
-      width:40px;height:40px;font-size:24px;cursor:pointer
-    }
-    .player-info{padding:14px 16px}
-    .player-info h2{font-size:18px}
-    footer{
-      text-align:center;color:#666;font-size:12px;padding:35px 15px
-    }
-    @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
-    @media(max-width:650px){
-      .header{padding:12px}
-      .logo{font-size:20px}
-      .search{width:48%;font-size:12px}
-      .hero{padding:22px 12px 8px}
-      .hero h1{font-size:23px}
-      .wrap{padding:12px}
-      .grid{grid-template-columns:repeat(2,1fr);gap:10px}
-      .info{padding:9px}
-      .title{font-size:13px}
-      .meta{font-size:11px}
-    }
-  </style>
+
+}
+</style>
 </head>
 
 <body>
-  <header class="header">
-    <div class="logo">VIRAL<span>FLIX</span></div>
-    <input id="search" class="search" type="search" placeholder="Cari video...">
-  </header>
 
-  <section class="hero">
-    <h1>Kumpulan Video Viral</h1>
-    <p>Video terbaru dan populer, siap ditonton.</p>
-  </section>
+<!-- =========================================================
+     LANDING PAGE
+     ========================================================= -->
 
-  <main class="wrap">
-    <div id="grid" class="grid"></div>
-    <div id="empty" class="empty">Video tidak ditemukan.</div>
-  </main>
+<div id="page-landing">
 
-  <footer>© 2026 VIRALFLIX — Kumpulan Video Viral</footer>
+    <div class="landing-card">
 
-  <div id="modal" class="modal">
-    <button class="close" id="close" aria-label="Tutup">×</button>
-    <div class="player">
-      <video id="mainVideo" controls playsinline></video>
-      <div class="player-info"><h2 id="mainTitle"></h2></div>
+        <div class="preview">
+
+            <div class="preview-quality">
+                <i class="fas fa-hd"></i> HD
+            </div>
+
+            <div class="preview-count">
+                6 Videos
+            </div>
+
+            <div class="preview-content">
+
+                <div class="preview-play" id="playIcon">
+                    <i class="fas fa-play"></i>
+                </div>
+
+                <div class="preview-label">
+                    Tap to watch
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="landing-content">
+
+            <h1 class="title">
+                VIRAL <span>TERKINI</span>
+            </h1>
+
+            <p class="subtitle">
+                Koleksi video terbaru dalam satu halaman.
+                Pilih tombol di bawah untuk melanjutkan.
+            </p>
+
+            <div class="info-row">
+
+                <div class="info-pill">
+                    <i class="fas fa-film"></i>
+                    6 Video
+                </div>
+
+                <div class="info-pill">
+                    <i class="fas fa-video"></i>
+                    HD
+                </div>
+
+                <div class="info-pill">
+                    <i class="fas fa-mobile-alt"></i>
+                    Mobile
+                </div>
+
+            </div>
+
+            <button class="watch-button" id="btnContinue">
+
+                <i class="fas fa-play"></i>
+                TONTON SEKARANG
+                <i class="fas fa-arrow-right"></i>
+
+            </button>
+
+            <div class="tap-note">
+                Ketuk tombol untuk membuka video
+            </div>
+
+            <div class="feature-row">
+
+                <div class="feature">
+                    <i class="fas fa-video"></i>
+                    HD Quality
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    Mobile Friendly
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-list"></i>
+                    6 Video
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-  </div>
 
-  <script>
-    /*
-      GANTI URL DI BAGIAN "videos" DENGAN URL VIDEO MILIK KAMU.
-      File ini sengaja memakai data lokal agar langsung jalan di GitHub Pages.
-    */
-    const videos = [
-      {
-        title: "Video Viral Terbaru #01",
-        url: "https://cdn2.videy.co/07NDkyml1.mp4"
-      },
-      {
-        title: "Video Viral Terbaru #02",
-        url: "https://cdn2.videy.co/Y5LOOOWu1.mp4"
-      },
-      {
-        title: "Video Viral Terbaru #03",
-        url: "https://cdn2.videy.co/e8iqLicw1.mp4"
-      },
-      {
-        title: "Video Viral Terbaru #04",
-        url: "https://cdn2.videy.co/2QjJLeH41.mp4"
-      },
-      {
-        title: "Video Viral Terbaru #05",
-        url: "https://cdn2.videy.co/IKfKPuwH1.mp4"
-      },
-      {
-        title: "Video Viral Terbaru #06",
-        url: "https://cdn2.videy.co/98IJEuFV1.mp4"
-      }
-    ];
+</div>
 
-    const grid = document.getElementById("grid");
-    const empty = document.getElementById("empty");
-    const search = document.getElementById("search");
-    const modal = document.getElementById("modal");
-    const mainVideo = document.getElementById("mainVideo");
-    const mainTitle = document.getElementById("mainTitle");
 
-    function render(list){
-      grid.innerHTML = "";
-      empty.style.display = list.length ? "none" : "block";
+<!-- =========================================================
+     PLAYER
+     ========================================================= -->
 
-      list.forEach((item, index) => {
-        const card = document.createElement("article");
-        card.className = "card";
-        card.innerHTML = `
-          <div class="thumb">
-            <video src="${item.url}" muted playsinline preload="metadata"></video>
-            <div class="play"><i>▶</i></div>
-          </div>
-          <div class="info">
-            <div class="title">${item.title}</div>
-            <div class="meta">HD • Video ${String(index + 1).padStart(2,"0")}</div>
-          </div>
+<div id="page-player">
+
+    <div class="player-card">
+
+        <div class="player-header">
+
+            <span class="brand">
+                VIRAL TERKINI
+            </span>
+
+            <span class="badge-hd">
+                HD
+            </span>
+
+            <span class="video-counter" id="videoCounter">
+                1 / 6
+            </span>
+
+        </div>
+
+
+        <div class="video-container">
+
+            <video id="mainVideo"
+                   playsinline
+                   preload="metadata">
+
+                <source src="" type="video/mp4">
+
+                Browser kamu tidak mendukung video HTML5.
+
+            </video>
+
+
+            <div class="video-overlay" id="videoOverlay">
+
+                <i class="fas fa-play-circle"></i>
+
+                <span class="play-text">
+                    Ketuk untuk memutar
+                </span>
+
+            </div>
+
+
+            <div class="video-error" id="videoError">
+
+                <i class="fas fa-circle-exclamation"></i>
+
+                <strong>
+                    Video tidak dapat dimuat
+                </strong>
+
+                <span>
+                    Periksa kembali URL video.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="controls">
+
+            <button id="playPauseBtn" aria-label="Play/Pause">
+                <i class="fas fa-play"></i>
+            </button>
+
+
+            <div class="progress-wrap">
+
+                <div class="progress" id="progressBar">
+
+                    <div class="progress-fill"
+                         id="progressFill">
+                    </div>
+
+                </div>
+
+                <span class="time" id="timeDisplay">
+                    00:00 / 00:00
+                </span>
+
+            </div>
+
+
+            <div class="volume">
+
+                <button id="muteBtn" aria-label="Mute">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+
+                <input
+                    type="range"
+                    id="volumeSlider"
+                    min="0"
+                    max="1"
+                    step="0.05"
+                    value="0.8"
+                    aria-label="Volume">
+
+            </div>
+
+
+            <button class="next-btn" id="btnNext">
+
+                <i class="fas fa-forward"></i>
+                Next
+
+            </button>
+
+        </div>
+
+
+        <div class="status-box" id="verificationBox">
+
+            <div class="status-title">
+                VIDEO PLAYER
+            </div>
+
+            <div class="status-message">
+                Pilih video lalu ketuk tombol play untuk mulai.
+            </div>
+
+        </div>
+
+
+        <div class="after-video" id="afterVideo">
+
+            <h3>
+                Video selesai
+            </h3>
+
+            <p>
+                Lanjutkan ke video berikutnya.
+            </p>
+
+            <button id="afterNext">
+
+                <i class="fas fa-forward"></i>
+                Video Berikutnya
+
+            </button>
+
+        </div>
+
+
+        <div class="video-list">
+
+            <div class="list-title">
+                MORE VIDEOS
+            </div>
+
+            <div id="videoListContainer"></div>
+
+        </div>
+
+
+        <div class="footer">
+            VIRAL TERKINI
+        </div>
+
+
+        <button class="back" id="btnBack">
+            ← Kembali ke halaman awal
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     AGE MODAL
+     ========================================================= -->
+
+<div class="age-modal" id="ageModal">
+
+    <div class="age-box">
+
+        <div class="age-icon">
+            <i class="fas fa-user-check"></i>
+        </div>
+
+        <h2>
+            Konfirmasi Usia
+        </h2>
+
+        <p>
+            Halaman berikut dapat berisi konten yang ditujukan
+            untuk pengguna berusia 18 tahun atau lebih.
+            Pastikan kamu memenuhi batas usia tersebut.
+        </p>
+
+        <div class="age-actions">
+
+            <button class="age-confirm" id="ageConfirm">
+
+                <i class="fas fa-check"></i>
+                Saya 18+ — Lanjut
+
+            </button>
+
+            <button class="age-smartlink" id="ageSmartlink">
+
+                <i class="fas fa-external-link-alt"></i>
+                Buka Tautan Eksternal
+
+            </button>
+
+            <button class="age-cancel" id="ageCancel">
+                Batal
+            </button>
+
+        </div>
+
+        <div class="age-note">
+            Tautan eksternal dapat membuka halaman lain.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     POPUNDER
+     ========================================================= -->
+
+<script src="https://lectureheard.com/72/97/06/729706d0128fda9672bcbdc9b6f6880f.js"></script>
+
+
+<!-- =========================================================
+     SOCIAL BAR
+     ========================================================= -->
+
+<script src="https://lectureheard.com/69/75/4a/69754aebfa329834728406f071e4ce1d.js"></script>
+
+
+<!-- =========================================================
+     MAIN JAVASCRIPT
+     ========================================================= -->
+
+<script>
+(function(){
+
+"use strict";
+
+
+/* =========================================================
+   SMARTLINK
+   ========================================================= */
+
+const ADSTERRA_SMARTLINK =
+"https://lectureheard.com/m1bmaftz2?key=882dcc168cd45758578c5d23f4e65a1b";
+
+
+/* =========================================================
+   VIDEO DATA
+   GANTI src DENGAN URL MP4 KAMU
+   ========================================================= */
+
+const VIDEO_LIST = [
+
+    {
+        title:"VIRAL 1",
+        src:""
+    },
+
+    {
+        title:"VIRAL 2",
+        src:""
+    },
+
+    {
+        title:"VIRAL 3",
+        src:""
+    },
+
+    {
+        title:"VIRAL 4",
+        src:""
+    },
+
+    {
+        title:"VIRAL 5",
+        src:""
+    },
+
+    {
+        title:"VIRAL 6",
+        src:""
+    }
+
+];
+
+
+/* =========================================================
+   ELEMENT
+   ========================================================= */
+
+const landing =
+document.getElementById("page-landing");
+
+const player =
+document.getElementById("page-player");
+
+const btnContinue =
+document.getElementById("btnContinue");
+
+const playIcon =
+document.getElementById("playIcon");
+
+const btnBack =
+document.getElementById("btnBack");
+
+const video =
+document.getElementById("mainVideo");
+
+const videoOverlay =
+document.getElementById("videoOverlay");
+
+const videoError =
+document.getElementById("videoError");
+
+const videoCounter =
+document.getElementById("videoCounter");
+
+const playPauseBtn =
+document.getElementById("playPauseBtn");
+
+const progressBar =
+document.getElementById("progressBar");
+
+const progressFill =
+document.getElementById("progressFill");
+
+const timeDisplay =
+document.getElementById("timeDisplay");
+
+const muteBtn =
+document.getElementById("muteBtn");
+
+const volumeSlider =
+document.getElementById("volumeSlider");
+
+const btnNext =
+document.getElementById("btnNext");
+
+const verificationBox =
+document.getElementById("verificationBox");
+
+const afterVideo =
+document.getElementById("afterVideo");
+
+const afterNext =
+document.getElementById("afterNext");
+
+const videoListContainer =
+document.getElementById("videoListContainer");
+
+
+/* AGE */
+
+const ageModal =
+document.getElementById("ageModal");
+
+const ageConfirm =
+document.getElementById("ageConfirm");
+
+const ageSmartlink =
+document.getElementById("ageSmartlink");
+
+const ageCancel =
+document.getElementById("ageCancel");
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let currentIndex = 0;
+let pendingVideoIndex = null;
+
+
+/* =========================================================
+   SMARTLINK
+   ========================================================= */
+
+function openSmartlink(){
+
+    window.open(
+        ADSTERRA_SMARTLINK,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+
+/* =========================================================
+   AGE MODAL
+   ========================================================= */
+
+function requestAgeConfirmation(index){
+
+    if(
+        index < 0 ||
+        index >= VIDEO_LIST.length
+    ){
+        return;
+    }
+
+    pendingVideoIndex = index;
+
+    ageModal.classList.add("show");
+
+}
+
+
+function closeAgeModal(){
+
+    ageModal.classList.remove("show");
+
+    pendingVideoIndex = null;
+
+}
+
+
+/* CONFIRM */
+
+ageConfirm.addEventListener(
+    "click",
+    function(){
+
+        const index =
+            pendingVideoIndex;
+
+        closeAgeModal();
+
+        if(index !== null){
+
+            loadVideo(index);
+
+        }
+
+    }
+);
+
+
+/* EXTERNAL LINK */
+
+ageSmartlink.addEventListener(
+    "click",
+    function(){
+
+        openSmartlink();
+
+    }
+);
+
+
+/* CANCEL */
+
+ageCancel.addEventListener(
+    "click",
+    function(){
+
+        closeAgeModal();
+
+    }
+);
+
+
+/* =========================================================
+   VIDEO LIST
+   ========================================================= */
+
+function renderVideoList(){
+
+    videoListContainer.innerHTML = "";
+
+    VIDEO_LIST.forEach(
+        function(item,index){
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "video-item";
+
+            div.innerHTML = `
+
+                <div class="video-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+
+                <div class="video-info">
+
+                    <strong>
+                        ${item.title}
+                    </strong>
+
+                    <span>
+                        Video ${index + 1} dari ${VIDEO_LIST.length}
+                    </span>
+
+                </div>
+
+                <div class="video-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+
+            `;
+
+            div.addEventListener(
+                "click",
+                function(){
+
+                    requestAgeConfirmation(index);
+
+                }
+            );
+
+            videoListContainer.appendChild(div);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ACTIVE VIDEO
+   ========================================================= */
+
+function updateActiveItem(){
+
+    const items =
+        document.querySelectorAll(".video-item");
+
+    items.forEach(
+        function(item,index){
+
+            item.classList.toggle(
+                "active",
+                index === currentIndex
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   LOAD VIDEO
+   ========================================================= */
+
+function loadVideo(index){
+
+    if(!VIDEO_LIST[index]){
+        return;
+    }
+
+    currentIndex = index;
+
+    const source =
+        video.querySelector("source");
+
+    video.pause();
+
+    videoError.classList.remove("show");
+
+    videoOverlay.classList.remove("hidden");
+
+    source.src =
+        VIDEO_LIST[index].src;
+
+    video.load();
+
+    videoCounter.textContent =
+        (index + 1) +
+        " / " +
+        VIDEO_LIST.length;
+
+    progressFill.style.width =
+        "0%";
+
+    timeDisplay.textContent =
+        "00:00 / 00:00";
+
+    playPauseBtn.innerHTML =
+        '<i class="fas fa-play"></i>';
+
+    afterVideo.classList.remove("show");
+
+    verificationBox.innerHTML = `
+
+        <div class="status-title">
+            VIDEO PLAYER
+        </div>
+
+        <div class="status-message">
+            Ketuk video untuk mulai menonton.
+        </div>
+
+    `;
+
+    updateActiveItem();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   SHOW PLAYER
+   ========================================================= */
+
+function showPlayer(){
+
+    landing.style.display =
+        "none";
+
+    player.style.display =
+        "block";
+
+    document.body.style.background =
+        "#080b10";
+
+    loadVideo(0);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   LANDING
+   ========================================================= */
+
+btnContinue.addEventListener(
+    "click",
+    function(){
+
+        showPlayer();
+
+    }
+);
+
+
+playIcon.addEventListener(
+    "click",
+    function(){
+
+        showPlayer();
+
+    }
+);
+
+
+/* =========================================================
+   BACK
+   ========================================================= */
+
+btnBack.addEventListener(
+    "click",
+    function(){
+
+        video.pause();
+
+        player.style.display =
+            "none";
+
+        landing.style.display =
+            "block";
+
+        document.body.style.background =
+            "#050505";
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   NEXT VIDEO
+   ========================================================= */
+
+function nextVideo(){
+
+    const next =
+        (currentIndex + 1) %
+        VIDEO_LIST.length;
+
+    requestAgeConfirmation(next);
+
+}
+
+
+btnNext.addEventListener(
+    "click",
+    function(e){
+
+        e.stopPropagation();
+
+        nextVideo();
+
+    }
+);
+
+
+afterNext.addEventListener(
+    "click",
+    function(){
+
+        nextVideo();
+
+    }
+);
+
+
+/* =========================================================
+   PLAY
+   ========================================================= */
+
+function playVideo(){
+
+    if(!VIDEO_LIST[currentIndex].src){
+
+        videoError.classList.add("show");
+
+        verificationBox.innerHTML = `
+
+            <div class="status-title">
+                VIDEO BELUM DIATUR
+            </div>
+
+            <div class="status-message">
+                Masukkan URL MP4 pada bagian VIDEO_LIST.
+            </div>
+
         `;
-        card.addEventListener("click", () => openVideo(item));
-        grid.appendChild(card);
-      });
+
+        return;
+
     }
 
-    function openVideo(item){
-      mainTitle.textContent = item.title;
-      mainVideo.src = item.url;
-      modal.classList.add("show");
-      mainVideo.play().catch(()=>{});
+    video.play().then(
+        function(){
+
+            videoOverlay.classList.add(
+                "hidden"
+            );
+
+            playPauseBtn.innerHTML =
+                '<i class="fas fa-pause"></i>';
+
+            verificationBox.innerHTML = `
+
+                <div class="status-title">
+                    PLAYING
+                </div>
+
+                <div class="status-message">
+                    Video sedang diputar.
+                </div>
+
+            `;
+
+        }
+    ).catch(
+        function(){
+
+            verificationBox.innerHTML = `
+
+                <div class="status-title">
+                    PLAYER
+                </div>
+
+                <div class="status-message">
+                    Ketuk tombol play untuk memulai video.
+                </div>
+
+            `;
+
+        }
+    );
+
+}
+
+
+function pauseVideo(){
+
+    video.pause();
+
+    videoOverlay.classList.remove(
+        "hidden"
+    );
+
+    playPauseBtn.innerHTML =
+        '<i class="fas fa-play"></i>';
+
+}
+
+
+function togglePlay(){
+
+    if(video.paused){
+
+        playVideo();
+
+    }else{
+
+        pauseVideo();
+
     }
 
-    function closeVideo(){
-      mainVideo.pause();
-      mainVideo.removeAttribute("src");
-      mainVideo.load();
-      modal.classList.remove("show");
+}
+
+
+playPauseBtn.addEventListener(
+    "click",
+    function(e){
+
+        e.stopPropagation();
+
+        togglePlay();
+
+    }
+);
+
+
+videoOverlay.addEventListener(
+    "click",
+    function(){
+
+        playVideo();
+
+    }
+);
+
+
+/* =========================================================
+   VIDEO EVENTS
+   ========================================================= */
+
+video.addEventListener(
+    "ended",
+    function(){
+
+        afterVideo.classList.add(
+            "show"
+        );
+
+        videoOverlay.classList.remove(
+            "hidden"
+        );
+
+        playPauseBtn.innerHTML =
+            '<i class="fas fa-play"></i>';
+
+    }
+);
+
+
+video.addEventListener(
+    "error",
+    function(){
+
+        if(
+            VIDEO_LIST[currentIndex] &&
+            VIDEO_LIST[currentIndex].src
+        ){
+
+            videoError.classList.add(
+                "show"
+            );
+
+            verificationBox.innerHTML = `
+
+                <div class="status-title">
+                    VIDEO ERROR
+                </div>
+
+                <div class="status-message">
+                    Video gagal dimuat. Periksa URL atau sumber video.
+                </div>
+
+            `;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+video.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(
+            video.duration &&
+            isFinite(video.duration)
+        ){
+
+            const percent =
+                (
+                    video.currentTime /
+                    video.duration
+                ) * 100;
+
+            progressFill.style.width =
+                percent + "%";
+
+        }
+
+        updateTime();
+
+    }
+);
+
+
+function updateTime(){
+
+    timeDisplay.textContent =
+        formatTime(video.currentTime) +
+        " / " +
+        formatTime(video.duration);
+
+}
+
+
+function formatTime(seconds){
+
+    if(
+        isNaN(seconds) ||
+        !isFinite(seconds)
+    ){
+
+        return "00:00";
+
     }
 
-    document.getElementById("close").addEventListener("click", closeVideo);
+    const minutes =
+        Math.floor(seconds / 60);
 
-    modal.addEventListener("click", e => {
-      if(e.target === modal) closeVideo();
-    });
+    const secs =
+        Math.floor(seconds % 60);
 
-    document.addEventListener("keydown", e => {
-      if(e.key === "Escape") closeVideo();
-    });
+    return(
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(secs).padStart(2,"0")
+    );
 
-    search.addEventListener("input", () => {
-      const q = search.value.toLowerCase().trim();
-      render(videos.filter(v => v.title.toLowerCase().includes(q)));
-    });
+}
 
-    render(videos);
-  </script>
+
+/* SEEK */
+
+progressBar.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            !video.duration ||
+            !isFinite(video.duration)
+        ){
+            return;
+        }
+
+        const rect =
+            progressBar.getBoundingClientRect();
+
+        const percent =
+            Math.max(
+                0,
+                Math.min(
+                    1,
+                    (e.clientX - rect.left) /
+                    rect.width
+                )
+            );
+
+        video.currentTime =
+            percent * video.duration;
+
+    }
+);
+
+
+/* =========================================================
+   VOLUME
+   ========================================================= */
+
+volumeSlider.addEventListener(
+    "input",
+    function(){
+
+        video.volume =
+            Number(this.value);
+
+        video.muted =
+            video.volume === 0;
+
+        updateMuteIcon();
+
+    }
+);
+
+
+muteBtn.addEventListener(
+    "click",
+    function(){
+
+        video.muted =
+            !video.muted;
+
+        updateMuteIcon();
+
+    }
+);
+
+
+function updateMuteIcon(){
+
+    if(
+        video.muted ||
+        video.volume === 0
+    ){
+
+        muteBtn.innerHTML =
+            '<i class="fas fa-volume-mute"></i>';
+
+    }else if(
+        video.volume < .5
+    ){
+
+        muteBtn.innerHTML =
+            '<i class="fas fa-volume-down"></i>';
+
+    }else{
+
+        muteBtn.innerHTML =
+            '<i class="fas fa-volume-up"></i>';
+
+    }
+
+}
+
+
+/* =========================================================
+   ESC CLOSE MODAL
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Escape"){
+
+            closeAgeModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+video.volume = .8;
+
+volumeSlider.value = .8;
+
+renderVideoList();
+
+landing.style.display =
+    "block";
+
+player.style.display =
+    "none";
+
+})();
+</script>
+
 </body>
 </html>
