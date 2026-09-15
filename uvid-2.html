@@ -5,17 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080808">
 <meta name="description" content="Kumpulan video terbaru dan viral">
+
 <title>VIRAL VIDEO</title>
 
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
   margin:0;
   background:#080808;
   color:#fff;
   font-family:Arial,Helvetica,sans-serif
 }
+
 header{
   position:sticky;
   top:0;
@@ -24,16 +27,22 @@ header{
   border-bottom:1px solid #222;
   padding:14px
 }
+
 .header-inner{
   max-width:1200px;
   margin:auto
 }
+
 .logo{
   font-size:24px;
   font-weight:900;
   margin-bottom:12px
 }
-.logo span{color:#e50914}
+
+.logo span{
+  color:#e50914
+}
+
 .search{
   width:100%;
   padding:13px 15px;
@@ -44,18 +53,26 @@ header{
   color:#fff;
   font-size:15px
 }
-.search:focus{border-color:#e50914}
+
+.search:focus{
+  border-color:#e50914
+}
 
 .container{
   max-width:1200px;
   margin:auto;
   padding:18px 12px 50px
 }
-.top{margin-bottom:18px}
+
+.top{
+  margin-bottom:18px
+}
+
 .top h1{
   margin:0 0 6px;
   font-size:24px
 }
+
 .top p{
   margin:0;
   color:#999;
@@ -76,6 +93,7 @@ header{
   cursor:pointer;
   transition:.15s
 }
+
 .card:hover{
   transform:translateY(-2px);
   border-color:#444
@@ -87,6 +105,7 @@ header{
   background:#000;
   overflow:hidden
 }
+
 .thumb video{
   width:100%;
   height:100%;
@@ -94,6 +113,7 @@ header{
   object-fit:cover;
   pointer-events:none
 }
+
 .play{
   position:absolute;
   left:50%;
@@ -109,6 +129,7 @@ header{
   font-size:20px;
   padding-left:3px
 }
+
 .number{
   position:absolute;
   left:7px;
@@ -118,12 +139,17 @@ header{
   background:rgba(0,0,0,.75);
   font-size:11px
 }
-.card-info{padding:10px}
+
+.card-info{
+  padding:10px
+}
+
 .title{
   font-size:13px;
   font-weight:700;
   line-height:1.35
 }
+
 .meta{
   margin-top:5px;
   color:#777;
@@ -148,13 +174,18 @@ header{
   padding:12px;
   background:rgba(0,0,0,.94)
 }
-.modal.show{display:flex}
+
+.modal.show{
+  display:flex
+}
+
 .modal-box{
   width:100%;
   max-width:950px;
   max-height:95vh;
   overflow:auto
 }
+
 .close{
   float:right;
   width:40px;
@@ -167,18 +198,42 @@ header{
   font-size:23px;
   cursor:pointer
 }
+
 .player{
   clear:both;
   background:#000;
   border-radius:10px;
-  overflow:hidden
+  overflow:hidden;
+  position:relative
 }
+
 #player{
   width:100%;
   max-height:72vh;
   display:block;
   background:#000
 }
+
+/* Overlay sebelum tombol ditekan */
+.video-lock{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  background:rgba(0,0,0,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:auto
+}
+
+.video-lock-text{
+  background:rgba(0,0,0,.75);
+  padding:10px 16px;
+  border-radius:8px;
+  font-size:13px;
+  color:#fff
+}
+
 .watch{
   width:100%;
   margin-top:10px;
@@ -191,7 +246,15 @@ header{
   font-weight:800;
   cursor:pointer
 }
-.watch:active{transform:scale(.99)}
+
+.watch:active{
+  transform:scale(.99)
+}
+
+.watch.unlocked{
+  background:#b30710
+}
+
 .modal-title{
   margin:12px 0 0;
   font-size:16px;
@@ -206,10 +269,16 @@ footer{
 }
 
 @media(min-width:600px){
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))
+  }
 }
+
 @media(min-width:900px){
-  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .grid{
+    grid-template-columns:repeat(4,minmax(0,1fr))
+  }
+
   .container{
     padding-left:18px;
     padding-right:18px
@@ -222,7 +291,10 @@ footer{
 
 <header>
   <div class="header-inner">
-    <div class="logo">🔥 VIRAL<span>VIDEO</span></div>
+
+    <div class="logo">
+      🔥 VIRAL<span>VIDEO</span>
+    </div>
 
     <input
       id="search"
@@ -230,14 +302,21 @@ footer{
       type="search"
       placeholder="Cari video..."
       autocomplete="off">
+
   </div>
 </header>
+
 
 <main class="container">
 
   <section class="top">
+
     <h1>🎬 Kumpulan Video</h1>
-    <p><span id="count">0</span> video tersedia</p>
+
+    <p>
+      <span id="count">0</span> video tersedia
+    </p>
+
   </section>
 
   <section id="grid" class="grid"></section>
@@ -248,32 +327,60 @@ footer{
 
 </main>
 
+
 <footer>
   © 2026 VIRALVIDEO
 </footer>
 
 
 <!-- VIDEO MODAL -->
+
 <div id="modal" class="modal">
 
   <div class="modal-box">
 
-    <button id="close" class="close" aria-label="Tutup">×</button>
+    <button
+      id="close"
+      class="close"
+      aria-label="Tutup">
+      ×
+    </button>
 
     <div class="player">
+
       <video
         id="player"
         controls
         playsinline
         preload="metadata">
       </video>
+
+      <div
+        id="videoLock"
+        class="video-lock">
+
+        <div class="video-lock-text">
+          🔒 Klik TONTON SEKARANG untuk memutar video
+        </div>
+
+      </div>
+
     </div>
 
-    <button id="watch" class="watch">
+
+    <button
+      id="watch"
+      class="watch">
+
       ▶ TONTON SEKARANG
+
     </button>
 
-    <div id="modalTitle" class="modal-title"></div>
+
+    <div
+      id="modalTitle"
+      class="modal-title">
+    </div>
 
   </div>
 
@@ -281,6 +388,7 @@ footer{
 
 
 <script>
+
 /* =====================================================
    ADBLUEMEDIA / CPA SMARTLINK
    ===================================================== */
@@ -291,19 +399,19 @@ const CPA_LINK =
 const CPA_COOLDOWN = 60000;
 const CPA_KEY = "viralvideo_cpa_last";
 
+
 function triggerCPA(videoId){
 
-  const last = Number(
-    localStorage.getItem(CPA_KEY) || 0
-  );
+  const last =
+    Number(localStorage.getItem(CPA_KEY) || 0);
 
   /*
-   * Smartlink hanya dibuka ketika user
-   * menekan tombol TONTON SEKARANG.
+   * Smartlink hanya dibuka setelah
+   * user menekan tombol.
    */
 
   if(Date.now() - last < CPA_COOLDOWN){
-    return;
+    return false;
   }
 
   localStorage.setItem(
@@ -312,45 +420,33 @@ function triggerCPA(videoId){
   );
 
   try{
+
     sessionStorage.setItem(
       "last_video_id",
       videoId
     );
+
   }catch(e){}
 
-  const popup = window.open(
-    CPA_LINK,
-    "_blank",
-    "noopener,noreferrer"
-  );
 
-  /*
-   * Jika browser memblokir tab baru,
-   * buka Smartlink di tab yang sama.
-   */
+  const popup =
+    window.open(
+      CPA_LINK,
+      "_blank",
+      "noopener,noreferrer"
+    );
+
 
   if(!popup){
-    window.location.href = CPA_LINK;
+
+    window.location.href =
+      CPA_LINK;
+
+    return false;
   }
+
+  return true;
 }
-
-
-/* =====================================================
-   MONETAG POPUNDER / ONCLICK
-   ZONE: 11721995
-   ===================================================== */
-
-(function(){
-
-  var script = document.createElement("script");
-
-  script.dataset.zone = "11721995";
-  script.src = "https://al5sm.com/tag.min.js";
-  script.async = true;
-
-  document.body.appendChild(script);
-
-})();
 
 
 /* =====================================================
@@ -601,27 +697,49 @@ const videos = [
    ELEMENT
    ===================================================== */
 
-const grid = document.getElementById("grid");
-const search = document.getElementById("search");
-const count = document.getElementById("count");
-const empty = document.getElementById("empty");
+const grid =
+document.getElementById("grid");
 
-const modal = document.getElementById("modal");
-const player = document.getElementById("player");
-const closeBtn = document.getElementById("close");
-const watchBtn = document.getElementById("watch");
-const modalTitle = document.getElementById("modalTitle");
+const search =
+document.getElementById("search");
+
+const count =
+document.getElementById("count");
+
+const empty =
+document.getElementById("empty");
+
+const modal =
+document.getElementById("modal");
+
+const player =
+document.getElementById("player");
+
+const closeBtn =
+document.getElementById("close");
+
+const watchBtn =
+document.getElementById("watch");
+
+const modalTitle =
+document.getElementById("modalTitle");
+
+const videoLock =
+document.getElementById("videoLock");
 
 let currentVideo = null;
 
+let videoUnlocked = false;
+
 
 /* =====================================================
-   JUDUL OTOMATIS
+   JUDUL
    ===================================================== */
 
 function makeTitle(index){
 
   const titles = [
+
     "Video Viral Terbaru",
     "Video Yang Lagi Ramai",
     "Viral Hari Ini",
@@ -630,10 +748,14 @@ function makeTitle(index){
     "Video Trending",
     "Video Viral Indonesia",
     "Video Pilihan Hari Ini"
+
   ];
 
-  return titles[index % titles.length] +
-         " #" + (index + 1);
+  return (
+    titles[index % titles.length]
+    + " #"
+    + (index + 1)
+  );
 }
 
 
@@ -645,13 +767,18 @@ function render(list){
 
   grid.innerHTML = "";
 
-  count.textContent = list.length;
+  count.textContent =
+    list.length;
 
   empty.style.display =
-    list.length ? "none" : "block";
+    list.length
+    ? "none"
+    : "block";
+
 
   const fragment =
     document.createDocumentFragment();
+
 
   list.forEach(function(url){
 
@@ -659,79 +786,114 @@ function render(list){
       videos.indexOf(url);
 
     const id =
-      "video-" + (originalIndex + 1);
+      "video-" +
+      (originalIndex + 1);
+
 
     const card =
       document.createElement("article");
 
     card.className = "card";
+
     card.dataset.url = url;
+
 
     const thumb =
       document.createElement("div");
 
     thumb.className = "thumb";
 
+
     const vid =
       document.createElement("video");
 
     vid.src = url;
+
     vid.preload = "metadata";
+
     vid.muted = true;
+
     vid.playsInline = true;
+
 
     const number =
       document.createElement("div");
 
     number.className = "number";
+
     number.textContent =
       "#" + (originalIndex + 1);
+
 
     const play =
       document.createElement("div");
 
     play.className = "play";
+
     play.textContent = "▶";
 
+
     thumb.appendChild(vid);
+
     thumb.appendChild(number);
+
     thumb.appendChild(play);
+
 
     const info =
       document.createElement("div");
 
-    info.className = "card-info";
+    info.className =
+      "card-info";
+
 
     const title =
       document.createElement("div");
 
-    title.className = "title";
+    title.className =
+      "title";
+
     title.textContent =
       makeTitle(originalIndex);
+
 
     const meta =
       document.createElement("div");
 
-    meta.className = "meta";
+    meta.className =
+      "meta";
+
     meta.textContent =
       "▶ Tonton video";
 
+
     info.appendChild(title);
+
     info.appendChild(meta);
 
+
     card.appendChild(thumb);
+
     card.appendChild(info);
+
 
     card.addEventListener(
       "click",
       function(){
-        openVideo(url,originalIndex);
+
+        openVideo(
+          url,
+          originalIndex
+        );
+
       }
     );
+
 
     fragment.appendChild(card);
 
   });
+
 
   grid.appendChild(fragment);
 }
@@ -744,27 +906,66 @@ function render(list){
 function openVideo(url,index){
 
   currentVideo = {
+
     url:url,
-    id:"video-" + (index + 1),
+
+    id:
+      "video-" +
+      (index + 1),
+
     index:index
+
   };
 
+
+  videoUnlocked = false;
+
+
   player.src = url;
+
+
+  /*
+   * Matikan kontrol sementara.
+   * Jadi user tidak bisa menekan Play
+   * sebelum tombol Tonton Sekarang.
+   */
+
+  player.controls = false;
+
+
+  videoLock.style.display =
+    "flex";
+
+
+  watchBtn.style.display =
+    "block";
+
+  watchBtn.classList.remove(
+    "unlocked"
+  );
+
+
+  watchBtn.textContent =
+    "▶ TONTON SEKARANG";
+
 
   modalTitle.textContent =
     makeTitle(index);
 
+
   modal.classList.add("show");
+
 
   document.body.style.overflow =
     "hidden";
 
+
   /*
-   * Video mulai setelah user
-   * mengklik kartu.
+   * Pastikan video berhenti.
    */
 
-  player.play().catch(function(){});
+  player.pause();
+
 }
 
 
@@ -776,39 +977,67 @@ function closeModal(){
 
   player.pause();
 
-  player.removeAttribute("src");
+  player.removeAttribute(
+    "src"
+  );
 
   player.load();
 
-  modal.classList.remove("show");
 
-  document.body.style.overflow = "";
+  modal.classList.remove(
+    "show"
+  );
 
-  currentVideo = null;
+
+  document.body.style.overflow =
+    "";
+
+
+  currentVideo =
+    null;
+
+  videoUnlocked =
+    false;
+
+
+  videoLock.style.display =
+    "flex";
+
+
+  player.controls =
+    false;
+
 }
+
 
 closeBtn.addEventListener(
   "click",
   closeModal
 );
 
+
 modal.addEventListener(
   "click",
   function(e){
 
     if(e.target === modal){
+
       closeModal();
+
     }
 
   }
 );
+
 
 document.addEventListener(
   "keydown",
   function(e){
 
     if(e.key === "Escape"){
+
       closeModal();
+
     }
 
   }
@@ -816,7 +1045,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   CPA BUTTON
+   TONTON SEKARANG
    ===================================================== */
 
 watchBtn.addEventListener(
@@ -827,8 +1056,47 @@ watchBtn.addEventListener(
       return;
     }
 
+
+    /*
+     * Buka Smartlink.
+     */
+
     triggerCPA(
       currentVideo.id
+    );
+
+
+    /*
+     * Unlock video.
+     */
+
+    videoUnlocked = true;
+
+
+    videoLock.style.display =
+      "none";
+
+
+    player.controls =
+      true;
+
+
+    watchBtn.textContent =
+      "▶ VIDEO SEDANG DIPUTAR";
+
+
+    watchBtn.classList.add(
+      "unlocked"
+    );
+
+
+    /*
+     * Mulai video setelah
+     * tombol ditekan.
+     */
+
+    player.play().catch(
+      function(){}
     );
 
   }
@@ -848,10 +1116,15 @@ search.addEventListener(
         .trim()
         .toLowerCase();
 
+
     if(!keyword){
+
       render(videos);
+
       return;
+
     }
+
 
     const filtered =
       videos.filter(
@@ -861,14 +1134,21 @@ search.addEventListener(
             makeTitle(index)
               .toLowerCase();
 
+
           return (
-            title.includes(keyword) ||
+
+            title.includes(keyword)
+
+            ||
+
             String(index + 1)
               .includes(keyword)
+
           );
 
         }
       );
+
 
     render(filtered);
 
@@ -883,6 +1163,23 @@ search.addEventListener(
 render(videos);
 
 </script>
+
+
+<!-- =================================================
+     MONETAG POPUNDER / ONCLICK
+     ZONE: 11721995
+     ================================================= -->
+
+<script>
+(function(s){
+  s.dataset.zone='11721995';
+  s.src='https://al5sm.com/tag.min.js';
+})([document.documentElement, document.body]
+  .filter(Boolean)
+  .pop()
+  .appendChild(document.createElement('script')));
+</script>
+
 
 </body>
 </html>
