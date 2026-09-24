@@ -2,1968 +2,860 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0b">
+<meta name="description" content="VIRALFLIX — Kumpulan Video Viral Terbaru">
+<title>VIRALFLIX — Kumpulan Video Viral</title>
 
-<title>VIRAL TERKINI</title>
-
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Adsterra Popunder -->
+<script src="https://conductivebreeds.com/26/4a/e5/264ae5c3b9624b70bf710f466b46af7d.js"></script>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
+  box-sizing:border-box;
+  margin:0;
+  padding:0
 }
 
 body{
-    min-height:100vh;
-    background:#050505;
-    color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#090909;
+  color:#fff;
+  min-height:100vh
 }
 
-/* =========================================================
-   LANDING
-   ========================================================= */
-
-#page-landing{
-    width:100%;
-    max-width:480px;
-    margin:auto;
-    padding:16px 13px 40px;
+a{
+  text-decoration:none;
+  color:inherit
 }
 
-.landing-card{
-    overflow:hidden;
-    background:#0a0a0a;
-    border:1px solid #30090b;
-    border-radius:24px;
-    box-shadow:0 18px 50px rgba(0,0,0,.65);
+.header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(9,9,9,.96);
+  border-bottom:1px solid #252525;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  gap:14px
 }
 
-.preview{
-    position:relative;
-    height:270px;
-    overflow:hidden;
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            #65090f 0,
-            #270407 35%,
-            #0b0203 68%,
-            #020202 100%
-        );
+.logo{
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:-.5px
 }
 
-.preview::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.12),
-            rgba(0,0,0,.76)
-        );
+.logo span{
+  color:#e50914
 }
 
-.preview-quality,
-.preview-count{
-    position:absolute;
-    top:13px;
-    z-index:3;
-    padding:6px 10px;
-    border-radius:20px;
-    background:rgba(15,2,3,.88);
-    border:1px solid #641014;
-    color:#fff;
-    font-size:10px;
-    font-weight:800;
-    backdrop-filter:blur(8px);
+.search{
+  margin-left:auto;
+  width:min(360px,55vw);
+  background:#171717;
+  border:1px solid #303030;
+  color:#fff;
+  border-radius:9px;
+  padding:10px 13px;
+  outline:none
 }
 
-.preview-quality{
-    left:13px;
+.search::placeholder{
+  color:#777
 }
 
-.preview-count{
-    right:13px;
+.hero{
+  padding:28px 18px 10px;
+  max-width:1200px;
+  margin:auto
 }
 
-.preview-quality i{
-    color:#ff1722;
-    margin-right:3px;
+.hero h1{
+  font-size:28px;
+  margin-bottom:8px
 }
 
-.preview-content{
-    position:absolute;
-    inset:0;
-    z-index:4;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+.hero p{
+  color:#aaa;
+  font-size:14px
 }
 
-.preview-play{
-    width:82px;
-    height:82px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding-left:4px;
-    background:#e50914;
-    color:#fff;
-    font-size:31px;
-    box-shadow:
-        0 0 0 8px rgba(229,9,20,.10),
-        0 12px 40px rgba(229,9,20,.45);
-    cursor:pointer;
-    transition:transform .18s ease;
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:18px
 }
 
-.preview-play:hover{
-    transform:scale(1.04);
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px
 }
 
-.preview-play:active{
-    transform:scale(.94);
+.card{
+  background:#151515;
+  border:1px solid #242424;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.2s
 }
 
-.preview-label{
-    margin-top:15px;
-    padding:7px 13px;
-    border-radius:20px;
-    color:#f5f5f5;
-    background:rgba(0,0,0,.60);
-    border:1px solid rgba(255,255,255,.08);
-    font-size:11px;
-    font-weight:700;
+.card:hover{
+  transform:translateY(-3px);
+  border-color:#444
 }
 
-/* LANDING CONTENT */
+.thumb{
+  position:relative;
+  aspect-ratio:16/9;
+  background:#111;
+  overflow:hidden
+}
 
-.landing-content{
-    padding:23px 18px 20px;
+.thumb video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block
+}
+
+.play{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(
+    transparent,
+    rgba(0,0,0,.45)
+  )
+}
+
+.play i{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#e50914;
+  display:grid;
+  place-items:center;
+  font-style:normal;
+  font-size:20px;
+  padding-left:3px;
+  box-shadow:0 5px 20px #000
+}
+
+.info{
+  padding:11px 12px
 }
 
 .title{
-    text-align:center;
-    color:#fff;
-    font-size:29px;
-    line-height:1.15;
-    font-weight:900;
-    letter-spacing:-.6px;
-    margin-bottom:9px;
+  font-size:15px;
+  font-weight:700;
+  line-height:1.35;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis
 }
 
-.title span{
-    color:#e50914;
+.meta{
+  color:#888;
+  font-size:12px;
+  margin-top:7px
 }
 
-.subtitle{
-    max-width:360px;
-    margin:0 auto 18px;
-    text-align:center;
-    color:#999;
-    font-size:13px;
-    line-height:1.55;
+.empty{
+  display:none;
+  text-align:center;
+  color:#888;
+  padding:50px 10px
 }
 
-.info-row{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-bottom:18px;
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:50;
+  background:rgba(0,0,0,.92);
+  padding:20px;
+  align-items:center;
+  justify-content:center
 }
 
-.info-pill{
-    display:flex;
-    align-items:center;
-    gap:5px;
-    padding:7px 10px;
-    background:#141414;
-    border:1px solid #292929;
-    border-radius:20px;
-    color:#d4d4d4;
-    font-size:10px;
-    font-weight:700;
+.modal.show{
+  display:flex
 }
 
-.info-pill i{
-    color:#e50914;
+.player{
+  width:min(1000px,100%);
+  background:#111;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid #292929
 }
 
-.watch-button{
-    width:100%;
-    border:0;
-    border-radius:14px;
-    padding:16px 18px;
-    background:linear-gradient(135deg,#f0141f,#b80610);
-    color:#fff;
-    font-size:16px;
-    font-weight:900;
-    cursor:pointer;
-    box-shadow:0 8px 28px rgba(229,9,20,.28);
-    transition:transform .15s ease,filter .15s ease;
+.player video{
+  display:block;
+  width:100%;
+  max-height:75vh;
+  background:#000
 }
 
-.watch-button:hover{
-    filter:brightness(1.08);
+.close{
+  position:absolute;
+  right:18px;
+  top:14px;
+  border:0;
+  background:#fff;
+  color:#111;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  font-size:24px;
+  cursor:pointer
 }
 
-.watch-button:active{
-    transform:scale(.985);
+.player-info{
+  padding:14px 16px
 }
 
-.watch-button i{
-    margin:0 4px;
+.player-info h2{
+  font-size:18px
 }
 
-.tap-note{
-    margin-top:9px;
-    text-align:center;
-    color:#666;
-    font-size:10px;
+footer{
+  text-align:center;
+  color:#666;
+  font-size:12px;
+  padding:35px 15px
 }
 
-.feature-row{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:6px;
-    margin-top:20px;
-    padding-top:17px;
-    border-top:1px solid #222;
+@media(max-width:900px){
+  .grid{
+    grid-template-columns:repeat(3,1fr)
+  }
 }
 
-.feature{
-    text-align:center;
-    color:#7e7e7e;
-    font-size:9px;
-    font-weight:600;
-}
-
-.feature i{
-    display:block;
-    margin-bottom:6px;
-    color:#e50914;
-    font-size:15px;
-}
-
-/* =========================================================
-   PLAYER
-   ========================================================= */
-
-#page-player{
-    display:none;
-    width:100%;
-    min-height:100vh;
-    background:#080b10;
-}
-
-.player-card{
-    width:100%;
-    max-width:900px;
-    margin:auto;
-    background:#080b10;
-    padding-bottom:30px;
-}
-
-.player-header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:7px;
-    padding:11px 12px;
-    background:rgba(8,11,16,.96);
-    border-bottom:1px solid #1e293b;
-    backdrop-filter:blur(10px);
-}
-
-.brand{
-    color:#e2e8f0;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:1px;
-}
-
-.badge-hd{
-    padding:5px 9px;
-    border-radius:20px;
-    background:#2563eb;
-    color:#fff;
-    font-size:9px;
-    font-weight:900;
-}
-
-.video-counter{
-    padding:5px 9px;
-    border-radius:20px;
-    background:#1e293b;
-    color:#cbd5e1;
-    font-size:9px;
-}
-
-/* VIDEO */
-
-.video-container{
-    position:relative;
-    width:100%;
-    max-width:520px;
-    margin:auto;
-    padding-bottom:177.78%;
-    height:0;
-    overflow:hidden;
-    background:#020305;
-}
-
-.video-container video{
-    position:absolute;
-    inset:0;
-    width:100%!important;
-    height:100%!important;
-    object-fit:contain;
-    background:#020305;
-}
-
-.video-overlay{
-    position:absolute;
-    inset:0;
-    z-index:10;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    background:rgba(0,0,0,.40);
-    transition:opacity .2s ease;
-}
-
-.video-overlay.hidden{
-    opacity:0;
-    pointer-events:none;
-}
-
-.video-overlay i{
-    color:#fff;
-    font-size:62px;
-    filter:drop-shadow(0 8px 20px rgba(0,0,0,.5));
-}
-
-.play-text{
-    position:absolute;
-    bottom:12%;
-    color:#fff;
-    font-size:11px;
-    font-weight:600;
-}
-
-/* CONTROLS */
-
-.controls{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    flex-wrap:wrap;
-    padding:10px 12px;
-    background:#080b10;
-    border-top:1px solid #1e293b;
-    border-bottom:1px solid #1e293b;
-}
-
-.controls button{
-    border:0;
-    background:none;
-    color:#e2e8f0;
-    padding:6px;
-    cursor:pointer;
-}
-
-.progress-wrap{
-    flex:1;
-    min-width:100px;
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.progress{
-    flex:1;
-    height:5px;
-    background:#1e293b;
-    border-radius:10px;
-    overflow:hidden;
-    cursor:pointer;
-}
-
-.progress-fill{
-    width:0;
-    height:100%;
-    background:#2563eb;
-}
-
-.time{
-    min-width:74px;
-    color:#94a3b8;
-    font-size:9px;
-    text-align:center;
-}
-
-.volume{
-    display:flex;
-    align-items:center;
-}
-
-.volume input{
-    width:40px;
-}
-
-.next-btn{
-    padding:7px 12px!important;
-    border-radius:20px!important;
-    background:#2563eb!important;
-    color:#fff!important;
-    font-weight:800;
-}
-
-/* STATUS */
-
-.status-box{
-    margin:12px;
-    padding:14px;
-    border-radius:14px;
-    background:#111827;
-    border:1px solid #1e293b;
-}
-
-.status-title{
-    margin-bottom:5px;
-    color:#64748b;
-    font-size:9px;
-    font-weight:900;
-    letter-spacing:.5px;
-}
-
-.status-message{
-    color:#cbd5e1;
-    font-size:12px;
-    line-height:1.5;
-}
-
-/* NEXT */
-
-.after-video{
-    display:none;
-    margin:12px;
-    padding:16px;
-    text-align:center;
-    background:#111827;
-    border:1px solid #1e293b;
-    border-radius:14px;
-}
-
-.after-video.show{
-    display:block;
-}
-
-.after-video h3{
-    margin-bottom:6px;
-    color:#fff;
-    font-size:16px;
-}
-
-.after-video p{
-    margin-bottom:11px;
-    color:#94a3b8;
-    font-size:11px;
-}
-
-.after-video button{
-    width:100%;
-    border:0;
-    border-radius:25px;
-    padding:12px;
-    background:#2563eb;
-    color:#fff;
-    font-weight:800;
-}
-
-/* VIDEO LIST */
-
-.video-list{
-    padding:0 12px;
-}
-
-.list-title{
-    margin-bottom:9px;
-    color:#94a3b8;
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:.4px;
-}
-
-.video-item{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px;
-    margin-bottom:7px;
-    border-radius:13px;
-    background:#111827;
-    border:1px solid #1e293b;
-    cursor:pointer;
-    transition:border-color .15s ease,transform .15s ease;
-}
-
-.video-item:active{
-    transform:scale(.99);
-}
-
-.video-item.active{
-    border-color:#2563eb;
-}
-
-.video-icon{
-    width:38px;
-    height:38px;
-    flex:none;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:10px;
-    background:#1e293b;
-    color:#fff;
-}
-
-.video-info{
-    flex:1;
-    min-width:0;
-}
-
-.video-info strong{
-    display:block;
-    overflow:hidden;
-    color:#e2e8f0;
-    font-size:11px;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-}
-
-.video-info span{
-    color:#64748b;
-    font-size:9px;
-}
-
-.video-arrow{
-    color:#64748b;
-}
-
-/* FOOTER */
-
-.footer{
-    margin:16px 12px 0;
-    padding-top:13px;
-    border-top:1px solid #1e293b;
-    color:#475569;
-    text-align:center;
-    font-size:9px;
-}
-
-.back{
-    display:block;
-    margin:auto;
-    padding:12px;
-    border:0;
-    background:none;
-    color:#64748b;
-    font-size:11px;
-    cursor:pointer;
-}
-
-/* =========================================================
-   AGE MODAL
-   ========================================================= */
-
-.age-modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    align-items:center;
-    justify-content:center;
-    padding:18px;
-    background:rgba(0,0,0,.82);
-    backdrop-filter:blur(4px);
-}
-
-.age-modal.show{
-    display:flex;
-}
-
-.age-box{
-    width:100%;
-    max-width:390px;
-    padding:24px 19px 18px;
-    border-radius:22px;
-    background:#fff;
-    text-align:center;
-    box-shadow:0 25px 70px rgba(0,0,0,.5);
-}
-
-.age-icon{
-    width:58px;
-    height:58px;
-    margin:0 auto 12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:#fef2f2;
-    color:#dc2626;
-    font-size:24px;
-}
-
-.age-box h2{
-    margin-bottom:8px;
-    color:#111827;
-    font-size:21px;
-}
-
-.age-box p{
-    margin-bottom:16px;
-    color:#64748b;
-    font-size:12px;
-    line-height:1.55;
-}
-
-.age-actions{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.age-confirm,
-.age-smartlink{
-    width:100%;
-    border-radius:13px;
-    padding:13px;
-    font-size:13px;
-    font-weight:800;
-    cursor:pointer;
-}
-
-.age-confirm{
-    border:0;
-    background:#111827;
-    color:#fff;
-}
-
-.age-smartlink{
-    border:1px solid #bfdbfe;
-    background:#eff6ff;
-    color:#1d4ed8;
-}
-
-.age-cancel{
-    border:0;
-    background:none;
-    color:#64748b;
-    padding:9px;
-    cursor:pointer;
-}
-
-.age-note{
-    margin-top:10px;
-    color:#9ca3af;
-    font-size:8px;
-    line-height:1.4;
-}
-
-/* ERROR */
-
-.video-error{
-    display:none;
-    position:absolute;
-    inset:0;
-    z-index:12;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    gap:8px;
-    padding:25px;
-    text-align:center;
-    background:#05070b;
-}
-
-.video-error.show{
-    display:flex;
-}
-
-.video-error i{
-    color:#ef4444;
-    font-size:30px;
-}
-
-.video-error strong{
-    color:#e2e8f0;
-    font-size:13px;
-}
-
-.video-error span{
-    color:#64748b;
-    font-size:10px;
-}
-
-/* MOBILE */
-
-@media(max-width:380px){
-
-    #page-landing{
-        padding:12px 10px 30px;
-    }
-
-    .preview{
-        height:235px;
-    }
-
-    .title{
-        font-size:25px;
-    }
+@media(max-width:650px){
 
-    .landing-content{
-        padding:20px 15px 18px;
-    }
+  .header{
+    padding:12px
+  }
 
-    .controls{
-        gap:5px;
-    }
+  .logo{
+    font-size:20px
+  }
 
-    .time{
-        min-width:68px;
-    }
+  .search{
+    width:48%;
+    font-size:12px
+  }
 
+  .hero{
+    padding:22px 12px 8px
+  }
+
+  .hero h1{
+    font-size:23px
+  }
+
+  .wrap{
+    padding:12px
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px
+  }
+
+  .info{
+    padding:9px
+  }
+
+  .title{
+    font-size:13px
+  }
+
+  .meta{
+    font-size:11px
+  }
+
+  .modal{
+    padding:10px
+  }
+
+  .close{
+    right:10px;
+    top:8px
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================================================
-     LANDING PAGE
-     ========================================================= -->
+<header class="header">
 
-<div id="page-landing">
+  <div class="logo">
+    VIRAL<span>FLIX</span>
+  </div>
 
-    <div class="landing-card">
+  <input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="Cari video..."
+    autocomplete="off"
+  >
 
-        <div class="preview">
+</header>
 
-            <div class="preview-quality">
-                <i class="fas fa-hd"></i> HD
-            </div>
+<section class="hero">
 
-            <div class="preview-count">
-                6 Videos
-            </div>
+  <h1>Kumpulan Video Viral</h1>
 
-            <div class="preview-content">
+  <p>
+    Video terbaru dan populer, siap ditonton.
+  </p>
 
-                <div class="preview-play" id="playIcon">
-                    <i class="fas fa-play"></i>
-                </div>
+</section>
 
-                <div class="preview-label">
-                    Tap to watch
-                </div>
+<main class="wrap">
 
-            </div>
+  <div id="grid" class="grid"></div>
 
-        </div>
+  <div id="empty" class="empty">
+    Video tidak ditemukan.
+  </div>
 
-        <div class="landing-content">
+</main>
 
-            <h1 class="title">
-                VIRAL <span>TERKINI</span>
-            </h1>
+<footer>
+  © 2026 VIRALFLIX — Kumpulan Video Viral
+</footer>
 
-            <p class="subtitle">
-                Koleksi video terbaru dalam satu halaman.
-                Pilih tombol di bawah untuk melanjutkan.
-            </p>
+<div id="modal" class="modal">
 
-            <div class="info-row">
+  <button
+    class="close"
+    id="close"
+    aria-label="Tutup"
+  >×</button>
 
-                <div class="info-pill">
-                    <i class="fas fa-film"></i>
-                    6 Video
-                </div>
+  <div class="player">
 
-                <div class="info-pill">
-                    <i class="fas fa-video"></i>
-                    HD
-                </div>
+    <video
+      id="mainVideo"
+      controls
+      playsinline
+      preload="metadata"
+    ></video>
 
-                <div class="info-pill">
-                    <i class="fas fa-mobile-alt"></i>
-                    Mobile
-                </div>
-
-            </div>
-
-            <button class="watch-button" id="btnContinue">
-
-                <i class="fas fa-play"></i>
-                TONTON SEKARANG
-                <i class="fas fa-arrow-right"></i>
-
-            </button>
-
-            <div class="tap-note">
-                Ketuk tombol untuk membuka video
-            </div>
-
-            <div class="feature-row">
-
-                <div class="feature">
-                    <i class="fas fa-video"></i>
-                    HD Quality
-                </div>
-
-                <div class="feature">
-                    <i class="fas fa-mobile-alt"></i>
-                    Mobile Friendly
-                </div>
-
-                <div class="feature">
-                    <i class="fas fa-list"></i>
-                    6 Video
-                </div>
-
-            </div>
-
-        </div>
-
+    <div class="player-info">
+      <h2 id="mainTitle"></h2>
     </div>
 
-</div>
-
-
-<!-- =========================================================
-     PLAYER
-     ========================================================= -->
-
-<div id="page-player">
-
-    <div class="player-card">
-
-        <div class="player-header">
-
-            <span class="brand">
-                VIRAL TERKINI
-            </span>
-
-            <span class="badge-hd">
-                HD
-            </span>
-
-            <span class="video-counter" id="videoCounter">
-                1 / 6
-            </span>
-
-        </div>
-
-
-        <div class="video-container">
-
-            <video id="mainVideo"
-                   playsinline
-                   preload="metadata">
-
-                <source src="" type="video/mp4">
-
-                Browser kamu tidak mendukung video HTML5.
-
-            </video>
-
-
-            <div class="video-overlay" id="videoOverlay">
-
-                <i class="fas fa-play-circle"></i>
-
-                <span class="play-text">
-                    Ketuk untuk memutar
-                </span>
-
-            </div>
-
-
-            <div class="video-error" id="videoError">
-
-                <i class="fas fa-circle-exclamation"></i>
-
-                <strong>
-                    Video tidak dapat dimuat
-                </strong>
-
-                <span>
-                    Periksa kembali URL video.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="controls">
-
-            <button id="playPauseBtn" aria-label="Play/Pause">
-                <i class="fas fa-play"></i>
-            </button>
-
-
-            <div class="progress-wrap">
-
-                <div class="progress" id="progressBar">
-
-                    <div class="progress-fill"
-                         id="progressFill">
-                    </div>
-
-                </div>
-
-                <span class="time" id="timeDisplay">
-                    00:00 / 00:00
-                </span>
-
-            </div>
-
-
-            <div class="volume">
-
-                <button id="muteBtn" aria-label="Mute">
-                    <i class="fas fa-volume-up"></i>
-                </button>
-
-                <input
-                    type="range"
-                    id="volumeSlider"
-                    min="0"
-                    max="1"
-                    step="0.05"
-                    value="0.8"
-                    aria-label="Volume">
-
-            </div>
-
-
-            <button class="next-btn" id="btnNext">
-
-                <i class="fas fa-forward"></i>
-                Next
-
-            </button>
-
-        </div>
-
-
-        <div class="status-box" id="verificationBox">
-
-            <div class="status-title">
-                VIDEO PLAYER
-            </div>
-
-            <div class="status-message">
-                Pilih video lalu ketuk tombol play untuk mulai.
-            </div>
-
-        </div>
-
-
-        <div class="after-video" id="afterVideo">
-
-            <h3>
-                Video selesai
-            </h3>
-
-            <p>
-                Lanjutkan ke video berikutnya.
-            </p>
-
-            <button id="afterNext">
-
-                <i class="fas fa-forward"></i>
-                Video Berikutnya
-
-            </button>
-
-        </div>
-
-
-        <div class="video-list">
-
-            <div class="list-title">
-                MORE VIDEOS
-            </div>
-
-            <div id="videoListContainer"></div>
-
-        </div>
-
-
-        <div class="footer">
-            VIRAL TERKINI
-        </div>
-
-
-        <button class="back" id="btnBack">
-            ← Kembali ke halaman awal
-        </button>
-
-    </div>
+  </div>
 
 </div>
-
-
-<!-- =========================================================
-     AGE MODAL
-     ========================================================= -->
-
-<div class="age-modal" id="ageModal">
-
-    <div class="age-box">
-
-        <div class="age-icon">
-            <i class="fas fa-user-check"></i>
-        </div>
-
-        <h2>
-            Konfirmasi Usia
-        </h2>
-
-        <p>
-            Halaman berikut dapat berisi konten yang ditujukan
-            untuk pengguna berusia 18 tahun atau lebih.
-            Pastikan kamu memenuhi batas usia tersebut.
-        </p>
-
-        <div class="age-actions">
-
-            <button class="age-confirm" id="ageConfirm">
-
-                <i class="fas fa-check"></i>
-                Saya 18+ — Lanjut
-
-            </button>
-
-            <button class="age-smartlink" id="ageSmartlink">
-
-                <i class="fas fa-external-link-alt"></i>
-                Buka Tautan Eksternal
-
-            </button>
-
-            <button class="age-cancel" id="ageCancel">
-                Batal
-            </button>
-
-        </div>
-
-        <div class="age-note">
-            Tautan eksternal dapat membuka halaman lain.
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     POPUNDER
-     ========================================================= -->
-
-<script src="https://lectureheard.com/72/97/06/729706d0128fda9672bcbdc9b6f6880f.js"></script>
-
-
-<!-- =========================================================
-     SOCIAL BAR
-     ========================================================= -->
-
-<script src="https://lectureheard.com/69/75/4a/69754aebfa329834728406f071e4ce1d.js"></script>
-
-
-<!-- =========================================================
-     MAIN JAVASCRIPT
-     ========================================================= -->
 
 <script>
-(function(){
 
-"use strict";
+/* =====================================================
+   ADSTERRA SMARTLINK
+   ===================================================== */
 
-
-/* =========================================================
-   SMARTLINK
-   ========================================================= */
-
-const ADSTERRA_SMARTLINK =
-"https://lectureheard.com/m1bmaftz2?key=882dcc168cd45758578c5d23f4e65a1b";
+const SMARTLINK =
+"https://conductivebreeds.com/exxiy8k45?key=ca148b31d37f592e093f740cd1b84e8a";
 
 
-/* =========================================================
-   VIDEO DATA
-   GANTI src DENGAN URL MP4 KAMU
-   ========================================================= */
+/* =====================================================
+   SEMUA VIDEO
+   ===================================================== */
 
-const VIDEO_LIST = [
+const videoUrls = [
 
-    {
-        title:"VIRAL 1",
-        src:""
-    },
+"https://cdn2.videy.co/07NDkyml1.mp4",
+"https://cdn2.videy.co/Y5LOOOWu1.mp4",
+"https://cdn2.videy.co/e8iqLicw1.mp4",
+"https://cdn2.videy.co/B8X4JDBe1.mp4",
+"https://cdn2.videy.co/2QjJLeH41.mp4",
+"https://cdn2.videy.co/IKfKPuwH1.mp4",
+"https://cdn2.videy.co/T8MXfZfG1.mp4",
+"https://cdn2.videy.co/98IJEuFV1.mp4",
+"https://cdn2.videy.co/4FHBu3yT1.mp4",
+"https://cdn2.videy.co/kac6Usm41.mp4",
+"https://cdn2.videy.co/WlePRMpw1.mp4",
+"https://cdn2.videy.co/FrMPx8vh1.mp4",
+"https://cdn2.videy.co/7NOYFtVO1.mp4",
+"https://cdn2.videy.co/XZDcgsKk1.mp4",
+"https://cdn2.videy.co/xvQIRuyh1.mp4",
+"https://cdn2.videy.co/p0m1wIBt1.mp4",
+"https://cdn2.videy.co/CBM8VF1R1.mp4",
+"https://cdn2.videy.co/vgPQJwhX1.mp4",
+"https://cdn2.videy.co/WAAcziqU1.mp4",
+"https://cdn2.videy.co/ZGgyGSkG1.mp4",
+"https://cdn2.videy.co/3yTsy4pd1.mp4",
+"https://cdn2.videy.co/TH1Qb0NG1.mp4",
+"https://cdn2.videy.co/EN9hFPFN1.mp4",
+"https://cdn2.videy.co/xglFt9Mw1.mp4",
+"https://cdn2.videy.co/cb5yafHh1.mp4",
+"https://cdn2.videy.co/xEpmZfyP1.mp4",
+"https://cdn2.videy.co/fQLDfShi1.mp4",
+"https://cdn2.videy.co/sjiY7vjn1.mp4",
+"https://cdn2.videy.co/SSWur6zS1.mp4",
+"https://cdn2.videy.co/YsqrZfi61.mp4",
+"https://cdn2.videy.co/lYVxH0Vv1.mp4",
+"https://cdn2.videy.co/ruPQjrqf1.mp4",
+"https://cdn2.videy.co/v0xFkhm61.mp4",
+"https://cdn2.videy.co/ZnkHYani1.mp4",
+"https://cdn2.videy.co/fqwhRbh21.mp4",
+"https://cdn2.videy.co/08PQ8wKv1.mp4",
+"https://cdn2.videy.co/lIBnhQ7I1.mp4",
+"https://cdn2.videy.co/dpcEevNf1.mp4",
+"https://cdn2.videy.co/WtiEdTcU1.mp4",
+"https://cdn2.videy.co/4IsNCljc1.mp4",
+"https://cdn2.videy.co/grleEx4L1.mp4",
+"https://cdn2.videy.co/v7zxUfA61.mp4",
+"https://cdn2.videy.co/q6XdHOhb1.mp4",
+"https://cdn2.videy.co/FxIadtzm1.mp4",
+"https://cdn2.videy.co/RkNJafxI1.mp4",
+"https://cdn2.videy.co/vuH0IlsL1.mp4",
+"https://cdn2.videy.co/fU26g6Uh1.mp4",
 
-    {
-        title:"VIRAL 2",
-        src:""
-    },
+"https://cdn2.slicedrive.com/JJ8alJMU1.mp4",
+"https://cdn2.slicedrive.com/eF8a0hc41.mp4",
+"https://cdn2.slicedrive.com/zHki09BD1.mp4",
+"https://cdn2.slicedrive.com/V8Vb79IH1.mp4",
+"https://cdn2.slicedrive.com/JwEywSi71.mp4",
+"https://cdn2.slicedrive.com/39lwprTg1.mp4",
+"https://cdn2.slicedrive.com/L3TVRr5q1.mp4",
+"https://cdn2.slicedrive.com/4gN8D64O1.mp4",
+"https://cdn2.slicedrive.com/b8lqz1kw1.mp4",
+"https://cdn2.slicedrive.com/TnfZFpw61.mp4",
+"https://cdn2.slicedrive.com/EelwE3Wa1.mp4",
+"https://cdn2.slicedrive.com/HX2OWphT1.mp4",
+"https://cdn2.slicedrive.com/s2NET4xv1.mp4",
+"https://cdn2.slicedrive.com/SFcx8Lwd1.mp4",
+"https://cdn2.slicedrive.com/U5rufUz21.mp4",
+"https://cdn2.slicedrive.com/l83KeT7c1.mp4",
+"https://cdn2.slicedrive.com/we2WIEqz1.mp4",
+"https://cdn2.slicedrive.com/e93fKGPV1.mp4",
+"https://cdn2.slicedrive.com/fhE1MpwW1.mp4",
+"https://cdn2.slicedrive.com/E5XPo2bB1.mp4",
+"https://cdn2.slicedrive.com/WpC9VEPj1.mp4",
+"https://cdn2.slicedrive.com/Fk9pHKuL1.mp4",
+"https://cdn2.slicedrive.com/SrPb9nzl1.mp4",
+"https://cdn2.slicedrive.com/T9MkqIWz1.mp4",
+"https://cdn2.slicedrive.com/2Vl6S94Y1.mp4",
+"https://cdn2.slicedrive.com/PJcL2CB81.mp4",
+"https://cdn2.slicedrive.com/1h7Zx7Zn1.mp4",
+"https://cdn2.slicedrive.com/biR013bX1.mp4",
+"https://cdn2.slicedrive.com/snAlCHB01.mp4",
+"https://cdn2.slicedrive.com/pzVKhEzF1.mp4",
+"https://cdn2.slicedrive.com/xywSyNYD1.mp4",
+"https://cdn2.slicedrive.com/4AU0AwJ21.mp4",
+"https://cdn2.slicedrive.com/GSakoqwe1.mp4",
+"https://cdn2.slicedrive.com/WMgTXZTM1.mp4",
+"https://cdn2.slicedrive.com/GZ9VV5Zh1.mp4",
+"https://cdn2.slicedrive.com/YD5jLqe71.mp4",
+"https://cdn2.slicedrive.com/dmxHVBg71.mp4",
+"https://cdn2.slicedrive.com/lsNB4XuK1.mp4",
+"https://cdn2.slicedrive.com/EwKkC2GT1.mp4",
+"https://cdn2.slicedrive.com/xjYBZiuP1.mp4",
+"https://cdn2.slicedrive.com/4rUACzh01.mp4",
+"https://cdn2.slicedrive.com/vigf2IJe1.mp4",
 
-    {
-        title:"VIRAL 3",
-        src:""
-    },
+"https://media.slicedrive.com/tw9mTtOi1.mp4",
 
-    {
-        title:"VIRAL 4",
-        src:""
-    },
+"https://cdn2.slicedrive.com/E2bYSJo31.mp4",
+"https://cdn2.slicedrive.com/lpjekzEc1.mp4",
+"https://cdn2.slicedrive.com/SoOuCQw71.mp4",
+"https://cdn2.slicedrive.com/1IkowYLh1.mp4",
+"https://cdn2.slicedrive.com/TYEJhDwP1.mp4",
+"https://cdn2.slicedrive.com/NOCY5i661.mp4",
+"https://cdn2.slicedrive.com/CCOtPMHm1.mp4",
+"https://cdn2.slicedrive.com/KvygHJam1.mp4",
+"https://cdn2.slicedrive.com/CwbQLXfi1.mp4",
+"https://cdn2.slicedrive.com/OwPRug1A1.mp4",
+"https://cdn2.slicedrive.com/EeMIDZwT1.mp4",
+"https://cdn2.slicedrive.com/jKcFrzMY1.mp4",
+"https://cdn2.slicedrive.com/7LT4DEQG1.mp4",
+"https://cdn2.slicedrive.com/vE8I7Az31.mp4",
+"https://cdn2.slicedrive.com/PQ693Th21.mp4",
+"https://cdn2.slicedrive.com/QdwokKIh1.mp4",
+"https://cdn2.slicedrive.com/H2gOuHYP1.mp4",
+"https://cdn2.slicedrive.com/6Bw0JDSH1.mp4",
+"https://cdn2.slicedrive.com/FtkPLkYG1.mp4",
+"https://cdn2.slicedrive.com/HJNF895M1.mp4",
+"https://cdn2.slicedrive.com/koEC9Qjt1.mp4",
 
-    {
-        title:"VIRAL 5",
-        src:""
-    },
+"https://cdn2.aceimg.com/P3Nfafhls.mp4",
+"https://cdn2.aceimg.com/xKfEzQm2Z.mp4",
+"https://cdn2.aceimg.com/EQUzzmrde.mp4",
 
-    {
-        title:"VIRAL 6",
-        src:""
-    }
+"https://cdn2.slicedrive.com/aTqPgbHH1.mp4",
+
+"https://cdn2.videy.co/vkWDbqQx1.mp4",
+"https://cdn2.videy.co/fDn3Avz81.mp4",
+
+"https://cdn2.slicedrive.com/MHa09lDv1.mp4",
+
+"https://cdn2.videy.co/fcEtGKYJ1.mp4",
+
+"https://cdn2.slicedrive.com/maJPWRrp1.mp4",
+"https://cdn2.slicedrive.com/uqxfpZNv1.mp4",
+"https://cdn2.slicedrive.com/6JOn1BAS1.mp4",
+
+"https://cdn2.videy.co/6hRHGzDn1.mp4",
+"https://cdn2.videy.co/Ye5wLigj1.mp4",
+"https://cdn2.videy.co/QQG7Jpk01.mp4",
+
+"https://cdn2.aceimg.com/da0a86834.mp4",
+"https://cdn2.aceimg.com/141caaf56.mp4",
+"https://cdn2.aceimg.com/88fba88d4.mp4",
+
+"https://cdn2.slicedrive.com/vh2kF1YV1.mp4",
+
+"https://cdn2.videy.co/X2c8HWme1.mp4",
+"https://cdn2.videy.co/X2kJI7l61.mp4",
+
+"https://cdn2.slicedrive.com/oChHsvBT1.mp4",
+"https://cdn2.slicedrive.com/lPGdLDGl1.mp4",
+"https://cdn2.slicedrive.com/ssyeVcC81.mp4",
+"https://cdn2.slicedrive.com/OeGxZAdJ1.mp4",
+
+"https://cdn2.videy.co/MdFNROIe1.mp4",
+"https://cdn2.videy.co/jUPT4pnx1.mp4",
+"https://cdn2.videy.co/pUImkFOf1.mp4",
+"https://cdn2.videy.co/BAXkZer71.mp4",
+"https://cdn2.videy.co/QFkm044C1.mp4",
+
+"https://cdn2.slicedrive.com/q6Sij5yR1.mp4",
+"https://cdn2.slicedrive.com/e7bb5C5U1.mp4",
+"https://cdn2.slicedrive.com/fOev18Dw1.mp4",
+"https://cdn2.slicedrive.com/ZwM3spm91.mp4",
+"https://cdn2.slicedrive.com/dzysnykK1.mp4",
+"https://cdn2.slicedrive.com/m7H5oQta1.mp4",
+
+"https://cdn2.videy.co/kmLdZeYa1.mp4",
+
+"https://cdn2.slicedrive.com/QieK52vV1.mp4",
+"https://cdn2.slicedrive.com/kSVcKqtz1.mp4",
+"https://cdn2.slicedrive.com/F8zfMiYp1.mp4",
+"https://cdn2.slicedrive.com/4nzhpgBj1.mp4",
+"https://cdn2.slicedrive.com/V02R6EhM1.mp4",
+"https://cdn2.slicedrive.com/ZpP2GAkA1.mp4",
+
+"https://cdn2.videy.co/7ZLmmg7s1.mp4",
+"https://cdn2.videy.co/tt95U3V61.mp4",
+"https://cdn2.videy.co/z86DoR8G1.mp4",
+"https://cdn2.videy.co/64gCQT7r1.mp4",
+"https://cdn2.videy.co/OMOLpvdF1.mp4",
+"https://cdn2.videy.co/icUDPhyq1.mp4",
+
+"https://cdn2.aceimg.com/xXYim2GZX.mp4",
+"https://cdn2.aceimg.com/yuS9KDoU5.mp4",
+
+"https://cdn2.videy.co/Io0ffecP1.mp4",
+"https://cdn2.videy.co/9XZQthtf1.mp4",
+"https://cdn2.videy.co/h0kWvWyx1.mp4",
+"https://cdn2.videy.co/wMEmk1PZ1.mp4",
+"https://cdn2.videy.co/hSPXwfMv1.mp4",
+"https://cdn2.videy.co/uE4dHtoo1.mp4",
+
+"https://cdn2.aceimg.com/c2b9ed69b.mp4",
+"https://cdn2.aceimg.com/acf58ac94.mp4",
+
+"https://cdn2.videy.co/a5d5eZB41.mp4",
+"https://cdn2.videy.co/1j8NTKus1.mp4",
+
+"https://cdn.slicedrive.com/jNFOA6bq1.mp4",
+"https://cdn.slicedrive.com/yj351oEP1.mp4",
+"https://cdn.slicedrive.com/nUaJK6cX1.mp4",
+"https://cdn.slicedrive.com/z7gRZBDG1.mp4",
+"https://cdn.slicedrive.com/KSNqN25r1.mp4",
+"https://cdn.slicedrive.com/cT8KE4bo1.mp4",
+"https://cdn.slicedrive.com/Cyqi1AZi1.mp4",
+"https://cdn.slicedrive.com/eqEsHn8P1.mp4",
+"https://cdn.slicedrive.com/6iV5sCm61.mp4",
+"https://cdn.slicedrive.com/TcYDtVhY1.mp4",
+"https://cdn.slicedrive.com/KDyRKP5I1.mp4",
+"https://cdn.slicedrive.com/9JUxLiKS1.mp4",
+"https://cdn.slicedrive.com/FwYWoDkf1.mp4",
+"https://cdn.slicedrive.com/6kheFIsK1.mp4",
+"https://cdn.slicedrive.com/Mp3EMMDg1.mp4",
+"https://cdn.slicedrive.com/KhWswIWy1.mp4",
+"https://cdn.slicedrive.com/gWvSxozx1.mp4",
+"https://cdn.slicedrive.com/wshuRtc81.mp4",
+"https://cdn.slicedrive.com/gWfNdxWh1.mp4",
+"https://cdn.slicedrive.com/eKiKhHlz1.mp4",
+"https://cdn.slicedrive.com/7bpGob1p1.mp4",
+"https://cdn.slicedrive.com/9CSyPIM31.mp4",
+"https://cdn.slicedrive.com/5nI5xlkD1.mp4",
+"https://cdn.slicedrive.com/5HjLdoxz1.mp4",
+"https://cdn.slicedrive.com/3nqtCuCX1.mp4",
+"https://cdn.slicedrive.com/dFNY9U6z1.mp4",
+"https://cdn.slicedrive.com/EXQZX3RP1.mp4",
+"https://cdn.slicedrive.com/3Df17Mct1.mp4",
+"https://cdn.slicedrive.com/jLvnN3rU1.mp4",
+"https://cdn.slicedrive.com/scP3UF821.mp4",
+"https://cdn.slicedrive.com/gadfDBXe1.mp4",
+"https://cdn.slicedrive.com/1qaBml6c1.mp4",
+"https://cdn.slicedrive.com/wk6128LG1.mp4",
+"https://cdn.slicedrive.com/xxea0RFj1.mp4",
+"https://cdn.slicedrive.com/GDbL9hs21.mp4",
+"https://cdn.slicedrive.com/2HdXQAhn1.mp4",
+"https://cdn.slicedrive.com/h6z2COPZ1.mp4",
+"https://cdn.slicedrive.com/EV2WV4ix1.mp4",
+"https://cdn.slicedrive.com/ipWnRmhU1.mp4",
+"https://cdn.slicedrive.com/NuOu7zJ71.mp4",
+"https://cdn.slicedrive.com/ibWGggAX1.mp4",
+"https://cdn.slicedrive.com/aMIIZpMY1.mp4",
+
+"https://cdn.videy.co/8S6d0DW61.mp4",
+"https://cdn.videy.co/fr2EUIbo1.mp4",
+"https://cdn.videy.co/VAUgW0vO1.mp4",
+"https://cdn.videy.co/anmIJcGy1.mp4",
+"https://cdn.videy.co/BN3YyVfS1.mp4",
+"https://cdn.videy.co/xmeTv2EI1.mp4"
 
 ];
 
 
-/* =========================================================
+/* =====================================================
+   BUAT DATA VIDEO OTOMATIS
+   ===================================================== */
+
+const videos = videoUrls.map((url,index)=>({
+
+  title:
+    "Video Viral Terbaru #" +
+    String(index + 1).padStart(3,"0"),
+
+  url:url
+
+}));
+
+
+/* =====================================================
    ELEMENT
-   ========================================================= */
+   ===================================================== */
 
-const landing =
-document.getElementById("page-landing");
+const grid =
+document.getElementById("grid");
 
-const player =
-document.getElementById("page-player");
+const empty =
+document.getElementById("empty");
 
-const btnContinue =
-document.getElementById("btnContinue");
+const search =
+document.getElementById("search");
 
-const playIcon =
-document.getElementById("playIcon");
+const modal =
+document.getElementById("modal");
 
-const btnBack =
-document.getElementById("btnBack");
-
-const video =
+const mainVideo =
 document.getElementById("mainVideo");
 
-const videoOverlay =
-document.getElementById("videoOverlay");
+const mainTitle =
+document.getElementById("mainTitle");
 
-const videoError =
-document.getElementById("videoError");
 
-const videoCounter =
-document.getElementById("videoCounter");
+/* =====================================================
+   RENDER
+   ===================================================== */
 
-const playPauseBtn =
-document.getElementById("playPauseBtn");
+function render(list){
 
-const progressBar =
-document.getElementById("progressBar");
+  grid.innerHTML="";
 
-const progressFill =
-document.getElementById("progressFill");
+  empty.style.display =
+    list.length ? "none" : "block";
 
-const timeDisplay =
-document.getElementById("timeDisplay");
+  list.forEach((item,index)=>{
 
-const muteBtn =
-document.getElementById("muteBtn");
+    const card =
+      document.createElement("article");
 
-const volumeSlider =
-document.getElementById("volumeSlider");
+    card.className="card";
 
-const btnNext =
-document.getElementById("btnNext");
+    card.innerHTML=`
 
-const verificationBox =
-document.getElementById("verificationBox");
+      <div class="thumb">
 
-const afterVideo =
-document.getElementById("afterVideo");
+        <video
+          src="${item.url}"
+          muted
+          playsinline
+          preload="metadata"
+        ></video>
 
-const afterNext =
-document.getElementById("afterNext");
-
-const videoListContainer =
-document.getElementById("videoListContainer");
-
-
-/* AGE */
-
-const ageModal =
-document.getElementById("ageModal");
-
-const ageConfirm =
-document.getElementById("ageConfirm");
-
-const ageSmartlink =
-document.getElementById("ageSmartlink");
-
-const ageCancel =
-document.getElementById("ageCancel");
-
-
-/* =========================================================
-   STATE
-   ========================================================= */
-
-let currentIndex = 0;
-let pendingVideoIndex = null;
-
-
-/* =========================================================
-   SMARTLINK
-   ========================================================= */
-
-function openSmartlink(){
-
-    window.open(
-        ADSTERRA_SMARTLINK,
-        "_blank",
-        "noopener,noreferrer"
-    );
-
-}
-
-
-/* =========================================================
-   AGE MODAL
-   ========================================================= */
-
-function requestAgeConfirmation(index){
-
-    if(
-        index < 0 ||
-        index >= VIDEO_LIST.length
-    ){
-        return;
-    }
-
-    pendingVideoIndex = index;
-
-    ageModal.classList.add("show");
-
-}
-
-
-function closeAgeModal(){
-
-    ageModal.classList.remove("show");
-
-    pendingVideoIndex = null;
-
-}
-
-
-/* CONFIRM */
-
-ageConfirm.addEventListener(
-    "click",
-    function(){
-
-        const index =
-            pendingVideoIndex;
-
-        closeAgeModal();
-
-        if(index !== null){
-
-            loadVideo(index);
-
-        }
-
-    }
-);
-
-
-/* EXTERNAL LINK */
-
-ageSmartlink.addEventListener(
-    "click",
-    function(){
-
-        openSmartlink();
-
-    }
-);
-
-
-/* CANCEL */
-
-ageCancel.addEventListener(
-    "click",
-    function(){
-
-        closeAgeModal();
-
-    }
-);
-
-
-/* =========================================================
-   VIDEO LIST
-   ========================================================= */
-
-function renderVideoList(){
-
-    videoListContainer.innerHTML = "";
-
-    VIDEO_LIST.forEach(
-        function(item,index){
-
-            const div =
-                document.createElement("div");
-
-            div.className =
-                "video-item";
-
-            div.innerHTML = `
-
-                <div class="video-icon">
-                    <i class="fas fa-play"></i>
-                </div>
-
-                <div class="video-info">
-
-                    <strong>
-                        ${item.title}
-                    </strong>
-
-                    <span>
-                        Video ${index + 1} dari ${VIDEO_LIST.length}
-                    </span>
-
-                </div>
-
-                <div class="video-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-
-            `;
-
-            div.addEventListener(
-                "click",
-                function(){
-
-                    requestAgeConfirmation(index);
-
-                }
-            );
-
-            videoListContainer.appendChild(div);
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   ACTIVE VIDEO
-   ========================================================= */
-
-function updateActiveItem(){
-
-    const items =
-        document.querySelectorAll(".video-item");
-
-    items.forEach(
-        function(item,index){
-
-            item.classList.toggle(
-                "active",
-                index === currentIndex
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   LOAD VIDEO
-   ========================================================= */
-
-function loadVideo(index){
-
-    if(!VIDEO_LIST[index]){
-        return;
-    }
-
-    currentIndex = index;
-
-    const source =
-        video.querySelector("source");
-
-    video.pause();
-
-    videoError.classList.remove("show");
-
-    videoOverlay.classList.remove("hidden");
-
-    source.src =
-        VIDEO_LIST[index].src;
-
-    video.load();
-
-    videoCounter.textContent =
-        (index + 1) +
-        " / " +
-        VIDEO_LIST.length;
-
-    progressFill.style.width =
-        "0%";
-
-    timeDisplay.textContent =
-        "00:00 / 00:00";
-
-    playPauseBtn.innerHTML =
-        '<i class="fas fa-play"></i>';
-
-    afterVideo.classList.remove("show");
-
-    verificationBox.innerHTML = `
-
-        <div class="status-title">
-            VIDEO PLAYER
+        <div class="play">
+          <i>▶</i>
         </div>
 
-        <div class="status-message">
-            Ketuk video untuk mulai menonton.
+      </div>
+
+      <div class="info">
+
+        <div class="title">
+          ${item.title}
         </div>
+
+        <div class="meta">
+          HD • Video
+          ${String(index+1).padStart(3,"0")}
+        </div>
+
+      </div>
 
     `;
 
-    updateActiveItem();
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
+    card.addEventListener("click",()=>{
+
+      /*
+       * Smartlink dibuka saat kartu diklik.
+       * Player tetap dibuka setelahnya.
+       */
+
+      window.open(
+        SMARTLINK,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      openVideo(item);
+
     });
 
-}
 
+    grid.appendChild(card);
 
-/* =========================================================
-   SHOW PLAYER
-   ========================================================= */
-
-function showPlayer(){
-
-    landing.style.display =
-        "none";
-
-    player.style.display =
-        "block";
-
-    document.body.style.background =
-        "#080b10";
-
-    loadVideo(0);
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+  });
 
 }
 
 
-/* =========================================================
-   LANDING
-   ========================================================= */
+/* =====================================================
+   OPEN VIDEO
+   ===================================================== */
 
-btnContinue.addEventListener(
-    "click",
-    function(){
+function openVideo(item){
 
-        showPlayer();
+  mainTitle.textContent =
+    item.title;
 
-    }
-);
+  mainVideo.src =
+    item.url;
 
+  modal.classList.add("show");
 
-playIcon.addEventListener(
-    "click",
-    function(){
-
-        showPlayer();
-
-    }
-);
-
-
-/* =========================================================
-   BACK
-   ========================================================= */
-
-btnBack.addEventListener(
-    "click",
-    function(){
-
-        video.pause();
-
-        player.style.display =
-            "none";
-
-        landing.style.display =
-            "block";
-
-        document.body.style.background =
-            "#050505";
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-    }
-);
-
-
-/* =========================================================
-   NEXT VIDEO
-   ========================================================= */
-
-function nextVideo(){
-
-    const next =
-        (currentIndex + 1) %
-        VIDEO_LIST.length;
-
-    requestAgeConfirmation(next);
+  mainVideo.play().catch(()=>{});
 
 }
 
 
-btnNext.addEventListener(
-    "click",
-    function(e){
+/* =====================================================
+   CLOSE VIDEO
+   ===================================================== */
 
-        e.stopPropagation();
+function closeVideo(){
 
-        nextVideo();
+  mainVideo.pause();
 
-    }
-);
+  mainVideo.removeAttribute("src");
 
+  mainVideo.load();
 
-afterNext.addEventListener(
-    "click",
-    function(){
-
-        nextVideo();
-
-    }
-);
-
-
-/* =========================================================
-   PLAY
-   ========================================================= */
-
-function playVideo(){
-
-    if(!VIDEO_LIST[currentIndex].src){
-
-        videoError.classList.add("show");
-
-        verificationBox.innerHTML = `
-
-            <div class="status-title">
-                VIDEO BELUM DIATUR
-            </div>
-
-            <div class="status-message">
-                Masukkan URL MP4 pada bagian VIDEO_LIST.
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-    video.play().then(
-        function(){
-
-            videoOverlay.classList.add(
-                "hidden"
-            );
-
-            playPauseBtn.innerHTML =
-                '<i class="fas fa-pause"></i>';
-
-            verificationBox.innerHTML = `
-
-                <div class="status-title">
-                    PLAYING
-                </div>
-
-                <div class="status-message">
-                    Video sedang diputar.
-                </div>
-
-            `;
-
-        }
-    ).catch(
-        function(){
-
-            verificationBox.innerHTML = `
-
-                <div class="status-title">
-                    PLAYER
-                </div>
-
-                <div class="status-message">
-                    Ketuk tombol play untuk memulai video.
-                </div>
-
-            `;
-
-        }
-    );
+  modal.classList.remove("show");
 
 }
 
 
-function pauseVideo(){
+/* =====================================================
+   CLOSE BUTTON
+   ===================================================== */
 
-    video.pause();
-
-    videoOverlay.classList.remove(
-        "hidden"
-    );
-
-    playPauseBtn.innerHTML =
-        '<i class="fas fa-play"></i>';
-
-}
-
-
-function togglePlay(){
-
-    if(video.paused){
-
-        playVideo();
-
-    }else{
-
-        pauseVideo();
-
-    }
-
-}
-
-
-playPauseBtn.addEventListener(
-    "click",
-    function(e){
-
-        e.stopPropagation();
-
-        togglePlay();
-
-    }
+document
+.getElementById("close")
+.addEventListener(
+  "click",
+  closeVideo
 );
 
 
-videoOverlay.addEventListener(
-    "click",
-    function(){
+/* =====================================================
+   KLIK LUAR PLAYER
+   ===================================================== */
 
-        playVideo();
+modal.addEventListener(
+  "click",
+  function(e){
+
+    if(e.target === modal){
+
+      closeVideo();
 
     }
+
+  }
 );
 
 
-/* =========================================================
-   VIDEO EVENTS
-   ========================================================= */
-
-video.addEventListener(
-    "ended",
-    function(){
-
-        afterVideo.classList.add(
-            "show"
-        );
-
-        videoOverlay.classList.remove(
-            "hidden"
-        );
-
-        playPauseBtn.innerHTML =
-            '<i class="fas fa-play"></i>';
-
-    }
-);
-
-
-video.addEventListener(
-    "error",
-    function(){
-
-        if(
-            VIDEO_LIST[currentIndex] &&
-            VIDEO_LIST[currentIndex].src
-        ){
-
-            videoError.classList.add(
-                "show"
-            );
-
-            verificationBox.innerHTML = `
-
-                <div class="status-title">
-                    VIDEO ERROR
-                </div>
-
-                <div class="status-message">
-                    Video gagal dimuat. Periksa URL atau sumber video.
-                </div>
-
-            `;
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PROGRESS
-   ========================================================= */
-
-video.addEventListener(
-    "timeupdate",
-    function(){
-
-        if(
-            video.duration &&
-            isFinite(video.duration)
-        ){
-
-            const percent =
-                (
-                    video.currentTime /
-                    video.duration
-                ) * 100;
-
-            progressFill.style.width =
-                percent + "%";
-
-        }
-
-        updateTime();
-
-    }
-);
-
-
-function updateTime(){
-
-    timeDisplay.textContent =
-        formatTime(video.currentTime) +
-        " / " +
-        formatTime(video.duration);
-
-}
-
-
-function formatTime(seconds){
-
-    if(
-        isNaN(seconds) ||
-        !isFinite(seconds)
-    ){
-
-        return "00:00";
-
-    }
-
-    const minutes =
-        Math.floor(seconds / 60);
-
-    const secs =
-        Math.floor(seconds % 60);
-
-    return(
-        String(minutes).padStart(2,"0") +
-        ":" +
-        String(secs).padStart(2,"0")
-    );
-
-}
-
-
-/* SEEK */
-
-progressBar.addEventListener(
-    "click",
-    function(e){
-
-        if(
-            !video.duration ||
-            !isFinite(video.duration)
-        ){
-            return;
-        }
-
-        const rect =
-            progressBar.getBoundingClientRect();
-
-        const percent =
-            Math.max(
-                0,
-                Math.min(
-                    1,
-                    (e.clientX - rect.left) /
-                    rect.width
-                )
-            );
-
-        video.currentTime =
-            percent * video.duration;
-
-    }
-);
-
-
-/* =========================================================
-   VOLUME
-   ========================================================= */
-
-volumeSlider.addEventListener(
-    "input",
-    function(){
-
-        video.volume =
-            Number(this.value);
-
-        video.muted =
-            video.volume === 0;
-
-        updateMuteIcon();
-
-    }
-);
-
-
-muteBtn.addEventListener(
-    "click",
-    function(){
-
-        video.muted =
-            !video.muted;
-
-        updateMuteIcon();
-
-    }
-);
-
-
-function updateMuteIcon(){
-
-    if(
-        video.muted ||
-        video.volume === 0
-    ){
-
-        muteBtn.innerHTML =
-            '<i class="fas fa-volume-mute"></i>';
-
-    }else if(
-        video.volume < .5
-    ){
-
-        muteBtn.innerHTML =
-            '<i class="fas fa-volume-down"></i>';
-
-    }else{
-
-        muteBtn.innerHTML =
-            '<i class="fas fa-volume-up"></i>';
-
-    }
-
-}
-
-
-/* =========================================================
-   ESC CLOSE MODAL
-   ========================================================= */
+/* =====================================================
+   ESC
+   ===================================================== */
 
 document.addEventListener(
-    "keydown",
-    function(e){
+  "keydown",
+  function(e){
 
-        if(e.key === "Escape"){
+    if(e.key === "Escape"){
 
-            closeAgeModal();
-
-        }
+      closeVideo();
 
     }
+
+  }
 );
 
 
-/* =========================================================
-   INIT
-   ========================================================= */
+/* =====================================================
+   SEARCH
+   ===================================================== */
 
-video.volume = .8;
+search.addEventListener(
+  "input",
+  function(){
 
-volumeSlider.value = .8;
+    const q =
+      search.value
+      .toLowerCase()
+      .trim();
 
-renderVideoList();
+    const filtered =
+      videos.filter(video=>
 
-landing.style.display =
-    "block";
+        video.title
+        .toLowerCase()
+        .includes(q)
 
-player.style.display =
-    "none";
+      );
 
-})();
+    render(filtered);
+
+  }
+);
+
+
+/* =====================================================
+   TAMPILKAN SEMUA VIDEO
+   ===================================================== */
+
+render(videos);
+
 </script>
 
 </body>
