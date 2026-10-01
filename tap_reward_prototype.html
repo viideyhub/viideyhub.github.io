@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Tap Reward - Prototype</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#0b0b0f;color:#fff;min-height:100vh}
+.app{max-width:480px;margin:auto;min-height:100vh;background:linear-gradient(180deg,#17121f,#09090b);padding-bottom:78px}
+header{padding:22px 18px 10px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:22px;font-weight:800}.logo span{color:#ff3b6b}
+.badge{background:#24202d;padding:8px 12px;border-radius:20px;font-size:13px}
+.balance{margin:12px 16px;padding:20px;border-radius:20px;background:linear-gradient(135deg,#29152b,#18131e);border:1px solid #3a273e}
+.balance small{color:#aaa}.coins{font-size:34px;font-weight:800;margin:5px 0}.coins span{font-size:16px;color:#ffd35a}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.stat{background:#211c28;padding:12px;border-radius:14px}.stat small{color:#aaa}.stat b{display:block;margin-top:4px}
+.game{text-align:center;padding:18px 16px}
+.energy{color:#9ee7ff;margin:8px}.bar{height:9px;background:#292733;border-radius:9px;overflow:hidden;margin:8px 35px 20px}.fill{height:100%;background:#46c7ff;width:100%;transition:.2s}
+.tap{width:190px;height:190px;border-radius:50%;border:0;color:#fff;font-size:30px;font-weight:900;background:radial-gradient(circle at 35% 30%,#ff6a8e,#d91552 55%,#7d0931);box-shadow:0 15px 40px #d9155238;cursor:pointer;touch-action:manipulation}
+.tap:active{transform:scale(.94)}
+.plus{height:25px;color:#ffd35a;font-weight:bold}
+.section{padding:0 16px}.section h3{margin:14px 0 10px}
+.card{background:#18161d;border:1px solid #292631;border-radius:16px;padding:14px;margin-bottom:10px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.row small{color:#aaa}
+button.action{border:0;border-radius:12px;padding:10px 13px;background:#ff2f68;color:#fff;font-weight:700}
+button.action:disabled{opacity:.4}
+.notice{margin:10px 16px;padding:12px;border-radius:12px;background:#191720;color:#bdb8c6;font-size:12px;text-align:center}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);height:68px;background:#15131aee;backdrop-filter:blur(10px);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #292631}
+nav button{background:none;border:0;color:#888;font-size:12px}nav button.active{color:#ff3b6b}
+.hidden{display:none}
+.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:20px;z-index:5}
+.modalbox{max-width:360px;width:100%;background:#19161e;border-radius:20px;padding:24px;text-align:center;border:1px solid #342b38}
+.modalbox h2{margin-top:0}
+.close{margin-top:10px;background:#2a2630!important}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="logo">TAP <span>REWARD</span></div><div class="badge">LV <span id="level">1</span></div></header>
+
+<div class="balance">
+  <small>Saldo koin</small>
+  <div class="coins" id="coins">0 <span>🪙</span></div>
+  <div class="stats">
+    <div class="stat"><small>Nilai simulasi</small><b id="money">Rp0</b></div>
+    <div class="stat"><small>Total tap</small><b id="taps">0</b></div>
+  </div>
+</div>
+
+<div id="home">
+<section class="game">
+  <div class="energy">⚡ Energi <b id="energy">100</b>/100</div>
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <button class="tap" id="tapBtn">TAP!</button>
+  <div class="plus" id="plus"></div>
+</section>
+
+<div class="notice">Prototype: koin di sini hanya simulasi dan belum dapat ditukar menjadi uang sungguhan.</div>
+
+<section class="section">
+<h3>🎁 Bonus</h3>
+<div class="card row"><div><b>Rewarded Ad</b><br><small>Simulasi menonton iklan</small></div><button class="action" id="adBtn">+50 🪙</button></div>
+<div class="card row"><div><b>Daily Bonus</b><br><small>Bonus sekali per sesi</small></div><button class="action" id="dailyBtn">+100 🪙</button></div>
+</section>
+</div>
+
+<div id="missions" class="hidden section">
+<h3>🎯 Misi</h3>
+<div class="card row"><div><b>Tap 50 kali</b><br><small id="mission1">0/50</small></div><button class="action" id="missionBtn" disabled>+500 🪙</button></div>
+<div class="card row"><div><b>Tonton 3 reward</b><br><small id="mission2">0/3</small></div><button class="action" id="missionAdBtn" disabled>+300 🪙</button></div>
+</div>
+
+<div id="wallet" class="hidden section">
+<h3>💰 Wallet</h3>
+<div class="card"><small>Saldo</small><div class="coins" id="walletCoins">0 🪙</div><small>Simulasi: 1.000 koin = Rp100</small></div>
+<div class="card"><b>Minimum withdrawal</b><p>100.000 koin = Rp10.000</p><button class="action" id="withdraw">Ajukan Withdrawal</button></div>
+</div>
+
+<div id="profile" class="hidden section">
+<h3>👤 Profil</h3>
+<div class="card"><b>Player #001</b><br><small>Prototype offline</small></div>
+<div class="card"><b>Level</b><p id="profileLevel">1</p><b>Progress</b><div class="bar"><div class="fill" id="levelFill"></div></div></div>
+</div>
+
+<nav>
+<button class="active" data-page="home">🏠<br>Home</button>
+<button data-page="missions">🎯<br>Misi</button>
+<button data-page="wallet">💰<br>Wallet</button>
+<button data-page="profile">👤<br>Profil</button>
+</nav>
+</div>
+
+<div class="modal hidden" id="modal"><div class="modalbox"><h2>🎉 Bonus diterima!</h2><p id="modalText"></p><button class="action" id="closeModal">Tutup</button></div></div>
+
+<script>
+const state=JSON.parse(localStorage.getItem('tapReward')||'null')||{coins:0,energy:100,taps:0,ads:0,daily:false,m1:false,m2:false};
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem('tapReward',JSON.stringify(state))}
+function level(){return Math.floor(state.taps/100)+1}
+function render(){
+  const lv=level(); $('coins').innerHTML=state.coins.toLocaleString('id-ID')+' <span>🪙</span>';
+  $('money').textContent='Rp'+Math.floor(state.coins/10).toLocaleString('id-ID');
+  $('taps').textContent=state.taps.toLocaleString('id-ID');
+  $('energy').textContent=state.energy;$('fill').style.width=state.energy+'%';
+  $('level').textContent=lv;$('walletCoins').textContent=state.coins.toLocaleString('id-ID')+' 🪙';
+  $('profileLevel').textContent=lv;$('levelFill').style.width=(state.taps%100)+'%';
+  $('mission1').textContent=Math.min(state.taps,50)+'/50';
+  $('mission2').textContent=Math.min(state.ads,3)+'/3';
+  $('missionBtn').disabled=state.taps<50||state.m1;
+  $('missionAdBtn').disabled=state.ads<3||state.m2;
+  $('dailyBtn').disabled=state.daily;
+}
+function add(n,msg){state.coins+=n;$('plus').textContent=msg;save();render()}
+$('tapBtn').onclick=()=>{
+ if(state.energy<=0){show('Energi habis. Tunggu sampai energi pulih.');return}
+ state.energy--;state.taps++;state.coins+=10;
+ $('plus').textContent='+10 🪙';save();render();
+};
+$('adBtn').onclick=()=>{
+ state.ads++;state.coins+=50;show('Kamu mendapat +50 koin dari rewarded ad simulasi.');save();render()
+};
+$('dailyBtn').onclick=()=>{if(!state.daily){state.daily=true;add(100,'+100 🪙');show('Daily bonus +100 koin!')}};
+$('missionBtn').onclick=()=>{if(!state.m1){state.m1=true;add(500,'+500 🪙');show('Misi selesai: +500 koin!')}};
+$('missionAdBtn').onclick=()=>{if(!state.m2){state.m2=true;add(300,'+300 🪙');show('Misi selesai: +300 koin!')}};
+$('withdraw').onclick=()=>show(state.coins>=100000?'Withdrawal bisa diajukan pada versi backend.':'Minimal withdrawal prototype adalah 100.000 koin.');
+function show(t){$('modalText').textContent=t;$('modal').classList.remove('hidden')}
+$('closeModal').onclick=()=>$('modal').classList.add('hidden');
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+ ['home','missions','wallet','profile'].forEach(p=>$(p).classList.toggle('hidden',p!==b.dataset.page));
+});
+setInterval(()=>{if(state.energy<100){state.energy=Math.min(100,state.energy+1);save();render()}},3000);
+render();
+</script>
+</body>
+</html>
