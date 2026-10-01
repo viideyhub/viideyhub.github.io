@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mini Tycoon - Prototype</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#0b0f14;color:#fff;font-family:Arial,sans-serif;min-height:100vh}
+.app{max-width:520px;margin:auto;min-height:100vh;background:linear-gradient(#101722,#090c11);position:relative;overflow:hidden}
+header{padding:18px 16px 12px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:22px;font-weight:900}.logo span{color:#31e981}
+.level{background:#17212d;border:1px solid #263646;padding:7px 10px;border-radius:12px;font-size:12px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px}
+.card{background:#121a24;border:1px solid #223142;border-radius:16px;padding:13px}
+.label{font-size:11px;color:#8fa0b3}.value{font-size:22px;font-weight:800;margin-top:4px}
+.money{color:#5cff9b}.income{color:#ffd45c}
+.main{padding:14px 16px 105px}
+.business{background:linear-gradient(145deg,#172331,#101720);border:1px solid #2a3b4d;border-radius:22px;padding:18px;box-shadow:0 12px 30px #0005}
+.biztop{display:flex;gap:14px;align-items:center}
+.icon{width:62px;height:62px;border-radius:17px;background:#213448;display:grid;place-items:center;font-size:32px}
+h1{font-size:20px;margin:0 0 5px}.sub{color:#8fa0b3;font-size:12px}
+.progress{height:8px;background:#0a0f15;border-radius:10px;margin:16px 0 7px;overflow:hidden}
+.bar{height:100%;width:0;background:#31e981;border-radius:10px}
+.progressText{font-size:11px;color:#8191a3;display:flex;justify-content:space-between}
+.collect{width:100%;border:0;border-radius:15px;padding:15px;background:#31e981;color:#06100a;font-size:16px;font-weight:900;margin-top:15px}
+.collect:active,.upgrade:active,.smallbtn:active{transform:scale(.98)}
+.section{margin-top:18px}.sectionTitle{font-size:15px;font-weight:800;margin-bottom:9px}
+.upgrade{width:100%;display:flex;align-items:center;justify-content:space-between;background:#121a24;color:#fff;border:1px solid #263646;border-radius:15px;padding:13px;text-align:left;margin-bottom:9px}
+.upgrade:disabled{opacity:.45}
+.uLeft{display:flex;gap:11px;align-items:center}.uIcon{font-size:25px}.uName{font-weight:800;font-size:14px}.uDesc{font-size:11px;color:#8292a5;margin-top:3px}
+.cost{font-weight:800;color:#ffd45c;font-size:13px}
+.missions{display:grid;gap:9px}
+.mission{display:flex;justify-content:space-between;align-items:center;background:#121a24;border:1px solid #223142;border-radius:14px;padding:12px}
+.mName{font-size:13px;font-weight:700}.mProg{font-size:10px;color:#8292a5;margin-top:4px}
+.smallbtn{border:0;background:#263749;color:#fff;border-radius:10px;padding:8px 10px;font-size:11px;font-weight:800}
+.smallbtn.done{background:#31e981;color:#06100a}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);padding:10px 16px 14px;background:#0b1017ee;backdrop-filter:blur(12px);border-top:1px solid #223142;display:flex;gap:8px}
+.nav button{flex:1;background:#121a24;border:1px solid #243444;color:#8392a3;border-radius:12px;padding:9px 4px;font-size:10px}
+.nav button.active{color:#31e981;border-color:#2b8056}.nav b{display:block;font-size:18px;margin-bottom:2px}
+.toast{position:fixed;top:18px;left:50%;transform:translate(-50%,-120px);background:#31e981;color:#06100a;padding:11px 15px;border-radius:12px;font-weight:800;font-size:13px;z-index:9;transition:.25s;box-shadow:0 8px 30px #0007}
+.toast.show{transform:translate(-50%,0)}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:flex-end;z-index:8}.modal.show{display:flex}
+.sheet{width:min(520px,100%);margin:auto;background:#121a24;border:1px solid #293a4b;border-radius:22px 22px 0 0;padding:22px}
+.sheet h2{margin:0 0 8px}.sheet p{color:#8fa0b3;font-size:13px;line-height:1.5}
+.sheet button{width:100%;padding:14px;border:0;border-radius:13px;margin-top:8px;font-weight:800}
+.confirm{background:#31e981}.cancel{background:#263444;color:#fff}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="logo">MINI<span>TYCOON</span></div>
+  <div class="level">LV <b id="level">1</b></div>
+</header>
+
+<div class="stats">
+  <div class="card"><div class="label">SALDO KOIN</div><div class="value money" id="coins">0</div></div>
+  <div class="card"><div class="label">PENDAPATAN / DETIK</div><div class="value income" id="income">1</div></div>
+</div>
+
+<main class="main">
+  <div class="business">
+    <div class="biztop">
+      <div class="icon">🍔</div>
+      <div><h1>Warung Burger</h1><div class="sub">Bisnis pertamamu</div></div>
+    </div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div class="progressText"><span>EXP</span><span id="expText">0 / 100</span></div>
+    <button class="collect" onclick="collect()">💰 KUMPULKAN PENDAPATAN</button>
+  </div>
+
+  <div class="section">
+    <div class="sectionTitle">⚡ Upgrade Bisnis</div>
+    <button class="upgrade" id="u1" onclick="upgrade(1)">
+      <div class="uLeft"><div class="uIcon">🍳</div><div><div class="uName">Peralatan Dapur</div><div class="uDesc">+1 koin/detik</div></div></div>
+      <div class="cost">🪙 <span id="c1">25</span></div>
+    </button>
+    <button class="upgrade" id="u2" onclick="upgrade(2)">
+      <div class="uLeft"><div class="uIcon">👨‍🍳</div><div><div class="uName">Karyawan</div><div class="uDesc">+3 koin/detik</div></div></div>
+      <div class="cost">🪙 <span id="c2">100</span></div>
+    </button>
+    <button class="upgrade" id="u3" onclick="upgrade(3)">
+      <div class="uLeft"><div class="uIcon">🏪</div><div><div class="uName">Renovasi Toko</div><div class="uDesc">+8 koin/detik</div></div></div>
+      <div class="cost">🪙 <span id="c3">350</span></div>
+    </button>
+  </div>
+
+  <div class="section">
+    <div class="sectionTitle">🎯 Misi Hari Ini</div>
+    <div class="missions">
+      <div class="mission"><div><div class="mName">Kumpulkan 100 koin</div><div class="mProg" id="m1">0 / 100</div></div><button class="smallbtn" id="m1b" onclick="claimMission(1)">+50</button></div>
+      <div class="mission"><div><div class="mName">Upgrade 2 kali</div><div class="mProg" id="m2">0 / 2</div></div><button class="smallbtn" id="m2b" onclick="claimMission(2)">+100</button></div>
+    </div>
+  </div>
+</main>
+
+<nav class="nav">
+  <button class="active"><b>🏠</b>Bisnis</button>
+  <button onclick="showComing('Toko')"><b>🛒</b>Toko</button>
+  <button onclick="rewardAd()"><b>🎁</b>Bonus</button>
+  <button onclick="showComing('Profil')"><b>👤</b>Profil</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="modal">
+ <div class="sheet">
+  <h2 id="modalTitle">🎁 Bonus</h2>
+  <p id="modalText">Tonton iklan simulasi untuk mendapatkan bonus.</p>
+  <button class="confirm" id="modalConfirm" onclick="confirmModal()">LANJUTKAN</button>
+  <button class="cancel" onclick="closeModal()">TUTUP</button>
+ </div>
+</div>
+
+<script>
+const KEY='miniTycoonV1';
+let s=JSON.parse(localStorage.getItem(KEY)||'null')||{
+ coins:0,exp:0,level:1,upgrades:[0,0,0],upgradeCount:0,
+ missions:{m1:false,m2:false},totalCollected:0
+};
+let modalAction=null;
+
+function save(){localStorage.setItem(KEY,JSON.stringify(s))}
+function income(){return 1+s.upgrades[0]*1+s.upgrades[1]*3+s.upgrades[2]*8}
+function cost(i){return [25,100,350][i-1]*Math.pow(1.65,s.upgrades[i-1])}
+function fmt(n){return Math.floor(n).toLocaleString('id-ID')}
+function render(){
+ document.getElementById('coins').textContent=fmt(s.coins);
+ document.getElementById('income').textContent=fmt(income());
+ document.getElementById('level').textContent=s.level;
+ document.getElementById('expText').textContent=fmt(s.exp)+' / '+(s.level*100);
+ document.getElementById('bar').style.width=Math.min(100,s.exp/(s.level*100)*100)+'%';
+ for(let i=1;i<=3;i++){
+   document.getElementById('c'+i).textContent=fmt(cost(i));
+   document.getElementById('u'+i).disabled=s.coins<cost(i);
+ }
+ document.getElementById('m1').textContent=fmt(Math.min(100,s.totalCollected))+' / 100';
+ document.getElementById('m2').textContent=Math.min(2,s.upgradeCount)+' / 2';
+ ['m1','m2'].forEach(id=>{
+   let done=s.missions[id];
+   document.getElementById(id+'b').classList.toggle('done',done);
+   document.getElementById(id+'b').textContent=done?'✓':'+'+(id==='m1'?50:100);
+   document.getElementById(id+'b').disabled=done;
+ });
+ save();
+}
+function toast(t){
+ const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');
+ setTimeout(()=>e.classList.remove('show'),1600);
+}
+function collect(){
+ let gain=income();
+ s.coins+=gain;s.exp+=gain;s.totalCollected+=gain;
+ while(s.exp>=s.level*100){s.exp-=s.level*100;s.level++;toast('🎉 Level Up! Level '+s.level)}
+ render();
+}
+function upgrade(i){
+ let c=cost(i);
+ if(s.coins<c){toast('Koin belum cukup');return}
+ s.coins-=c;s.upgrades[i-1]++;s.upgradeCount++;s.exp+=15;
+ toast('⬆️ Upgrade berhasil!');
+ render();
+}
+function claimMission(i){
+ let id='m'+i;
+ if(s.missions[id])return;
+ let ok=i===1?s.totalCollected>=100:s.upgradeCount>=2;
+ if(!ok){toast('Misi belum selesai');return}
+ s.missions[id]=true;s.coins+=i===1?50:100;toast('🎁 Hadiah misi masuk!');
+ render();
+}
+function rewardAd(){
+ modalAction=()=>{
+   s.coins+=100;s.exp+=20;toast('🎁 Bonus +100 koin!');
+   render();
+ };
+ document.getElementById('modalTitle').textContent='📺 Rewarded Ad (Simulasi)';
+ document.getElementById('modalText').textContent='Prototype ini hanya mensimulasikan iklan. Tidak ada iklan nyata dan tidak ada uang nyata yang dibayarkan.';
+ document.getElementById('modalConfirm').textContent='DAPATKAN +100';
+ document.getElementById('modal').classList.add('show');
+}
+function confirmModal(){if(modalAction)modalAction();closeModal()}
+function closeModal(){document.getElementById('modal').classList.remove('show');modalAction=null}
+function showComing(name){
+ document.getElementById('modalTitle').textContent='🚧 '+name;
+ document.getElementById('modalText').textContent='Fitur ini belum aktif di prototype. Bisa ditambahkan pada versi berikutnya.';
+ document.getElementById('modalConfirm').textContent='OK';
+ modalAction=()=>{};
+ document.getElementById('modal').classList.add('show');
+}
+setInterval(()=>{s.coins+=income();s.exp+=income();if(s.exp>=s.level*100){s.exp-=s.level*100;s.level++;toast('🎉 Level Up!')}render()},1000);
+render();
+</script>
+</div>
+</body>
+</html>
