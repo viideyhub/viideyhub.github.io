@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situs Video - Ultimate Affiliate</title>
+    <style>
+        :root { --bg-body: #1a1a1a; --bg-header: #202020; --accent-color: #5c20d6; --text-main: #ffffff; --text-muted: #b3b3b3; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.5; }
+        a { text-decoration: none; color: inherit; }
+
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: var(--bg-header); border-bottom: 1px solid #333; }
+        
+        /* Logo Styling */
+        .logo { font-size: 26px; font-weight: bold; font-style: italic; color: #8b5cf6; cursor: pointer; user-select: none; display: inline-block; transition: opacity 0.2s;}
+        .logo:hover { opacity: 0.8; }
+        
+        .search-box { display: flex; background: #111; border-radius: 3px; overflow: hidden; border: 1px solid #333; }
+        .search-box input { background: transparent; border: none; padding: 10px 15px; color: white; width: 250px; outline: none; font-size: 14px; }
+        .search-box button { background: var(--accent-color); border: none; padding: 10px 20px; color: white; cursor: pointer; }
+
+        /* Navigasi */
+        nav { background-color: var(--bg-header); padding: 10px 50px; display: flex; gap: 10px; border-bottom: 1px solid #222; overflow-x: auto; white-space: nowrap; align-items: center; min-height: 50px;}
+        nav a { padding: 8px 15px; font-size: 13px; font-weight: bold; transition: background 0.2s; color: #ddd; border-radius: 3px; border: 1px solid transparent; }
+        nav a.active, nav a:hover { background-color: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+        
+        /* Area Edit (Global) */
+        .edit-block { display: inline-flex; flex-direction: column; gap: 4px; vertical-align: top; margin-right: 5px; }
+        .edit-sm-input { background: #111; color: white; border: 1px solid var(--accent-color); padding: 6px; font-size: 12px; border-radius: 3px; outline: none; text-align: center; width: 100px; }
+        .edit-sm-link { border-color: #2ecc71; } /* Warna hijau untuk link affiliate */
+
+        main { padding: 30px 50px; min-height: 80vh; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background-color: #252525; padding: 8px 15px; border-radius: 3px; border-left: 3px solid var(--accent-color); }
+        .section-header h2 { font-size: 14px; font-weight: normal; color: #eee; }
+        .filter-btn { background: #111; border: 1px solid #444; color: white; padding: 4px 12px; border-radius: 3px; cursor: pointer; font-size: 12px; }
+
+        /* Grid Video */
+        .video-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px 15px; }
+        .video-card { background-color: transparent; position: relative; cursor: pointer; transition: transform 0.2s; }
+        .video-card:hover { transform: translateY(-3px); }
+        .video-card.editing:hover { transform: none; cursor: default; }
+
+        .thumbnail { position: relative; width: 100%; aspect-ratio: 16/9; background-color: #000; overflow: hidden; border-radius: 2px;}
+        .thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.2s; }
+        .overlay-stats { position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-between; padding: 6px 8px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); font-size: 11px; font-weight: bold; pointer-events: none; }
+        .info { padding-top: 8px; text-align: center; }
+        .likes { color: #fff; font-size: 11px; font-weight: bold; margin-bottom: 4px; display: flex; justify-content: center; gap: 4px; }
+        .title { font-size: 12px; color: var(--text-muted); line-height: 1.4; word-wrap: break-word; }
+
+        /* Overlay Edit Video */
+        .edit-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(92, 32, 214, 0.7); color: white; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; font-weight: bold; font-size: 14px; text-align: center; padding: 10px;}
+        .video-card.editing .edit-overlay { display: flex; }
+        .video-card.editing .thumbnail img { opacity: 0.3; }
+        .edit-input-title, .edit-input-link { display: none; width: 100%; background: #222; color: white; padding: 6px; font-size: 11px; text-align: center; margin-top: 5px; outline: none; border-radius: 2px;}
+        .edit-input-title { border: 1px solid var(--accent-color); }
+        .edit-input-link { border: 1px solid #2ecc71; }
+        .video-card.editing .title { display: none; }
+        .video-card.editing .edit-input-title { display: block; }
+        .video-card.editing .edit-input-link { display: block; }
+
+        /* Pagination */
+        .pagination { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin: 50px 0 20px 0; }
+        .pagination button { background-color: #2a2a2a; color: #ccc; border: none; padding: 8px 14px; border-radius: 3px; cursor: pointer; font-size: 13px; font-weight: bold; transition: background 0.2s;}
+        .pagination button:hover { background-color: #444; }
+        .pagination button.active { background-color: var(--accent-color); color: white; }
+
+        footer { background-color: #1a1a1a; padding: 30px 20px; text-align: center; border-top: 1px solid #333; position: relative; }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
+        .footer-links a { color: var(--accent-color); font-size: 12px; font-weight: bold; }
+        footer p { color: #666; font-size: 11px; }
+
+        /* Panel Admin */
+        .fab-container { position: fixed; bottom: 20px; right: 20px; display: none; flex-direction: column; gap: 10px; z-index: 1000; }
+        .fab-btn { background-color: var(--accent-color); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3); font-size: 14px; }
+        .fab-btn.save { background-color: #2ecc71; display: none; } 
+        .fab-btn.download { background-color: #e74c3c; display: none; }
+
+        @media (max-width: 1024px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .video-grid { grid-template-columns: repeat(2, 1fr); } header, nav, main { padding-left: 20px; padding-right: 20px; } }
+        @media (max-width: 480px) { .video-grid { grid-template-columns: repeat(1, 1fr); } header { flex-direction: column; gap: 15px; } }
+    </style>
+
+    <script id="data-situs">
+window.DATA_HEADER = {"text":"Bokepindo13.com","link":""};
+window.DATA_MENU = [{"text":"Bokep Indo","link":""},{"text":"Bokep Viral","link":""},{"text":"Bokep Hijab","link":""},{"text":"Bokep SMA","link":""},{"text":"Tags","link":""}];
+window.DATA_PAGINATION = [{"text":"1","link":"","active":true},{"text":"2","link":"","active":false},{"text":"3","link":"","active":false},{"text":"4","link":"","active":false},{"text":"5","link":"","active":false},{"text":"Next","link":"","active":false},{"text":"Last","link":"","active":false}];
+window.DATA_VIDEO = [{"gambar":"","judul":"Judul Video Pertama","views":"51K","durasi":"02:14","likes":"100%","link":""},{"gambar":"","judul":"Judul Video Kedua","views":"81K","durasi":"17:16","likes":"100%","link":""},{"gambar":"","judul":"Judul Video Ketiga","views":"76K","durasi":"09:01","likes":"100%","link":""},{"gambar":"","judul":"Judul Video Keempat","views":"71K","durasi":"10:01","likes":"100%","link":""},{"gambar":"","judul":"Judul Video Kelima","views":"56K","durasi":"01:34","likes":"100%","link":""},{"gambar":"","judul":"Judul Video Keenam","views":"81K","durasi":"14:55","likes":"100%","link":""},{"gambar":"","judul":"Judul Video Ketujuh","views":"69K","durasi":"02:07","likes":"100%","link":""},{"gambar":"","judul":"Judul Video Kedelapan","views":"81K","durasi":"05:32","likes":"100%","link":""}];
+</script>
+<link rel="me" href="https://www.blogger.com/profile/08073849771537040484">
+<meta name="google-adsense-platform-account" content="ca-host-pub-1556223355139109">
+<meta name="google-adsense-platform-domain" content="blogspot.com">
+</head>
+<body><audio class="audio-for-speech" src=""></audio><div class="translate-tooltip-mtz green sm-root translate hidden_translate">
+                    <div class="header-wrapper">
+                        <div class="header-controls">
+                            <span class="sound-translate"></span>
+                            <span class="copy green"></span>
+                            <span class="settings-translator"></span>
+                        </div>
+                        <div class="header-title">translator</div>
+                        <div class="translate-icons">
+                            <img class="from" src="">
+                            <img class="translate-arrow" src="chrome-extension://icchadngbpkcegnabnabhkjkfkfflmpj/images/right-arrow.png">
+                            <div class="translate_to_dropdown">
+                                <button class="dropbtn dropdown-toggle" type="button" id="dropdownMenuButton1" aria-expanded="false"></button>
+                                <ul class="dropdown-content-wrapper languageSelector green">
+                                    <li><a class="dropdown-item" data-lang="af">Afrikaans</a></li>
+                                    <li><a class="dropdown-item" data-lang="sq">Albanian - shqipe</a></li>
+                                    <li><a class="dropdown-item" data-lang="ar">Arabic - ‎‫العربية‬‎</a></li>
+                                    <li><a class="dropdown-item" data-lang="hy">Armenian - Հայերէն</a></li>
+                                    <li><a class="dropdown-item" data-lang="az">Azerbaijani - azərbaycanca</a></li>
+                                    <li><a class="dropdown-item" data-lang="eu">Basque - euskara</a></li>
+                                    <li><a class="dropdown-item" data-lang="be">Belarusian - беларуская</a></li>
+                                    <li><a class="dropdown-item" data-lang="bn">Bengali - বাংলা</a></li>
+                                    <li><a class="dropdown-item" data-lang="bg">Bulgarian - български</a></li>
+                                    <li><a class="dropdown-item" data-lang="ca">Catalan - català</a></li>
+                                    <li><a class="dropdown-item" data-lang="zh-CN">Chinese - 中文（简体中文）</a></li>
+                                    <li><a class="dropdown-item" data-lang="zh-TW">Chinese - 中文 (繁體中文)</a></li>
+                                    <li><a class="dropdown-item" data-lang="hr">Croatian - hrvatski</a></li>
+                                    <li><a class="dropdown-item" data-lang="cs">Czech - čeština</a></li>
+                                    <li><a class="dropdown-item" data-lang="da">Danish - dansk</a></li>
+                                    <li><a class="dropdown-item" data-lang="nl">Dutch - Nederlands</a></li>
+                                    <li><a class="dropdown-item" data-lang="en">English</a></li>
+                                    <li><a class="dropdown-item" data-lang="eo">Esperanto - esperanto</a></li>
+                                    <li><a class="dropdown-item" data-lang="et">Estonian - eesti</a></li>
+                                    <li><a class="dropdown-item" data-lang="tl">Filipino</a></li>
+                                    <li><a class="dropdown-item" data-lang="fi">Finnish - suomi</a></li>
+                                    <li><a class="dropdown-item" data-lang="fr">French - français</a></li>
+                                    <li><a class="dropdown-item" data-lang="gl">Galician - galego</a></li>
+                                    <li><a class="dropdown-item" data-lang="ka">Georgian - ქართული</a></li>
+                                    <li><a class="dropdown-item" data-lang="de">German - Deutsch</a></li>
+                                    <li><a class="dropdown-item" data-lang="el">Greek - Ελληνικά</a></li>
+                                    <li><a class="dropdown-item" data-lang="gu">Gujarati - ગુજરાતી</a></li>
+                                    <li><a class="dropdown-item" data-lang="ht">Haitian Creole - kreyòl ayisyen</a></li>
+                                    <li><a class="dropdown-item" data-lang="iw">Hebrew - ‎‫עברית‬‎</a></li>
+                                    <li><a class="dropdown-item" data-lang="hi">Hindi - हिन्दी</a></li>
+                                    <li><a class="dropdown-item" data-lang="hu">Hungarian - magyar</a></li>
+                                    <li><a class="dropdown-item" data-lang="is">Icelandic - íslenska</a></li>
+                                    <li><a class="dropdown-item" data-lang="id">Indonesian - Bahasa Indonesia</a></li>
+                                    <li><a class="dropdown-item" data-lang="ga">Irish - Gaeilge</a></li>
+                                    <li><a class="dropdown-item" data-lang="it">Italian - italiano</a></li>
+                                    <li><a class="dropdown-item" data-lang="ja">Japanese - 日本語</a></li>
+                                    <li><a class="dropdown-item" data-lang="kn">Kannada - ಕನ್ನಡ</a></li>
+                                    <li><a class="dropdown-item" data-lang="ko">Korean - 한국어</a></li>
+                                    <li><a class="dropdown-item" data-lang="la">Latin - Lingua Latina</a></li>
+                                    <li><a class="dropdown-item" data-lang="lv">Latvian - latviešu</a></li>
+                                    <li><a class="dropdown-item" data-lang="lt">Lithuanian - lietuvių</a></li>
+                                    <li><a class="dropdown-item" data-lang="mk">Macedonian - македонски</a></li>
+                                    <li><a class="dropdown-item" data-lang="ms">Malay - Bahasa Melayu</a></li>
+                                    <li><a class="dropdown-item" data-lang="mt">Maltese - Malti</a></li>
+                                    <li><a class="dropdown-item" data-lang="no">Norwegian - norsk</a></li>
+                                    <li><a class="dropdown-item" data-lang="fa">Persian - ‎‫فارسی‬‎</a></li>
+                                    <li><a class="dropdown-item" data-lang="pl">Polish - polski</a></li>
+                                    <li><a class="dropdown-item" data-lang="pt">Portuguese - português</a></li>
+                                    <li><a class="dropdown-item" data-lang="ro">Romanian - română</a></li>
+                                    <li><a class="dropdown-item" data-lang="ru">Russian - русский</a></li>
+                                    <li><a class="dropdown-item" data-lang="sr">Serbian - Српски</a></li>
+                                    <li><a class="dropdown-item" data-lang="sk">Slovak - slovenčina</a></li>
+                                    <li><a class="dropdown-item" data-lang="sl">Slovenian - slovenščina</a></li>
+                                    <li><a class="dropdown-item" data-lang="es">Spanish - español</a></li>
+                                    <li><a class="dropdown-item" data-lang="sw">Swahili - Kiswahili</a></li>
+                                    <li><a class="dropdown-item" data-lang="sv">Swedish - svenska</a></li>
+                                    <li><a class="dropdown-item" data-lang="ta">Tamil - தமிழ்</a></li>
+                                    <li><a class="dropdown-item" data-lang="te">Telugu - తెలుగు</a></li>
+                                    <li><a class="dropdown-item" data-lang="th">Thai - ไทย</a></li>
+                                    <li><a class="dropdown-item" data-lang="tr">Turkish - Türkçe</a></li>
+                                    <li><a class="dropdown-item" data-lang="uk">Ukrainian - українська</a></li>
+                                    <li><a class="dropdown-item" data-lang="ur">Urdu - ‎‫اردو‬‎</a></li>
+                                    <li><a class="dropdown-item" data-lang="vi">Vietnamese - Tiếng Việt</a></li>
+                                    <li><a class="dropdown-item" data-lang="cy">Welsh - Cymraeg</a></li>
+                                    <li><a class="dropdown-item" data-lang="yi">Yiddish - יידיש</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="translated-text">
+                        <div id="words" class="words"></div>
+                        <div class="sentences green"></div>
+                    </div>
+                    <div class="trans_controls">
+                        <div class="trans_controls__control-wrapper double_click">
+                            <span class="trans_controls__toggle dbl-click active" data-store="double_click">
+                                <div class="trans_controls__inner-circle"></div>
+                            </span>
+                            <span class="trans_controls__description">
+                            Double-click
+                            </span>
+                        </div>
+                        <div class="trans_controls__control-wrapper selection">
+                            <span class="trans_controls__toggle icon-trans active" data-store="icon_trans">
+                                <div class="trans_controls__inner-circle"></div>
+                            </span>
+                            <span class="trans_controls__description">
+                            Select to translate
+                            </span>
+                        </div>
+                    </div>
+                </div><span class="translate-button-mtz hidden_translate green"></span>
+
+    <header>
+        <div id="tempat-logo"><a href="javascript:void(0)" class="logo" onclick="arahkanKeLink('')">Bokepindo13.com</a></div>
+        
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button id="btnSecret">🔍</button>
+        </div>
+    </header>
+
+    <nav id="menu-navigasi"><a href="javascript:void(0)" class="active" onclick="arahkanKeLink('')">🏠 Home</a><a href="javascript:void(0)" onclick="arahkanKeLink('')">Bokep Indo</a><a href="javascript:void(0)" onclick="arahkanKeLink('')">Bokep Viral</a><a href="javascript:void(0)" onclick="arahkanKeLink('')">Bokep Hijab</a><a href="javascript:void(0)" onclick="arahkanKeLink('')">Bokep SMA</a><a href="javascript:void(0)" onclick="arahkanKeLink('')">Tags</a></nav>
+
+    <main>
+        <div class="section-header">
+            <h2>Latest videos</h2>
+            <button class="filter-btn">▼</button>
+        </div>
+
+        <div class="video-grid" id="tempat-video">
+                    <div class="video-card " id="card-0" onclick="arahkanKeLink('')">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 51K</span>
+                                <span>⏱ 02:14</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(0)">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 100%</div>
+                            <div class="title">Judul Video Pertama</div>
+                            <input type="text" class="edit-input-title" id="input-judul-0" value="Judul Video Pertama" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-0" value="" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                
+                    <div class="video-card " id="card-1" onclick="arahkanKeLink('')">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 81K</span>
+                                <span>⏱ 17:16</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(1)">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 100%</div>
+                            <div class="title">Judul Video Kedua</div>
+                            <input type="text" class="edit-input-title" id="input-judul-1" value="Judul Video Kedua" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-1" value="" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                
+                    <div class="video-card " id="card-2" onclick="arahkanKeLink('')">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 76K</span>
+                                <span>⏱ 09:01</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(2)">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 100%</div>
+                            <div class="title">Judul Video Ketiga</div>
+                            <input type="text" class="edit-input-title" id="input-judul-2" value="Judul Video Ketiga" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-2" value="" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                
+                    <div class="video-card " id="card-3" onclick="arahkanKeLink('')">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 71K</span>
+                                <span>⏱ 10:01</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(3)">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 100%</div>
+                            <div class="title">Judul Video Keempat</div>
+                            <input type="text" class="edit-input-title" id="input-judul-3" value="Judul Video Keempat" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-3" value="" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                
+                    <div class="video-card " id="card-4" onclick="arahkanKeLink('')">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 56K</span>
+                                <span>⏱ 01:34</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(4)">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 100%</div>
+                            <div class="title">Judul Video Kelima</div>
+                            <input type="text" class="edit-input-title" id="input-judul-4" value="Judul Video Kelima" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-4" value="" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                
+                    <div class="video-card " id="card-5" onclick="arahkanKeLink('')">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 81K</span>
+                                <span>⏱ 14:55</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(5)">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 100%</div>
+                            <div class="title">Judul Video Keenam</div>
+                            <input type="text" class="edit-input-title" id="input-judul-5" value="Judul Video Keenam" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-5" value="" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                
+                    <div class="video-card " id="card-6" onclick="arahkanKeLink('')">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 69K</span>
+                                <span>⏱ 02:07</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(6)">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 100%</div>
+                            <div class="title">Judul Video Ketujuh</div>
+                            <input type="text" class="edit-input-title" id="input-judul-6" value="Judul Video Ketujuh" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-6" value="" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                
+                    <div class="video-card " id="card-7" onclick="arahkanKeLink('')">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 81K</span>
+                                <span>⏱ 05:32</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(7)">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 100%</div>
+                            <div class="title">Judul Video Kedelapan</div>
+                            <input type="text" class="edit-input-title" id="input-judul-7" value="Judul Video Kedelapan" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-7" value="" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                </div>
+
+        <div class="pagination" id="tempat-pagination"><button class="active" onclick="arahkanKeLink('')">1</button><button class="" onclick="arahkanKeLink('')">2</button><button class="" onclick="arahkanKeLink('')">3</button><button class="" onclick="arahkanKeLink('')">4</button><button class="" onclick="arahkanKeLink('')">5</button><button class="" onclick="arahkanKeLink('')">Next</button><button class="" onclick="arahkanKeLink('')">Last</button></div>
+    </main>
+
+    <footer>
+        <div class="footer-links"><a href="#">18 U.S.C 2257</a><a href="#">DMCA</a><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+        <p>© 2026 Bokepindo13. All rights reserved</p>
+    </footer>
+
+    
+
+    <script>
+        // --- SISTEM KUNCI RAHASIA ---
+        let jumlahKlik = 0;
+        let waktuResetKlik;
+
+        function bukaKunciRahasia() {
+            jumlahKlik++;
+            clearTimeout(waktuResetKlik);
+            if (jumlahKlik >= 5) {
+                document.getElementById('panelAdmin').style.display = 'flex';
+                alert("Berhasil! Panel Admin telah dimunculkan di pojok kanan bawah.");
+                jumlahKlik = 0; 
+            } else {
+                waktuResetKlik = setTimeout(() => { jumlahKlik = 0; }, 1500); 
+            }
+        }
+
+        // --- MANAJEMEN DATA ---
+        let headerData = JSON.parse(localStorage.getItem('dataHeaderLokal')) || window.DATA_HEADER;
+        let menuData = JSON.parse(localStorage.getItem('dataMenuObjLokal')) || window.DATA_MENU;
+        let pagData = JSON.parse(localStorage.getItem('dataPagLokal')) || window.DATA_PAGINATION;
+        let videoData = JSON.parse(localStorage.getItem('dataVideoLokal')) || window.DATA_VIDEO;
+
+        const wadahLogo = document.getElementById("tempat-logo");
+        const wadahVideo = document.getElementById("tempat-video");
+        const wadahMenu = document.getElementById("menu-navigasi");
+        const wadahPag = document.getElementById("tempat-pagination");
+        let isEditMode = false;
+
+        // FUNGSI UMUM REDIRECT
+        function arahkanKeLink(url) {
+            if (!isEditMode && url && url.trim() !== "") {
+                window.open(url, '_blank'); 
+            }
+        }
+
+        // TAMPILKAN HEADER LOGO
+        function tampilkanHeader() {
+            if (isEditMode) {
+                wadahLogo.innerHTML = `
+                    <div class="edit-block" style="flex-direction: row; gap: 5px; align-items: center;">
+                        <input type="text" class="edit-sm-input" id="input-header-text" value="${headerData.text}" placeholder="Nama Judul" style="font-size: 16px; font-weight: bold; width: 150px; font-style: italic;">
+                        <input type="text" class="edit-sm-input edit-sm-link" id="input-header-link" value="${headerData.link}" placeholder="🔗 Link Redirect" style="width: 150px;">
+                    </div>`;
+            } else {
+                wadahLogo.innerHTML = `<a href="javascript:void(0)" class="logo" onclick="arahkanKeLink('${headerData.link}')">${headerData.text}</a>`;
+            }
+        }
+
+        // TAMPILKAN MENU NAVIGASI
+        function tampilkanMenu() {
+            wadahMenu.innerHTML = `<a href="javascript:void(0)" class="active" onclick="arahkanKeLink('')">🏠 Home</a>`; 
+            menuData.forEach((menu, index) => {
+                if (isEditMode) {
+                    wadahMenu.innerHTML += `
+                        <div class="edit-block">
+                            <input type="text" class="edit-sm-input" id="input-menu-text-${index}" value="${menu.text}" placeholder="Nama Menu">
+                            <input type="text" class="edit-sm-input edit-sm-link" id="input-menu-link-${index}" value="${menu.link}" placeholder="🔗 Link Redirect">
+                        </div>`;
+                } else {
+                    wadahMenu.innerHTML += `<a href="javascript:void(0)" onclick="arahkanKeLink('${menu.link}')">${menu.text}</a>`;
+                }
+            });
+        }
+
+        // TAMPILKAN PAGINATION (1,2,3... Next)
+        function tampilkanPagination() {
+            wadahPag.innerHTML = "";
+            pagData.forEach((pag, index) => {
+                if (isEditMode) {
+                    wadahPag.innerHTML += `
+                        <div class="edit-block" style="width:80px;">
+                            <input type="text" class="edit-sm-input" id="input-pag-text-${index}" value="${pag.text}" style="width:100%;">
+                            <input type="text" class="edit-sm-input edit-sm-link" id="input-pag-link-${index}" value="${pag.link}" placeholder="🔗 Link" style="width:100%;">
+                        </div>`;
+                } else {
+                    const activeClass = pag.active ? "active" : "";
+                    wadahPag.innerHTML += `<button class="${activeClass}" onclick="arahkanKeLink('${pag.link}')">${pag.text}</button>`;
+                }
+            });
+        }
+
+        // TAMPILKAN GRID VIDEO
+        function tampilkanGrid() {
+            wadahVideo.innerHTML = "";
+            videoData.forEach((video, index) => {
+                const srcGambar = video.gambar ? video.gambar : "https://via.placeholder.com/640x360/000000/333333?text=Klik+Ganti+Gambar";
+                const linkTujuan = video.link ? video.link : "";
+                
+                const kartuHTML = `
+                    <div class="video-card ${isEditMode ? 'editing' : ''}" id="card-${index}" onclick="arahkanKeLink('${linkTujuan}')">
+                        <div class="thumbnail">
+                            <img src="${srcGambar}" alt="Thumbnail" loading="lazy">
+                            <div class="overlay-stats">
+                                <span>👁 ${video.views}</span>
+                                <span>⏱ ${video.durasi}</span>
+                            </div>
+                            <div class="edit-overlay" onclick="event.stopPropagation(); gantiGambarURL(${index})">
+                                🔗 Tempel Link Gambar
+                            </div>
+                        </div>
+                        <div class="info" onclick="if(isEditMode) event.stopPropagation();">
+                            <div class="likes">👍 ${video.likes}</div>
+                            <div class="title">${video.judul}</div>
+                            <input type="text" class="edit-input-title" id="input-judul-${index}" value="${video.judul}" placeholder="Ketik judul baru...">
+                            <input type="text" class="edit-input-link" id="input-link-${index}" value="${linkTujuan}" placeholder="🔗 Masukkan Link Redirect...">
+                        </div>
+                    </div>
+                `;
+                wadahVideo.innerHTML += kartuHTML;
+            });
+        }
+
+        function toggleEditMode() {
+            isEditMode = true;
+            document.getElementById("btnEdit").style.display = "none";
+            document.getElementById("btnSimpan").style.display = "block";
+            document.getElementById("btnDownload").style.display = "block";
+            tampilkanHeader();
+            tampilkanGrid();
+            tampilkanMenu(); 
+            tampilkanPagination();
+        }
+
+        function simpanPerubahan() {
+            // Simpan Header Logo
+            const inputHeaderText = document.getElementById("input-header-text");
+            const inputHeaderLink = document.getElementById("input-header-link");
+            if (inputHeaderText) headerData.text = inputHeaderText.value;
+            if (inputHeaderLink) headerData.link = inputHeaderLink.value;
+
+            // Simpan Video
+            videoData.forEach((video, index) => {
+                const inputJudul = document.getElementById(`input-judul-${index}`);
+                const inputLink = document.getElementById(`input-link-${index}`);
+                if (inputJudul) videoData[index].judul = inputJudul.value;
+                if (inputLink) videoData[index].link = inputLink.value;
+            });
+            // Simpan Menu
+            menuData.forEach((menu, index) => {
+                const inputText = document.getElementById(`input-menu-text-${index}`);
+                const inputLink = document.getElementById(`input-menu-link-${index}`);
+                if (inputText) menuData[index].text = inputText.value;
+                if (inputLink) menuData[index].link = inputLink.value;
+            });
+            // Simpan Pagination
+            pagData.forEach((pag, index) => {
+                const inputText = document.getElementById(`input-pag-text-${index}`);
+                const inputLink = document.getElementById(`input-pag-link-${index}`);
+                if (inputText) pagData[index].text = inputText.value;
+                if (inputLink) pagData[index].link = inputLink.value;
+            });
+
+            localStorage.setItem('dataHeaderLokal', JSON.stringify(headerData));
+            localStorage.setItem('dataVideoLokal', JSON.stringify(videoData));
+            localStorage.setItem('dataMenuObjLokal', JSON.stringify(menuData));
+            localStorage.setItem('dataPagLokal', JSON.stringify(pagData));
+
+            isEditMode = false;
+            document.getElementById("btnEdit").style.display = "block";
+            document.getElementById("btnSimpan").style.display = "none";
+            document.getElementById("btnDownload").style.display = "none";
+            
+            tampilkanHeader();
+            tampilkanGrid();
+            tampilkanMenu();
+            tampilkanPagination();
+            alert("Data tersimpan sementara di browser Anda.");
+        }
+
+        function gantiGambarURL(index) {
+            let urlBaru = prompt("MASUKKAN LINK GAMBAR (URL):", videoData[index].gambar);
+            if (urlBaru !== null && urlBaru.trim() !== "") {
+                videoData[index].gambar = urlBaru;
+                tampilkanGrid(); 
+            }
+        }
+
+        // FUNGSI EXPORT / DOWNLOAD BIKIN WEB FINAL
+        function downloadWebFinal() {
+            simpanPerubahan(); 
+            const scriptData = document.getElementById("data-situs");
+            scriptData.innerHTML = `\nwindow.DATA_HEADER = ${JSON.stringify(headerData)};\nwindow.DATA_MENU = ${JSON.stringify(menuData)};\nwindow.DATA_PAGINATION = ${JSON.stringify(pagData)};\nwindow.DATA_VIDEO = ${JSON.stringify(videoData)};\n`;
+
+            let htmlKloningan = document.documentElement.cloneNode(true);
+            htmlKloningan.querySelector('#panelAdmin').remove();
+            
+            // Hapus fungsi buka kunci di tombol search agar aman
+            let btnSecret = htmlKloningan.querySelector('#btnSecret');
+            if(btnSecret) btnSecret.removeAttribute('onclick');
+
+            let HTML_FINAL = "<!DOCTYPE html>\n<html lang=\"id\">\n" + htmlKloningan.innerHTML + "\n</html>";
+            let fileBlob = new Blob([HTML_FINAL], { type: "text/html" });
+            let linkDownload = document.createElement("a");
+            linkDownload.href = URL.createObjectURL(fileBlob);
+            linkDownload.download = "index-publik.html"; 
+            linkDownload.click();
+            
+            alert("Berhasil!\nSilakan upload file 'index-publik.html' ke Hosting Anda.");
+        }
+
+        // Init Pertama Kali
+        tampilkanHeader();
+        tampilkanMenu();
+        tampilkanPagination();
+        tampilkanGrid();
+    </script>
+
+</body>
+</html>
