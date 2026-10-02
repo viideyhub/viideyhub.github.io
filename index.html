@@ -1,10 +1,16 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VideoHub</title><!-- =========================
+<title>VideoHub</title>
+
+<!-- =========================
      ADSTERRA POPUNDER
-     ========================= --><script src="https://conductivebreeds.com/26/4a/e5/264ae5c3b9624b70bf710f466b46af7d.js"></script><style>
+     ========================= -->
+<script src="https://conductivebreeds.com/26/4a/e5/264ae5c3b9624b70bf710f466b46af7d.js"></script>
+
+<style>
 :root{
   --bg:#1a1a1a;
   --header:#202020;
@@ -365,103 +371,160 @@ footer p{
     padding-top:20px;
   }
 }
-</style></head><body><header>  <a class="logo" href="#" id="logo">
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="#" id="logo">
     VideoHub
-  </a>  <div class="search-box">
+  </a>
+
+  <div class="search-box">
     <input
       id="searchInput"
       type="search"
       placeholder="Search..."
       autocomplete="off"
-    ><button id="searchBtn" type="button">
-  🔍
-</button>
+    >
 
-  </div></header><nav>  <a class="active" href="#">
-    🏠 Home
-  </a>  <a href="#">
-    Terbaru
-  </a>  <a href="#">
-    Trending
-  </a>  <a href="#">
-    Video
-  </a>  <a href="#">
-    Tags
-  </a></nav><main>  <div class="section-header"><h2 id="pageTitle">
-  Latest videos
-</h2>
-
-<span
-  id="pageInfo"
-  style="font-size:12px;color:#aaa"
-></span>
-
-  </div>  <div
-    class="video-grid"
-    id="videoGrid"
-  ></div>  <div
-    class="pagination"
-    id="pagination"
-  ></div></main><footer>  <div class="footer-links"><a href="#">
-  DMCA
-</a>
-
-<a href="#">
-  Privacy Policy
-</a>
-
-<a href="#">
-  Terms of Use
-</a>
-
-  </div>  <p>
-    © 2026 VideoHub. All rights reserved
-  </p></footer><!-- =========================
-     VIDEO PLAYER
-     ========================= --><div
-  class="player-modal"
-  id="playerModal"
->  <div class="player-box"><div class="player-head">
-
-  <div
-    class="player-title"
-    id="playerTitle"
-  >
-    Video
+    <button id="searchBtn" type="button">
+      🔍
+    </button>
   </div>
+</header>
 
-  <button
-    class="close-player"
-    id="closePlayer"
-    type="button"
-  >
-    ✕
-  </button>
-
-</div>
-
-<video
-  id="mainPlayer"
-  controls
-  playsinline
-  preload="metadata"
-></video>
-
-<div class="player-actions">
-
-  <a
-    class="direct-btn"
-    href="#"
-    id="directButton"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    TONTON SEKARANG
+<nav>
+  <a class="active" href="#">
+    🏠 Home
   </a>
 
+  <a href="#">
+    Terbaru
+  </a>
+
+  <a href="#">
+    Trending
+  </a>
+
+  <a href="#">
+    Video
+  </a>
+
+  <a href="#">
+    Tags
+  </a>
+</nav>
+
+<main>
+
+  <div class="section-header">
+
+    <h2 id="pageTitle">
+      Latest videos
+    </h2>
+
+    <span
+      id="pageInfo"
+      style="font-size:12px;color:#aaa"
+    ></span>
+
+  </div>
+
+  <div
+    class="video-grid"
+    id="videoGrid"
+  ></div>
+
+  <div
+    class="pagination"
+    id="pagination"
+  ></div>
+
+</main>
+
+<footer>
+
+  <div class="footer-links">
+
+    <a href="#">
+      DMCA
+    </a>
+
+    <a href="#">
+      Privacy Policy
+    </a>
+
+    <a href="#">
+      Terms of Use
+    </a>
+
+  </div>
+
+  <p>
+    © 2026 VideoHub. All rights reserved
+  </p>
+
+</footer>
+
+<!-- =========================
+     VIDEO PLAYER
+     ========================= -->
+
+<div
+  class="player-modal"
+  id="playerModal"
+>
+
+  <div class="player-box">
+
+    <div class="player-head">
+
+      <div
+        class="player-title"
+        id="playerTitle"
+      >
+        Video
+      </div>
+
+      <button
+        class="close-player"
+        id="closePlayer"
+        type="button"
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <video
+      id="mainPlayer"
+      controls
+      playsinline
+      preload="metadata"
+    ></video>
+
+    <div class="player-actions">
+
+      <a
+        class="direct-btn"
+        href="#"
+        id="directButton"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        TONTON SEKARANG
+      </a>
+
+    </div>
+
+  </div>
+
 </div>
 
-  </div></div><script>
+
+<script>
 
 /* =========================================================
    DAFTAR VIDEO
@@ -1226,5 +1289,71 @@ document
 
 render();
 
-</script></body>
+</script>
+
+
+<!-- =======================================================
+     HISTATS
+     ======================================================= -->
+
+<!-- Histats.com (div with counter) -->
+<div id="histats_counter"></div>
+
+<!-- Histats.com START (async) -->
+<script type="text/javascript">
+
+var _Hasync = _Hasync || [];
+
+_Hasync.push([
+  'Histats.start',
+  '1,5055845,4,511,95,18,00000000'
+]);
+
+_Hasync.push([
+  'Histats.fasi',
+  '1'
+]);
+
+_Hasync.push([
+  'Histats.track_hits',
+  ''
+]);
+
+(function(){
+
+  var hs =
+    document.createElement('script');
+
+  hs.type =
+    'text/javascript';
+
+  hs.async =
+    true;
+
+  hs.src =
+    ('//s10.histats.com/js15_as.js');
+
+  (
+    document.getElementsByTagName('head')[0]
+    ||
+    document.getElementsByTagName('body')[0]
+  ).appendChild(hs);
+
+})();
+
+</script>
+
+<noscript>
+  <a href="/" target="_blank">
+    <img
+      src="//sstatic1.histats.com/0.gif?5055845&101"
+      alt=""
+      border="0"
+    >
+  </a>
+</noscript>
+
+<!-- Histats.com END -->
+
+</body>
 </html>
