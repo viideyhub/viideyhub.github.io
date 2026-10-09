@@ -1,284 +1,509 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="admaven-placement" content="BpdU6qTr6">
-<meta name="description" content="IndoV1ral - Tonton video pilihan dengan mudah.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>VIDEY.CO</title>
 
-<title>IndoV1ral</title>
+  <!-- ADMAVEN POPUNDER -->
+  <script data-cfasync="false"
+    src="https://dcbbwymp1bhlf.cloudfront.net/?wbbcd=1724805"></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --bg:#ffffff;
-  --text:#0f172a;
-  --muted:#64748b;
-  --line:#e2e8f0;
-  --btn:#111827;
-  --btnText:#ffffff;
-  --btnHover:#000000;
-}
+  <style>
+    :root {
+      --bg: #fff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --btn: #111827;
+      --card: #f8fafc;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+    *, *::before, *::after { box-sizing: border-box; }
 
-html{
-  -webkit-text-size-adjust:100%;
-}
+    html {
+      -webkit-text-size-adjust: 100%;
+      width: 100%;
+    }
 
-html,body{
-  min-height:100%;
-}
+    html, body {
+      min-height: 100%;
+      margin: 0;
+      max-width: 100%;
+    }
 
-body{
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
 
-.appbar{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:#fff;
-  border-bottom:1px solid var(--line);
-}
+    .appbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
 
-.bar-inner{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  padding:10px 16px;
-  gap:12px;
-}
+    .bar-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+    }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:700;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
 
-.logo{
-  width:28px;
-  height:28px;
-  display:grid;
-  place-items:center;
-  background:#111827;
-  color:#fff;
-  border-radius:6px;
-}
+    .logo {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      background: #111827;
+      color: #fff;
+      font-size: 14px;
+    }
 
-.spacer{
-  flex:1;
-}
+    .spacer { flex: 1; }
 
-.btn{
-  display:inline-block;
-  border:0;
-  padding:10px 14px;
-  border-radius:12px;
-  background:var(--btn);
-  color:var(--btnText);
-  font-weight:600;
-  cursor:pointer;
-  text-decoration:none;
-  font-size:13px;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      border: 0;
+      padding: 10px 11px;
+      border-radius: 10px;
+      background: #111827;
+      color: #fff;
+      font: 600 13px Inter, sans-serif;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
 
-.btn:hover{
-  background:var(--btnHover);
-}
+    .telegram-btn { background: #229ED9; }
 
-.banner{
-  max-width:1200px;
-  margin:10px auto;
-  padding:8px 16px;
-  color:var(--muted);
-  font-size:13px;
-}
+    .banner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 10px auto 0;
+      padding: 8px 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-.banner a{
-  color:#2563eb;
-  text-decoration:none;
-  font-weight:600;
-}
+    .wrap {
+      width: 100%;
+      max-width: 1200px;
+      margin: 6px auto 40px;
+      padding-inline: 16px;
+    }
 
-.wrap{
-  max-width:1200px;
-  margin:auto;
-  padding:16px;
-}
+    .player-shell {
+      display: grid;
+      place-items: center;
+      margin-top: 20px;
+    }
 
-.player-shell{
-  display:grid;
-  place-items:center;
-}
+    .phone {
+      position: relative;
+      width: clamp(240px, 92vw, 420px);
+      aspect-ratio: 9 / 16;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 10px 30px rgba(2,6,23,.15),
+                  0 3px 10px rgba(2,6,23,.08);
+    }
 
-.phone{
-  width:clamp(240px,92vw,420px);
-  aspect-ratio:9/16;
-  border-radius:22px;
-  overflow:hidden;
-  background:#000;
-  position:relative;
-}
+    .phone video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #000;
+    }
 
-.phone video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
+    .meta {
+      width: 100%;
+      max-width: 760px;
+      margin: 12px auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-.meta{
-  margin-top:20px;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-}
+    .dl-section {
+      width: 100%;
+      max-width: 420px;
+      margin: 12px auto 0;
+      padding-inline: 10px;
+      text-align: center;
+    }
 
-.ad-info{
-  max-width:420px;
-  margin:24px auto;
-  text-align:center;
-}
+    .dl-title {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 10px;
+    }
 
-.ad-info p{
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:12px;
-}
+    .dl-wrap {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
 
-.ad-button{
-  display:inline-block;
-  padding:12px 22px;
-  background:#2563eb;
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:600;
-  border-radius:10px;
-}
+    .btn-dl {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      text-align: center;
+      padding: 16px 10px;
+      border-radius: 16px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      transition: transform .2s ease;
+      touch-action: manipulation;
+    }
 
-.ad-button:hover{
-  background:#1d4ed8;
-}
+    .btn-dl:active { transform: scale(.98); }
 
-footer{
-  max-width:1200px;
-  margin:40px auto 0;
-  padding:20px 16px;
-  text-align:center;
-  font-size:12px;
-  color:#94a3b8;
-  border-top:1px solid var(--line);
-}
+    .btn-dl-1 {
+      background: linear-gradient(135deg, #ff4d4d, #ff7a00);
+      box-shadow: 0 6px 18px rgba(255,77,77,.25);
+    }
 
-@media(max-width:480px){
-  .bar-inner{padding:10px 12px}
-  .wrap{padding:12px}
-  .phone{border-radius:16px}
-}
-</style>
+    .btn-dl-2 {
+      background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+      box-shadow: 0 6px 18px rgba(59,130,246,.25);
+    }
+
+    .ad-slot {
+      width: 100%;
+      max-width: 420px;
+      margin: 28px auto 0;
+      background: var(--card);
+      border: 1px dashed var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px 16px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* HISTATS */
+    #histats_counter {
+      margin: 18px auto;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    /* POPUP KONFIRMASI USIA */
+    #age18-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: rgba(0,0,0,.65);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease;
+    }
+
+    #age18-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .age18-card {
+      width: min(360px, 100%);
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      padding: 22px 20px 18px;
+      transform: scale(.95);
+      transition: transform .2s ease;
+    }
+
+    #age18-overlay.show .age18-card {
+      transform: scale(1);
+    }
+
+    .age18-card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      color: #111827;
+    }
+
+    .age18-card p {
+      margin: 0 0 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+
+    .age18-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .age18-btn {
+      flex: 1;
+      min-height: 48px;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      font: 700 15px Inter, sans-serif;
+    }
+
+    .age18-btn.batal {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .age18-btn.lanjut {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    @media (min-width: 1024px) {
+      .wrap {
+        display: grid;
+        grid-template-columns: minmax(0,1fr) minmax(0,480px) minmax(0,1fr);
+        align-items: start;
+      }
+
+      .player-shell { grid-column: 2; }
+    }
+
+    @media (max-width: 360px) {
+      .bar-inner { gap: 5px; padding-inline: 8px; }
+      .brand { font-size: 13px; gap: 5px; }
+      .btn { padding: 9px 8px; font-size: 12px; }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="appbar">
-  <div class="bar-inner">
-    <div class="brand">
-      <span class="logo">V</span>
-      <span>vldey<span style="color:#3b82f6">.co</span></span>
+  <!-- HEADER -->
+  <header class="appbar">
+    <div class="bar-inner">
+      <div class="brand" aria-label="VIDEY.CO">
+        <span class="logo">V</span>
+        <span>VIDEY<span style="color:#3b82f6">.CO</span></span>
+      </div>
+
+      <div class="spacer"></div>
+
+      <!-- CHANNEL TELEGRAM -->
+      <a
+        href="https://t.me/AsupanVideyXyz"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn telegram-btn"
+        aria-label="Buka channel Telegram">
+        ✈ Telegram
+      </a>
+
+      <button class="btn" type="button"
+        onclick="document.getElementById('video').scrollIntoView({behavior:'smooth'})">
+        Upload
+      </button>
     </div>
+  </header>
 
-    <div class="spacer"></div>
+  <div class="banner">Advertise</div>
 
-    <a class="btn" href="#video">Tonton Video</a>
+  <!-- MAIN CONTENT -->
+  <main class="wrap">
+    <section class="player-shell">
+
+      <!-- VIDEO -->
+      <div class="phone">
+        <video id="video" playsinline controls preload="metadata">
+          <source src="https://i.imgur.com/chnzTSc.mp4" type="video/mp4">
+          Browser kamu tidak mendukung pemutar video HTML5.
+        </video>
+      </div>
+
+      <div class="meta" id="duration">0:00 / 0:00</div>
+
+      <!-- ADMAVEN SMARTLINK -->
+      <section class="dl-section">
+        <p class="dl-title">Download video panjang</p>
+
+        <div class="dl-wrap">
+          <a
+            href="https://quitedrench.org?M16ls=1724713"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-dl btn-dl-1">
+            VIDEO 1
+          </a>
+
+          <a
+            href="https://quitedrench.org?M16ls=1724713"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-dl btn-dl-2">
+            VIDEO 2
+          </a>
+        </div>
+      </section>
+
+      <div class="ad-slot">Slot Iklan</div>
+
+      <!-- HISTATS COUNTER DISPLAY -->
+      <div id="histats_counter"></div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2026 VIDEY.CO
+  </footer>
+
+  <!-- POPUP KONFIRMASI USIA -->
+  <div id="age18-overlay" role="dialog"
+       aria-modal="true" aria-labelledby="age18-title">
+
+    <div class="age18-card">
+      <h3 id="age18-title">Konfirmasi Usia</h3>
+
+      <p>
+        Apakah Anda berusia 18 tahun atau lebih dan ingin melanjutkan?
+      </p>
+
+      <div class="age18-actions">
+        <button class="age18-btn batal" id="ageBatal" type="button">
+          BATAL
+        </button>
+
+        <button class="age18-btn lanjut" id="ageLanjut" type="button">
+          LANJUT
+        </button>
+      </div>
+    </div>
   </div>
-</header>
 
-<div class="banner">
-  <span>Advertise · </span>
-  <a href="https://quitedrench.org?M16ls=1724713"
-     target="_blank"
-     rel="nofollow sponsored noopener">
-     Kunjungi tautan sponsor
-  </a>
-</div>
+  <!-- DURASI VIDEO -->
+  <script>
+    const video = document.getElementById('video');
+    const duration = document.getElementById('duration');
 
-<main class="wrap">
+    function fmt(seconds) {
+      if (!Number.isFinite(seconds)) return '0:00';
 
-  <section class="player-shell" id="video">
-    <div class="phone">
-      <video id="videoPlayer" playsinline controls preload="metadata">
-        <source src="VIDEO" type="video/mp4">
-        Browser tidak mendukung pemutar video.
-      </video>
-    </div>
+      const minutes = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
 
-    <div class="meta" id="videoMeta">
-      0:00 / 0:00 · Putar untuk memulai
-    </div>
-  </section>
+      return `${minutes}:${secs}`;
+    }
 
-  <section class="ad-info">
-    <p>Konten sponsor</p>
-    <a class="ad-button"
-       href="https://quitedrench.org?M16ls=1724713"
-       target="_blank"
-       rel="nofollow sponsored noopener">
-       Lihat Rekomendasi
+    video.addEventListener('loadedmetadata', () => {
+      duration.textContent = `0:00 / ${fmt(video.duration)}`;
+    });
+
+    video.addEventListener('timeupdate', () => {
+      duration.textContent =
+        `${fmt(video.currentTime)} / ${fmt(video.duration)}`;
+    });
+  </script>
+
+  <!-- POPUP USIA: TAMPIL SETELAH 35 DETIK -->
+  <script>
+    (function () {
+      const overlay = document.getElementById('age18-overlay');
+      const btnLanjut = document.getElementById('ageLanjut');
+      const btnBatal = document.getElementById('ageBatal');
+
+      window.setTimeout(function () {
+        overlay.classList.add('show');
+        document.documentElement.style.overflow = 'hidden';
+      }, 35000);
+
+      function closePopup() {
+        overlay.classList.remove('show');
+        document.documentElement.style.overflow = '';
+      }
+
+      btnLanjut.addEventListener('click', closePopup);
+      btnBatal.addEventListener('click', closePopup);
+    })();
+  </script>
+
+  <!-- HISTATS TRACKING -->
+  <script type="text/javascript">
+    var _Hasync = window._Hasync || [];
+
+    _Hasync.push([
+      'Histats.start',
+      '1,5055845,4,511,95,18,00000000'
+    ]);
+
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+
+    (function () {
+      var hs = document.createElement('script');
+      hs.type = 'text/javascript';
+      hs.async = true;
+      hs.src = 'https://s10.histats.com/js15_as.js';
+
+      (
+        document.getElementsByTagName('head')[0] ||
+        document.getElementsByTagName('body')[0]
+      ).appendChild(hs);
+    })();
+  </script>
+
+  <noscript>
+    <a href="https://www.histats.com/" target="_blank" rel="noopener">
+      <img
+        src="https://sstatic1.histats.com/0.gif?5055845&101"
+        alt="Histats"
+        width="1"
+        height="1">
     </a>
-  </section>
-
-</main>
-
-<footer>
-  <p>© 2026 IndoV1ral. Semua hak dilindungi.</p>
-</footer>
-
-<script>
-const v = document.getElementById('videoPlayer');
-const meta = document.getElementById('videoMeta');
-
-function fmt(t){
-  if(!Number.isFinite(t)) return "0:00";
-  const m = Math.floor(t / 60);
-  const s = Math.floor(t % 60).toString().padStart(2,'0');
-  return `${m}:${s}`;
-}
-
-v.addEventListener('loadedmetadata',()=>{
-  meta.textContent = `0:00 / ${fmt(v.duration)} · Putar untuk memulai`;
-});
-
-v.addEventListener('timeupdate',()=>{
-  meta.textContent = `${fmt(v.currentTime)} / ${fmt(v.duration)}`;
-});
-
-v.addEventListener('ended',()=>{
-  meta.textContent = `${fmt(v.duration)} / ${fmt(v.duration)} · Selesai`;
-});
-
-v.addEventListener('error',()=>{
-  meta.textContent = "Video tidak dapat dimuat.";
-});
-</script>
-
-<!-- ADMAVEN POPUNDER -->
-<script data-cfasync="false"
-src="//dcbbwymp1bhlf.cloudfront.net/?wbbcd=1724805"></script>
+  </noscript>
 
 </body>
 </html>
